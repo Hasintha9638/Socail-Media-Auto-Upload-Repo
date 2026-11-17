@@ -1,0 +1,164 @@
+{
+  "title": "The Farmer Who Planted Stones",
+  "youtube_title": "He Planted One Stone Every Day… 20 Years Later, Nobody Laughed #shorts #moralstory",
+  "description": "Every morning, a poor farmer carried one stone to the edge of his field. The village laughed — until the night the river came.\n\nSmall things, done every day, quietly become the wall that saves you.\n\nA new animated moral story every day. Follow so you don't miss tomorrow's.\n\n#moralstories #shortstory #animatedstory #motivation #wisdom #shorts",
+  "tags": ["moral story", "short story", "animated story", "motivation", "wisdom", "life lesson", "shorts"],
+  "voice": "bm_george",
+  "speed": 0.95,
+  "mood": "warm",
+  "highlight": ["stone", "wall", "laughed", "stopped", "saves", "years", "river"],
+  "scenes": [
+    {
+      "narration": "Every morning, a poor farmer carried one stone to the edge of his field. Just one.",
+      "caption_y": 640,
+      "camera": {"zoom": [[0, 1.0], [1, 1.08]], "cx": 600, "cy": 1250},
+      "elements": [
+        {"type": "sky", "preset": "dawn"},
+        {"type": "sun", "x": 830, "y": [[0, 1180], [1, 1080]], "r": 105, "color": "#ffc27a"},
+        {"type": "clouds", "count": 4, "color": "#f3b79a", "alpha": 0.55, "y": [180, 600]},
+        {"type": "birds", "count": 4, "y": [380, 620]},
+        {"type": "hills", "color": "#6b5a86", "base_y": 1210, "amp": 110, "seed": 2},
+        {"type": "hills", "color": "#40395e", "base_y": 1340, "amp": 70, "seed": 5},
+        {"type": "houses", "color": "#2c2742", "items": [[720, 1352, 0.55], [870, 1356, 0.62]]},
+        {"type": "palms", "color": "#1d1a2c", "items": [[1000, 1452, 1.1], [640, 1452, 0.8]]},
+        {"type": "water", "level": 1580, "x1": 236, "color": "#4a5f8a", "top": "#d6a7b5", "rough": 0.5},
+        {"type": "ground", "color": "#2a2433", "furrow": "#231e2c", "grass_color": "#3a3047", "furrows": true, "riverbed": [230, 200]},
+        {"type": "wall", "fill": [[0, 0.02], [0.84, 0.02], [0.86, 0.035], [1, 0.035]]},
+        {"type": "person", "kind": "farmer", "anim": "carry", "x": [[0, 960], [0.78, 470], [1, 470]], "facing": -1, "holding": [[0, 1], [0.84, 1], [0.85, 0]], "bend": [[0.75, 0], [0.85, 0.8], [1, 0.3]]},
+        {"type": "text", "text": "THE FARMER WHO PLANTED STONES", "y": 250, "size": 56, "color": "#ffd27a", "stroke": 5, "alpha": [[0, 0], [0.08, 1], [0.85, 1], [1, 0]]}
+      ]
+    },
+    {
+      "narration": "The villagers laughed. \"One stone a day?\" they said. \"You'll be dead before that becomes anything.\"",
+      "caption_y": 640,
+      "camera": {"zoom": [[0, 1.06], [1, 1.12]], "cx": [[0, 760], [1, 700]], "cy": 1260},
+      "elements": [
+        {"type": "sky", "preset": "day"},
+        {"type": "sun", "x": 860, "y": 480, "r": 95, "color": "#fff1b8"},
+        {"type": "clouds", "count": 5, "color": "#ffffff", "alpha": 0.85, "y": [150, 650]},
+        {"type": "hills", "color": "#7fa894", "base_y": 1210, "amp": 110, "seed": 2},
+        {"type": "hills", "color": "#557f5f", "base_y": 1340, "amp": 70, "seed": 5},
+        {"type": "houses", "color": "#6b5148", "lit": false, "items": [[720, 1352, 0.55], [870, 1356, 0.62]]},
+        {"type": "palms", "color": "#2f4a36", "items": [[1000, 1452, 1.1], [640, 1452, 0.8]]},
+        {"type": "water", "level": 1580, "x1": 236, "color": "#3f7ea8", "top": "#cfe8f4", "rough": 0.5},
+        {"type": "ground", "color": "#5b6b3a", "furrow": "#4d5c31", "grass_color": "#6d8044", "furrows": true, "riverbed": [230, 200]},
+        {"type": "wall", "fill": [[0, 0.035], [0.5, 0.05]]},
+        {"type": "person", "kind": "farmer", "anim": "idle", "x": 470, "facing": -1, "bend": [[0, 0.3], [0.5, 0.8], [1, 0.4]], "color": "#1e2230"},
+        {"type": "person", "kind": "villager", "anim": "laugh", "x": 760, "facing": -1, "s": 0.92, "phase": 0, "color": "#2a2632"},
+        {"type": "person", "kind": "villager_f", "anim": "laugh", "x": 880, "facing": -1, "s": 0.86, "phase": 1.3, "color": "#2e2836"},
+        {"type": "person", "kind": "villager", "anim": "laugh", "x": 990, "facing": -1, "s": 0.96, "phase": 2.1, "color": "#26232e"}
+      ]
+    },
+    {
+      "narration": "He didn't argue. Rain or sun, he placed his stone. Days became years. Years became a wall.",
+      "caption_y": 640,
+      "camera": {"zoom": [[0, 1.0], [1, 1.1]], "cx": 520, "cy": 1220},
+      "elements": [
+        {"type": "sky", "cycle": 3},
+        {"type": "stars"},
+        {"type": "sun", "cycle_arc": true, "r": 95},
+        {"type": "moon", "cycle_arc": true, "r": 70},
+        {"type": "clouds", "count": 4, "color": "#ffffff", "alpha": 0.4, "speed": 6, "y": [150, 650]},
+        {"type": "hills", "color": "#6f8f8a", "base_y": 1210, "amp": 110, "seed": 2},
+        {"type": "hills", "color": "#4a6a58", "base_y": 1340, "amp": 70, "seed": 5},
+        {"type": "houses", "color": "#4a3b3a", "items": [[720, 1352, 0.55], [870, 1356, 0.62]]},
+        {"type": "palms", "color": "#22352a", "items": [[1000, 1452, 1.1], [640, 1452, 0.8]]},
+        {"type": "water", "level": 1580, "x1": 236, "color": "#3f6f98", "top": "#bcd8ea", "rough": 0.5},
+        {"type": "ground", "color": "#4a5a34", "furrow": "#3e4c2c", "grass_color": "#5d7040", "furrows": true, "riverbed": [230, 200]},
+        {"type": "wall", "fill": [[0, 0.05], [1, 1.0]]},
+        {"type": "person", "kind": "farmer", "anim": "idle", "x": 520, "facing": -1, "bend": 0.5, "show": [0, 0.55], "color": "#1a1d28"},
+        {"type": "person", "kind": "old", "anim": "idle", "x": 560, "facing": -1, "bend": 0.7, "show": [0.55, 1.01], "color": "#1a1d28"},
+        {"type": "text", "counter": {"value": [[0.05, 1], [0.95, 20]], "fmt": "YEAR {}"}, "text": "YEAR 1", "y": 260, "size": 64, "color": "#ffd27a", "stroke": 6}
+      ]
+    },
+    {
+      "narration": "Then, one night, the river burst its banks. Water roared toward the village.",
+      "caption_y": 640,
+      "sfx_rain": 1,
+      "camera": {"zoom": [[0, 1.0], [1, 1.14]], "cx": 420, "cy": 1250},
+      "elements": [
+        {"type": "sky", "preset": "storm"},
+        {"type": "clouds", "count": 7, "color": "#2b303c", "alpha": 0.95, "speed": 4, "y": [60, 600]},
+        {"type": "lightning", "times": [0.5, 2.6, 4.3]},
+        {"type": "hills", "color": "#252c3a", "base_y": 1210, "amp": 110, "seed": 2},
+        {"type": "hills", "color": "#1a202b", "base_y": 1340, "amp": 70, "seed": 5},
+        {"type": "houses", "color": "#14161c", "window": "#ffb85a", "items": [[720, 1352, 0.55], [870, 1356, 0.62]]},
+        {"type": "palms", "color": "#0e1116", "items": [[1000, 1452, 1.1], [640, 1452, 0.8]]},
+        {"type": "ground", "color": "#1a1f1a", "furrow": "#151915", "grass_color": "#222a20", "furrows": true, "riverbed": [230, 200]},
+        {"type": "water", "level": [[0, 1560], [1, 1220]], "x1": 236, "color": "#2c4458", "top": "#8fb0c8", "rough": [[0, 1.5], [1, 3]]},
+        {"type": "wall", "fill": 1},
+        {"type": "person", "kind": "old", "anim": "idle", "x": 600, "facing": -1, "color": "#0b0d12"},
+        {"type": "rain", "intensity": 1}
+      ]
+    },
+    {
+      "narration": "It crashed into the farmer's wall… and stopped.",
+      "caption_y": 640,
+      "sfx_rain": 0.8,
+      "lead": 0.2,
+      "tail": 0.9,
+      "camera": {"zoom": [[0, 1.3], [1, 1.16]], "cx": 340, "cy": 1180},
+      "elements": [
+        {"type": "sky", "preset": "storm"},
+        {"type": "clouds", "count": 7, "color": "#2b303c", "alpha": 0.95, "speed": 4, "y": [60, 600]},
+        {"type": "lightning", "times": [0.35]},
+        {"type": "hills", "color": "#252c3a", "base_y": 1210, "amp": 110, "seed": 2},
+        {"type": "hills", "color": "#1a202b", "base_y": 1340, "amp": 70, "seed": 5},
+        {"type": "houses", "color": "#14161c", "window": "#ffb85a", "items": [[720, 1352, 0.55], [870, 1356, 0.62]]},
+        {"type": "palms", "color": "#0e1116", "items": [[1000, 1452, 1.1], [640, 1452, 0.8]]},
+        {"type": "ground", "color": "#1a1f1a", "furrow": "#151915", "grass_color": "#222a20", "furrows": true, "riverbed": [230, 200]},
+        {"type": "water", "level": [[0, 1220], [0.35, 1085], [1, 1090]], "x1": 236, "color": "#2c4458", "top": "#8fb0c8", "rough": [[0, 3], [0.5, 2.5], [1, 0.8]]},
+        {"type": "wall", "fill": 1},
+        {"type": "splash", "x": 232, "y": [[0, 1220], [0.35, 1085], [1, 1090]], "intensity": [[0, 0.3], [0.3, 1.2], [0.7, 0.6], [1, 0.1]]},
+        {"type": "person", "kind": "old", "anim": "idle", "x": 600, "facing": -1, "color": "#0b0d12"},
+        {"type": "rain", "intensity": [[0, 1], [1, 0.5]]}
+      ]
+    },
+    {
+      "narration": "In the morning, every field behind that wall was still green. Nobody laughed anymore.",
+      "caption_y": 640,
+      "camera": {"zoom": [[0, 1.0], [1, 1.07]], "cx": 560, "cy": 1250},
+      "elements": [
+        {"type": "sky", "preset": "golden"},
+        {"type": "sun", "x": 300, "y": [[0, 980], [1, 900]], "r": 110, "color": "#ffd08a"},
+        {"type": "clouds", "count": 4, "color": "#ffd9b0", "alpha": 0.6, "y": [180, 600]},
+        {"type": "birds", "count": 6, "y": [350, 650]},
+        {"type": "hills", "color": "#8a7a96", "base_y": 1210, "amp": 110, "seed": 2},
+        {"type": "hills", "color": "#5a6a58", "base_y": 1340, "amp": 70, "seed": 5},
+        {"type": "houses", "color": "#3a3240", "items": [[720, 1352, 0.55], [870, 1356, 0.62]]},
+        {"type": "palms", "color": "#2a3328", "items": [[1000, 1452, 1.1], [640, 1452, 0.8]]},
+        {"type": "ground", "color": "#4f7038", "furrow": "#43612f", "grass_color": "#77a04a", "furrows": true, "riverbed": [230, 200]},
+        {"type": "water", "level": 1330, "x1": 236, "color": "#5c7f98", "top": "#ffe1b4", "rough": 0.4},
+        {"type": "wall", "fill": 1},
+        {"type": "person", "kind": "child", "anim": "idle", "x": 285, "y": 1032, "facing": 1, "color": "#2a2430"},
+        {"type": "person", "kind": "child", "anim": "wave", "x": 380, "y": 1030, "facing": 1, "color": "#2a2430"},
+        {"type": "person", "kind": "old", "anim": "idle", "x": 560, "facing": -1, "color": "#221e28"},
+        {"type": "person", "kind": "villager", "anim": "idle", "x": 780, "facing": -1, "s": 0.92, "color": "#2a2632"},
+        {"type": "person", "kind": "villager_f", "anim": "idle", "x": 880, "facing": -1, "s": 0.86, "color": "#2e2836"}
+      ]
+    },
+    {
+      "narration": "Small things, done every day, quietly become the wall that saves you.",
+      "captions": false,
+      "lead": 0.6,
+      "tail": 2.2,
+      "camera": {"zoom": [[0, 1.12], [1, 1.0]], "cx": 540, "cy": 1100},
+      "elements": [
+        {"type": "sky", "preset": "card"},
+        {"type": "stars"},
+        {"type": "moon", "x": 800, "y": 330, "r": 62},
+        {"type": "hills", "color": "#1d1b38", "base_y": 1210, "amp": 110, "seed": 2},
+        {"type": "hills", "color": "#141329", "base_y": 1340, "amp": 70, "seed": 5},
+        {"type": "houses", "color": "#100f1e", "window": "#ffcf7a", "items": [[720, 1352, 0.55], [870, 1356, 0.62]]},
+        {"type": "palms", "color": "#0b0a16", "items": [[1000, 1452, 1.1], [640, 1452, 0.8]]},
+        {"type": "ground", "color": "#11121c", "furrow": "#0d0e16", "grass_color": "#171a26", "furrows": true, "riverbed": [230, 200]},
+        {"type": "water", "level": 1580, "x1": 236, "color": "#1d2a4a", "top": "#6a7fb0", "rough": 0.4},
+        {"type": "wall", "fill": 1},
+        {"type": "person", "kind": "old", "anim": "idle", "x": 520, "facing": -1, "color": "#07070d"},
+        {"type": "fireflies", "count": 28, "y": [1150, 1480]},
+        {"type": "text", "text": "Small things, done every day, quietly become the wall that saves you.", "serif": true, "size": 74, "width": 860, "y": 640, "color": "#fff3d6", "stroke": 0, "alpha": [[0, 0], [0.12, 1]]},
+        {"type": "text", "text": "A new story every day  •  Follow", "size": 38, "y": 900, "color": "#ffd27a", "alpha": [[0, 0], [0.55, 0], [0.7, 1]]}
+      ]
+    }
+  ]
+}

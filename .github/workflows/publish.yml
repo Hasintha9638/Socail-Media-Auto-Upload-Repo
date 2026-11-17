@@ -1,0 +1,85 @@
+name: Render & publish story
+
+on:
+  push:
+    branches: [main]
+    paths: ["stories/*.json"]
+  workflow_dispatch:
+    inputs:
+      story:
+        description: "Path of the story JSON to (re)publish, e.g. stories/2026-11-18-xyz.json"
+        required: true
+
+concurrency: publish
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
+
+      - name: Find new story
+        id: story
+        run: |
+          if [ -n "${{ github.event.inputs.story }}" ]; then f="${{ github.event.inputs.story }}";
+          else f=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'stories/*.json' | tail -1); fi
+          echo "file=$f" >> "$GITHUB_OUTPUT"; echo "Story: $f"
+
+      - if: steps.story.outputs.file != ''
+        uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+
+      - if: steps.story.outputs.file != ''
+        name: Install
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q -r requirements.txt
+
+      - if: steps.story.outputs.file != ''
+        name: Cache voice model
+        uses: actions/cache@v4
+        with: { path: models, key: kokoro-v1.0 }
+
+      - if: steps.story.outputs.file != ''
+        name: Download voice model
+        run: |
+          mkdir -p models
+          [ -f models/kokoro.onnx ] || curl -sSL -o models/kokoro.onnx https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx
+          [ -f models/voices.bin ]  || curl -sSL -o models/voices.bin  https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
+
+      - if: steps.story.outputs.file != ''
+        name: Render video
+        id: render
+        run: |
+          name=$(basename "${{ steps.story.outputs.file }}" .json)
+          mkdir -p out && python storykit/storykit.py "${{ steps.story.outputs.file }}" "out/$name.mp4"
+          echo "video=out/$name.mp4" >> "$GITHUB_OUTPUT"; echo "name=$name" >> "$GITHUB_OUTPUT"
+
+      - if: steps.story.outputs.file != ''
+        uses: actions/upload-artifact@v4
+        with: { name: "${{ steps.render.outputs.name }}", path: "${{ steps.render.outputs.video }}", retention-days: 30 }
+
+      - if: steps.story.outputs.file != '' && env.YT_REFRESH_TOKEN != ''
+        name: Upload to YouTube
+        id: yt
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          PUBLISH_AT_LOCAL: "18:30"
+          PUBLISH_TZ: "Asia/Colombo"
+        run: python scripts/upload_youtube.py "${{ steps.story.outputs.file }}" "${{ steps.render.outputs.video }}"
+
+      - if: steps.yt.outputs.youtube_id != ''
+        name: Log published video
+        run: |
+          echo "| $(date +%F) | ${{ steps.render.outputs.name }} | https://youtube.com/shorts/${{ steps.yt.outputs.youtube_id }} |" >> stories/PUBLISHED.md
+          git config user.name "story-bot"; git config user.email "story-bot@users.noreply.github.com"
+          git add stories/PUBLISHED.md && git commit -m "Log ${{ steps.render.outputs.name }} [skip ci]" && git push
+    env:
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
