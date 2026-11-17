@@ -27,7 +27,9 @@ jobs:
         id: story
         run: |
           if [ -n "${{ github.event.inputs.story }}" ]; then f="${{ github.event.inputs.story }}";
-          else f=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'stories/*.json' | tail -1); fi
+          elif git rev-parse -q --verify HEAD~1 >/dev/null; then
+            f=$(git diff --no-renames --name-only --diff-filter=A HEAD~1 HEAD -- 'stories/*.json' | tail -1)
+          else f=""; fi
           echo "file=$f" >> "$GITHUB_OUTPUT"; echo "Story: $f"
 
       - if: steps.story.outputs.file != ''
