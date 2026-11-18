@@ -10,7 +10,7 @@ import json, os, subprocess, sys, time, urllib.request, urllib.parse
 API = "https://open.tiktokapis.com"
 
 
-def call(method, url, data=None, headers=None, form=False, raw=None):
+def call(method, url, data=None, headers=None, form=False, raw=None, soft=False):
     headers = dict(headers or {})
     body = raw
     if data is not None:
@@ -24,6 +24,7 @@ def call(method, url, data=None, headers=None, form=False, raw=None):
             txt = r.read().decode() or "{}"
     except urllib.error.HTTPError as e:
         txt = e.read().decode()
+        if soft and txt.strip().startswith("{"): return json.loads(txt)
         raise SystemExit(f"TikTok API error {e.code} on {url.split('?')[0]}: {txt[:500]}")
     return json.loads(txt) if txt.strip().startswith("{") else {}
 
@@ -55,10 +56,15 @@ def main():
     tags = " ".join("#" + t.replace(" ", "") for t in ["TinyTalesDaily", "moralstory", "storytime", "animation", "fyp"])
     caption = f"{story['title']} — {story['scenes'][-1]['narration']} {tags}"[:2200]
     size = os.path.getsize(video)
-    init = call("POST", f"{API}/v2/post/publish/video/init/", {
-        "post_info": {"title": caption, "privacy_level": privacy, "disable_comment": False, "disable_duet": False,
-                      "disable_stitch": False, "video_cover_timestamp_ms": 1500, "is_aigc": True},
-        "source_info": {"source": "FILE_UPLOAD", "video_size": size, "chunk_size": size, "total_chunk_count": 1}}, auth)
+    def init_post(priv):
+        return call("POST", f"{API}/v2/post/publish/video/init/", {
+            "post_info": {"title": caption, "privacy_level": priv, "disable_comment": False, "disable_duet": False,
+                          "disable_stitch": False, "video_cover_timestamp_ms": 1500, "is_aigc": True},
+            "source_info": {"source": "FILE_UPLOAD", "video_size": size, "chunk_size": size, "total_chunk_count": 1}}, auth, soft=True)
+    init = init_post(privacy)
+    if init.get("error", {}).get("code") == "unaudited_client_can_only_post_to_private_accounts" and privacy != "SELF_ONLY":
+        print("App not yet approved by TikTok: posting as private (SELF_ONLY) for now.")
+        privacy = "SELF_ONLY"; init = init_post(privacy)
     if init.get("error", {}).get("code") not in (None, "ok"):
         raise SystemExit(f"TikTok init failed: {init['error']}")
     publish_id, upload_url = init["data"]["publish_id"], init["data"]["upload_url"]
