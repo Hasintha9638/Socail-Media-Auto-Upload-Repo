@@ -1,0 +1,1364 @@
+{
+ "title": "The Man Who Waited for the Perfect Day",
+ "youtube_title": "He Waited 10 Years to Start… Then a Kid Did This #shorts #funnymotivation #motivation",
+ "description": "Funny motivation: for ten years, Kamal packed a bag to climb the hill — and found a new excuse every single morning. Then a little girl in broken sandals just… started.\n\nPerfect days never come. Start on an ordinary one.\n\nA new tiny tale every day on Tiny Tales Daily. Subscribe so you don't miss tomorrow's story.\n\n#funnymotivation #funny #motivation #relatable #procrastination #TinyTalesDaily #shorts",
+ "tags": [
+  "funny motivation",
+  "motivation",
+  "motivational story",
+  "procrastination",
+  "stop procrastinating",
+  "just start",
+  "perfect day story",
+  "animated story",
+  "short story",
+  "self improvement",
+  "discipline",
+  "relatable",
+  "Tiny Tales Daily",
+  "shorts"
+ ],
+ "voice": "am_michael",
+ "speed": 1.0,
+ "mood": "hopeful",
+ "highlight": [
+  "Kamal",
+  "hot",
+  "windy",
+  "suspiciously",
+  "socks",
+  "ten",
+  "ordinary",
+  "climbing",
+  "ran",
+  "rain"
+ ],
+ "scenes": [
+  {
+   "narration": "For ten years, Kamal packed a bag to climb the big hill. And every morning… he unpacked it.",
+   "camera": {
+    "zoom": [
+     [
+      0,
+      1.0
+     ],
+     [
+      1,
+      1.04
+     ]
+    ],
+    "cx": 500,
+    "cy": 1200
+   },
+   "elements": [
+    {
+     "type": "sky",
+     "top": "#33406e",
+     "bottom": "#ffb07a"
+    },
+    {
+     "type": "sun",
+     "x": 800,
+     "y": [
+      [
+       0,
+       1080
+      ],
+      [
+       1,
+       990
+      ]
+     ],
+     "r": 95,
+     "color": "#ffcf8a"
+    },
+    {
+     "type": "clouds",
+     "count": 4,
+     "color": "#ffc6a8",
+     "alpha": 0.5,
+     "y": [
+      150,
+      520
+     ]
+    },
+    {
+     "type": "hills",
+     "color": "#8d86a8",
+     "base_y": 1150,
+     "amp": 80,
+     "seed": 7
+    },
+    {
+     "type": "hills",
+     "color": "#566a6e",
+     "base_y": 1240,
+     "amp": 320,
+     "seed": 20
+    },
+    {
+     "type": "trees",
+     "color": "#26323a",
+     "seed": 4,
+     "items": [
+      [
+       960,
+       1452,
+       0.95
+      ],
+      [
+       90,
+       1452,
+       0.75
+      ]
+     ]
+    },
+    {
+     "type": "houses",
+     "color": "#3a2e3e",
+     "window": "#ffcf7a",
+     "lit": true,
+     "items": [
+      [
+       180,
+       1452,
+       0.7
+      ],
+      [
+       330,
+       1454,
+       0.6
+      ]
+     ]
+    },
+    {
+     "type": "ground",
+     "color": "#3f4a3a",
+     "furrow": "#3f4a3a",
+     "grass_color": "#56664a",
+     "furrows": false
+    },
+    {
+     "type": "birds",
+     "count": 3,
+     "y": [
+      300,
+      500
+     ]
+    },
+    {
+     "type": "person",
+     "kind": "villager",
+     "anim": "carry",
+     "stone": "#9a6a3c",
+     "x": [
+      [
+       0,
+       120
+      ],
+      [
+       0.55,
+       560
+      ],
+      [
+       1,
+       560
+      ]
+     ],
+     "facing": 1,
+     "holding": 1,
+     "show": [
+      0,
+      0.62
+     ],
+     "color": "#1c1a24"
+    },
+    {
+     "type": "person",
+     "kind": "villager",
+     "anim": "walk",
+     "x": [
+      [
+       0.62,
+       560
+      ],
+      [
+       1,
+       330
+      ]
+     ],
+     "facing": -1,
+     "show": [
+      0.62,
+      1.01
+     ],
+     "color": "#1c1a24"
+    },
+    {
+     "type": "text",
+     "text": "WAITING FOR THE PERFECT DAY",
+     "y": 250,
+     "size": 54,
+     "color": "#ffd27a",
+     "stroke": 5,
+     "width": 820,
+     "alpha": [
+      [
+       0,
+       0
+      ],
+      [
+       0.08,
+       1
+      ],
+      [
+       0.85,
+       1
+      ],
+      [
+       1,
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "narration": "Monday was too hot. Tuesday, too windy. Wednesday, a cloud looked at him suspiciously.",
+   "caption_y": 700,
+   "camera": {
+    "zoom": [
+     [
+      0,
+      1.0
+     ],
+     [
+      1,
+      1.05
+     ]
+    ],
+    "cx": 480,
+    "cy": 1150
+   },
+   "elements": [
+    {
+     "type": "sky",
+     "preset": "day"
+    },
+    {
+     "type": "sun",
+     "x": [
+      [
+       0,
+       840
+      ],
+      [
+       1,
+       800
+      ]
+     ],
+     "y": 210,
+     "r": 110,
+     "color": "#fff1a8"
+    },
+    {
+     "type": "clouds",
+     "count": 4,
+     "color": "#ffffff",
+     "alpha": 0.9,
+     "speed": 30,
+     "y": [
+      120,
+      300
+     ],
+     "seed": 3
+    },
+    {
+     "type": "hills",
+     "color": "#9cc3d8",
+     "base_y": 1150,
+     "amp": 80,
+     "seed": 7
+    },
+    {
+     "type": "hills",
+     "color": "#4f8a63",
+     "base_y": 1240,
+     "amp": 320,
+     "seed": 20
+    },
+    {
+     "type": "trees",
+     "color": "#2e5a3c",
+     "seed": 4,
+     "items": [
+      [
+       960,
+       1452,
+       0.95
+      ],
+      [
+       90,
+       1452,
+       0.75
+      ]
+     ]
+    },
+    {
+     "type": "houses",
+     "color": "#7a4e3a",
+     "window": "#ffcf7a",
+     "lit": false,
+     "items": [
+      [
+       180,
+       1452,
+       0.7
+      ],
+      [
+       330,
+       1454,
+       0.6
+      ]
+     ]
+    },
+    {
+     "type": "ground",
+     "color": "#5e7f3e",
+     "furrow": "#5e7f3e",
+     "grass_color": "#7aa04e",
+     "furrows": false
+    },
+    {
+     "type": "person",
+     "kind": "villager",
+     "anim": "idle",
+     "x": 400,
+     "facing": 1,
+     "bend": [
+      [
+       0,
+       0.6
+      ],
+      [
+       0.3,
+       0.6
+      ],
+      [
+       0.4,
+       0.1
+      ],
+      [
+       0.62,
+       0.1
+      ],
+      [
+       0.72,
+       0
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "color": "#1c1a24"
+    },
+    {
+     "type": "text",
+     "text": "MONDAY: TOO HOT",
+     "y": 500,
+     "size": 50,
+     "color": "#ffd27a",
+     "stroke": 5,
+     "alpha": [
+      [
+       0,
+       0
+      ],
+      [
+       0.04,
+       1
+      ],
+      [
+       0.3,
+       1
+      ],
+      [
+       0.34,
+       0
+      ]
+     ]
+    },
+    {
+     "type": "text",
+     "text": "TUESDAY: TOO WINDY",
+     "y": 500,
+     "size": 50,
+     "color": "#ffd27a",
+     "stroke": 5,
+     "alpha": [
+      [
+       0.32,
+       0
+      ],
+      [
+       0.36,
+       1
+      ],
+      [
+       0.6,
+       1
+      ],
+      [
+       0.64,
+       0
+      ]
+     ]
+    },
+    {
+     "type": "text",
+     "text": "WEDNESDAY: SUSPICIOUS CLOUD",
+     "y": 500,
+     "size": 50,
+     "color": "#ffd27a",
+     "stroke": 5,
+     "width": 860,
+     "alpha": [
+      [
+       0.62,
+       0
+      ],
+      [
+       0.66,
+       1
+      ],
+      [
+       1,
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "narration": "He bought better shoes. Then better socks. Then a hat for the better socks.",
+   "caption_y": 700,
+   "camera": {
+    "zoom": [
+     [
+      0,
+      1.0
+     ],
+     [
+      1,
+      1.05
+     ]
+    ],
+    "cx": 600,
+    "cy": 1150
+   },
+   "elements": [
+    {
+     "type": "sky",
+     "preset": "golden"
+    },
+    {
+     "type": "sun",
+     "x": 250,
+     "y": 900,
+     "r": 100,
+     "color": "#ffd08a"
+    },
+    {
+     "type": "clouds",
+     "count": 3,
+     "color": "#ffd9b0",
+     "alpha": 0.6,
+     "y": [
+      150,
+      500
+     ]
+    },
+    {
+     "type": "hills",
+     "color": "#b39ab8",
+     "base_y": 1150,
+     "amp": 80,
+     "seed": 7
+    },
+    {
+     "type": "hills",
+     "color": "#6b7a5a",
+     "base_y": 1240,
+     "amp": 320,
+     "seed": 20
+    },
+    {
+     "type": "trees",
+     "color": "#33402e",
+     "seed": 4,
+     "items": [
+      [
+       960,
+       1452,
+       0.95
+      ],
+      [
+       90,
+       1452,
+       0.75
+      ]
+     ]
+    },
+    {
+     "type": "houses",
+     "color": "#4a3234",
+     "window": "#ffcf7a",
+     "lit": true,
+     "items": [
+      [
+       180,
+       1452,
+       0.7
+      ],
+      [
+       330,
+       1454,
+       0.6
+      ]
+     ]
+    },
+    {
+     "type": "ground",
+     "color": "#6a6a3e",
+     "furrow": "#6a6a3e",
+     "grass_color": "#8a8a4e",
+     "furrows": false
+    },
+    {
+     "type": "person",
+     "kind": "villager_f",
+     "anim": "laugh",
+     "x": 760,
+     "facing": -1,
+     "s": 0.9,
+     "phase": 0.7,
+     "color": "#2e2632"
+    },
+    {
+     "type": "person",
+     "kind": "villager",
+     "anim": "idle",
+     "x": 480,
+     "facing": 1,
+     "show": [
+      0,
+      0.66
+     ],
+     "color": "#1c1a24"
+    },
+    {
+     "type": "person",
+     "kind": "farmer",
+     "anim": "wave",
+     "x": 480,
+     "facing": 1,
+     "show": [
+      0.66,
+      1.01
+     ],
+     "color": "#1c1a24"
+    },
+    {
+     "type": "text",
+     "text": "+ NEW SHOES",
+     "y": 500,
+     "size": 50,
+     "color": "#ffd27a",
+     "stroke": 5,
+     "alpha": [
+      [
+       0,
+       0
+      ],
+      [
+       0.05,
+       1
+      ],
+      [
+       0.3,
+       1
+      ],
+      [
+       0.34,
+       0
+      ]
+     ]
+    },
+    {
+     "type": "text",
+     "text": "+ BETTER SOCKS",
+     "y": 500,
+     "size": 50,
+     "color": "#ffd27a",
+     "stroke": 5,
+     "alpha": [
+      [
+       0.32,
+       0
+      ],
+      [
+       0.36,
+       1
+      ],
+      [
+       0.62,
+       1
+      ],
+      [
+       0.66,
+       0
+      ]
+     ]
+    },
+    {
+     "type": "text",
+     "text": "+ A HAT FOR THE SOCKS?!",
+     "y": 500,
+     "size": 50,
+     "color": "#ffd27a",
+     "stroke": 5,
+     "alpha": [
+      [
+       0.64,
+       0
+      ],
+      [
+       0.68,
+       1
+      ],
+      [
+       1,
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "narration": "Ten years passed. His bag was ready. Kamal was ready. The weather, apparently, was not.",
+   "camera": {
+    "zoom": [
+     [
+      0,
+      1.0
+     ],
+     [
+      1,
+      1.08
+     ]
+    ],
+    "cx": 480,
+    "cy": 1200
+   },
+   "elements": [
+    {
+     "type": "sky",
+     "cycle": 3
+    },
+    {
+     "type": "stars"
+    },
+    {
+     "type": "sun",
+     "cycle_arc": true,
+     "r": 90
+    },
+    {
+     "type": "moon",
+     "cycle_arc": true,
+     "r": 65
+    },
+    {
+     "type": "hills",
+     "color": "#8fa8b8",
+     "base_y": 1150,
+     "amp": 80,
+     "seed": 7
+    },
+    {
+     "type": "hills",
+     "color": "#4c7058",
+     "base_y": 1240,
+     "amp": 320,
+     "seed": 20
+    },
+    {
+     "type": "trees",
+     "color": "#294232",
+     "seed": 4,
+     "items": [
+      [
+       960,
+       1452,
+       0.95
+      ],
+      [
+       90,
+       1452,
+       0.75
+      ]
+     ]
+    },
+    {
+     "type": "houses",
+     "color": "#4a3a38",
+     "window": "#ffcf7a",
+     "lit": true,
+     "items": [
+      [
+       180,
+       1452,
+       0.7
+      ],
+      [
+       330,
+       1454,
+       0.6
+      ]
+     ]
+    },
+    {
+     "type": "ground",
+     "color": "#4f6a38",
+     "furrow": "#4f6a38",
+     "grass_color": "#66843f",
+     "furrows": false
+    },
+    {
+     "type": "person",
+     "kind": "farmer",
+     "anim": "sit",
+     "x": 420,
+     "y": 1450,
+     "facing": 1,
+     "color": "#1c1a24"
+    },
+    {
+     "type": "text",
+     "counter": {
+      "value": [
+       [
+        0.05,
+        1
+       ],
+       [
+        0.95,
+        10
+       ]
+      ],
+      "fmt": "YEAR {}"
+     },
+     "text": "YEAR 1",
+     "y": 260,
+     "size": 64,
+     "color": "#ffd27a",
+     "stroke": 6
+    }
+   ]
+  },
+  {
+   "narration": "Then one ordinary morning, a little girl walked past in broken sandals… and simply started climbing.",
+   "caption_y": 460,
+   "camera": {
+    "zoom": [
+     [
+      0,
+      1.0
+     ],
+     [
+      1,
+      1.04
+     ]
+    ],
+    "cx": 600,
+    "cy": 1150
+   },
+   "elements": [
+    {
+     "type": "sky",
+     "preset": "day"
+    },
+    {
+     "type": "sun",
+     "x": 860,
+     "y": 430,
+     "r": 90,
+     "color": "#fff1b8"
+    },
+    {
+     "type": "clouds",
+     "count": 4,
+     "color": "#ffffff",
+     "alpha": 0.85,
+     "y": [
+      150,
+      520
+     ]
+    },
+    {
+     "type": "hills",
+     "color": "#9cc3d8",
+     "base_y": 1150,
+     "amp": 80,
+     "seed": 7
+    },
+    {
+     "type": "hills",
+     "color": "#4f8a63",
+     "base_y": 1240,
+     "amp": 320,
+     "seed": 20
+    },
+    {
+     "type": "trees",
+     "color": "#2e5a3c",
+     "seed": 4,
+     "items": [
+      [
+       960,
+       1452,
+       0.95
+      ],
+      [
+       90,
+       1452,
+       0.75
+      ]
+     ]
+    },
+    {
+     "type": "houses",
+     "color": "#7a4e3a",
+     "window": "#ffcf7a",
+     "lit": false,
+     "items": [
+      [
+       180,
+       1452,
+       0.7
+      ],
+      [
+       330,
+       1454,
+       0.6
+      ]
+     ]
+    },
+    {
+     "type": "ground",
+     "color": "#5e7f3e",
+     "furrow": "#5e7f3e",
+     "grass_color": "#7aa04e",
+     "furrows": false
+    },
+    {
+     "type": "birds",
+     "count": 4,
+     "y": [
+      300,
+      500
+     ]
+    },
+    {
+     "type": "person",
+     "kind": "farmer",
+     "anim": "idle",
+     "x": 260,
+     "facing": 1,
+     "color": "#1c1a24"
+    },
+    {
+     "type": "person",
+     "kind": "child",
+     "anim": "walk",
+     "x": [
+      [
+       0,
+       1040
+      ],
+      [
+       0.3,
+       920
+      ],
+      [
+       0.55,
+       800
+      ],
+      [
+       0.8,
+       700
+      ],
+      [
+       1,
+       640
+      ]
+     ],
+     "y": [
+      [
+       0,
+       1450
+      ],
+      [
+       0.3,
+       1300
+      ],
+      [
+       0.55,
+       1150
+      ],
+      [
+       0.8,
+       1068
+      ],
+      [
+       1,
+       1023
+      ]
+     ],
+     "facing": -1,
+     "color": "#2a2232"
+    }
+   ]
+  },
+  {
+   "narration": "By lunch, she was waving from the top. Kamal looked at his perfect shoes. Then he ran.",
+   "caption_y": 460,
+   "camera": {
+    "zoom": [
+     [
+      0,
+      1.0
+     ],
+     [
+      1,
+      1.04
+     ]
+    ],
+    "cx": 540,
+    "cy": 1100
+   },
+   "elements": [
+    {
+     "type": "sky",
+     "preset": "day"
+    },
+    {
+     "type": "sun",
+     "x": 540,
+     "y": 300,
+     "r": 85,
+     "color": "#fff6c8"
+    },
+    {
+     "type": "clouds",
+     "count": 3,
+     "color": "#ffffff",
+     "alpha": 0.85,
+     "y": [
+      150,
+      450
+     ]
+    },
+    {
+     "type": "hills",
+     "color": "#9cc3d8",
+     "base_y": 1150,
+     "amp": 80,
+     "seed": 7
+    },
+    {
+     "type": "hills",
+     "color": "#4f8a63",
+     "base_y": 1240,
+     "amp": 320,
+     "seed": 20
+    },
+    {
+     "type": "trees",
+     "color": "#2e5a3c",
+     "seed": 4,
+     "items": [
+      [
+       960,
+       1452,
+       0.95
+      ],
+      [
+       90,
+       1452,
+       0.75
+      ]
+     ]
+    },
+    {
+     "type": "houses",
+     "color": "#7a4e3a",
+     "window": "#ffcf7a",
+     "lit": false,
+     "items": [
+      [
+       180,
+       1452,
+       0.7
+      ],
+      [
+       330,
+       1454,
+       0.6
+      ]
+     ]
+    },
+    {
+     "type": "ground",
+     "color": "#5e7f3e",
+     "furrow": "#5e7f3e",
+     "grass_color": "#7aa04e",
+     "furrows": false
+    },
+    {
+     "type": "person",
+     "kind": "child",
+     "anim": "wave",
+     "x": 525,
+     "y": 926,
+     "facing": -1,
+     "color": "#2a2232"
+    },
+    {
+     "type": "person",
+     "kind": "farmer",
+     "anim": "idle",
+     "x": 260,
+     "facing": 1,
+     "show": [
+      0,
+      0.68
+     ],
+     "color": "#1c1a24"
+    },
+    {
+     "type": "person",
+     "kind": "farmer",
+     "anim": "walk",
+     "x": [
+      [
+       0.68,
+       260
+      ],
+      [
+       1,
+       560
+      ]
+     ],
+     "facing": 1,
+     "show": [
+      0.68,
+      1.01
+     ],
+     "phase": 0,
+     "color": "#1c1a24"
+    }
+   ]
+  },
+  {
+   "narration": "He was halfway up when the rain came. He didn't even notice.",
+   "sfx_rain": 0.6,
+   "caption_y": 460,
+   "camera": {
+    "zoom": [
+     [
+      0,
+      1.0
+     ],
+     [
+      1,
+      1.05
+     ]
+    ],
+    "cx": 600,
+    "cy": 1100
+   },
+   "elements": [
+    {
+     "type": "sky",
+     "top": "#3a4a5e",
+     "bottom": "#9aaab8"
+    },
+    {
+     "type": "clouds",
+     "count": 6,
+     "color": "#56606e",
+     "alpha": 0.9,
+     "speed": 6,
+     "y": [
+      80,
+      500
+     ]
+    },
+    {
+     "type": "hills",
+     "color": "#6f8494",
+     "base_y": 1150,
+     "amp": 80,
+     "seed": 7
+    },
+    {
+     "type": "hills",
+     "color": "#3f6250",
+     "base_y": 1240,
+     "amp": 320,
+     "seed": 20
+    },
+    {
+     "type": "trees",
+     "color": "#243a2c",
+     "seed": 4,
+     "items": [
+      [
+       960,
+       1452,
+       0.95
+      ],
+      [
+       90,
+       1452,
+       0.75
+      ]
+     ]
+    },
+    {
+     "type": "houses",
+     "color": "#3a2e30",
+     "window": "#ffcf7a",
+     "lit": false,
+     "items": [
+      [
+       180,
+       1452,
+       0.7
+      ],
+      [
+       330,
+       1454,
+       0.6
+      ]
+     ]
+    },
+    {
+     "type": "ground",
+     "color": "#3f5a34",
+     "furrow": "#3f5a34",
+     "grass_color": "#52703c",
+     "furrows": false
+    },
+    {
+     "type": "person",
+     "kind": "child",
+     "anim": "wave",
+     "x": 525,
+     "y": 926,
+     "facing": 1,
+     "color": "#1e1a26"
+    },
+    {
+     "type": "person",
+     "kind": "farmer",
+     "anim": "walk",
+     "x": [
+      [
+       0,
+       800
+      ],
+      [
+       1,
+       690
+      ]
+     ],
+     "y": [
+      [
+       0,
+       1149
+      ],
+      [
+       1,
+       1074
+      ]
+     ],
+     "facing": -1,
+     "color": "#1c1a24"
+    },
+    {
+     "type": "rain",
+     "intensity": 0.6
+    }
+   ]
+  },
+  {
+   "narration": "Perfect days never come. Start on an ordinary one.",
+   "captions": false,
+   "lead": 0.6,
+   "tail": 2.2,
+   "camera": {
+    "zoom": [
+     [
+      0,
+      1.08
+     ],
+     [
+      1,
+      1.0
+     ]
+    ],
+    "cx": 540,
+    "cy": 1000
+   },
+   "elements": [
+    {
+     "type": "sky",
+     "preset": "card"
+    },
+    {
+     "type": "stars"
+    },
+    {
+     "type": "moon",
+     "x": 820,
+     "y": 330,
+     "r": 60
+    },
+    {
+     "type": "hills",
+     "color": "#1e1c3a",
+     "base_y": 1150,
+     "amp": 80,
+     "seed": 7
+    },
+    {
+     "type": "hills",
+     "color": "#141329",
+     "base_y": 1240,
+     "amp": 320,
+     "seed": 20
+    },
+    {
+     "type": "trees",
+     "color": "#0b0a16",
+     "seed": 4,
+     "items": [
+      [
+       960,
+       1452,
+       0.95
+      ],
+      [
+       90,
+       1452,
+       0.75
+      ]
+     ]
+    },
+    {
+     "type": "houses",
+     "color": "#100f1e",
+     "window": "#ffcf7a",
+     "lit": true,
+     "items": [
+      [
+       180,
+       1452,
+       0.7
+      ],
+      [
+       330,
+       1454,
+       0.6
+      ]
+     ]
+    },
+    {
+     "type": "ground",
+     "color": "#11121c",
+     "furrow": "#11121c",
+     "grass_color": "#171a26",
+     "furrows": false
+    },
+    {
+     "type": "person",
+     "kind": "child",
+     "anim": "idle",
+     "x": 620,
+     "facing": -1,
+     "color": "#07070d"
+    },
+    {
+     "type": "person",
+     "kind": "farmer",
+     "anim": "idle",
+     "x": 520,
+     "facing": 1,
+     "color": "#07070d"
+    },
+    {
+     "type": "fireflies",
+     "count": 26,
+     "y": [
+      1150,
+      1480
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Perfect days never come. Start on an ordinary one.",
+     "serif": true,
+     "size": 74,
+     "width": 860,
+     "y": 640,
+     "color": "#fff3d6",
+     "stroke": 0,
+     "alpha": [
+      [
+       0,
+       0
+      ],
+      [
+       0.12,
+       1
+      ]
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Tiny Tales Daily  •  New story every day",
+     "size": 38,
+     "y": 900,
+     "color": "#ffd27a",
+     "alpha": [
+      [
+       0,
+       0
+      ],
+      [
+       0.55,
+       0
+      ],
+      [
+       0.7,
+       1
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}
