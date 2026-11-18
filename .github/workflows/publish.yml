@@ -1,4 +1,4 @@
-name: Render & publish story
+name: Post to YouTube (make video + upload)
 
 on:
   push:
