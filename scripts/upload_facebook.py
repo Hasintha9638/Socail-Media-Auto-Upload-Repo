@@ -22,7 +22,18 @@ def main():
     story = json.load(open(sys.argv[1])); video = sys.argv[2]
     token = os.environ["FB_PAGE_TOKEN"].strip()
     page = os.environ.get("FB_PAGE_ID", "").strip()
-    if not page.isdigit():  # missing or mistyped: a Page token knows its own Page
+    # Accept either a Page token (preferred, never expires) or a user token (find the Page token from it).
+    accts = None
+    try:
+        accts = req("GET", f"{GRAPH}/me/accounts?fields=id,name,access_token&access_token={token}").get("data")
+    except SystemExit:
+        accts = None                       # a Page token can't list accounts: that's the normal case
+    if accts:
+        pg = next((a for a in accts if (page and a["id"] == page) or "tiny tales" in a["name"].lower()), accts[0])
+        page, token = pg["id"], pg["access_token"]
+        print(f"FB_PAGE_TOKEN is a user token; using the Page token for {pg['name']} ({page}). "
+              "Replace FB_PAGE_TOKEN with the Page token so it never expires.")
+    elif not page.isdigit():
         me = req("GET", f"{GRAPH}/me?fields=id,name&access_token={token}")
         page = me["id"]; print(f"Using Page from token: {me.get('name')} ({page})")
     tags = " ".join(w for w in story.get("description", "").split() if w.startswith("#"))[:300]
