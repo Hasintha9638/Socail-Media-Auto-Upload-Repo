@@ -1,4 +1,6 @@
-# Daily Moral Story — writing guide
+# Tiny Tales Daily — story writing guide
+
+Channel name: **Tiny Tales Daily** (YouTube + TikTok). Use this exact name in end cards and descriptions.
 
 Each day: write ONE new story as `stories/YYYY-MM-DD-<slug>.json`, preview it, commit it to `main`.
 GitHub Actions renders it and uploads it to YouTube Shorts (goes live 6:30 PM Asia/Colombo).
@@ -18,7 +20,7 @@ GitHub Actions renders it and uploads it to YouTube Shorts (goes live 6:30 PM As
 ## JSON shape
 ```json
 {
-  "title": "...", "youtube_title": "...", "description": "...(story teaser, moral, follow CTA, 5-6 hashtags)",
+  "title": "...", "youtube_title": "...", "description": "...(story teaser, moral, then \"A new tiny tale every day on Tiny Tales Daily. Subscribe so you don't miss tomorrow's story.\", then 5-6 hashtags incl. #TinyTalesDaily)",
   "tags": ["moral story", "..."],
   "voice": "bm_george",            // also: bm_lewis, am_michael, bf_emma, af_heart (vary by story)
   "speed": 0.95, "mood": "warm",   // mood: warm | sad | hopeful
@@ -57,7 +59,7 @@ Captions sit around y=640, so keep the sky area y=520–780 free of busy element
 ### Recurring patterns
 - **Scene 1:** the hook action, plus a gold title `text` at y=250 that fades out.
 - **Time passing:** `sky.cycle: 3` + sun/moon `cycle_arc` + a `counter` text.
-- **Last scene (moral card):** `sky: card`, stars, moon, dark silhouettes, `captions: false`, serif `text` with the moral at y=640, and the gold line "A new story every day  •  Follow" at y=900. Use `lead: 0.6`, `tail: 2.2`.
+- **Last scene (moral card):** `sky: card`, stars, moon, dark silhouettes, `captions: false`, serif `text` with the moral at y=640, and the gold line "Tiny Tales Daily  •  New story every day" at y=900. Use `lead: 0.6`, `tail: 2.2`.
 - Use the same background layers in every scene of a story so the place feels continuous. Change only the colours for time of day and weather.
 - Match colour palettes to the mood: warm dawn and golden for hope, cold blue night and storm for danger.
 
