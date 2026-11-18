@@ -481,6 +481,19 @@ def wrap(text, font, width):
     if cur: lines.append(cur)
     return lines
 
+# ---------------------------------------------------------------- watermark
+def make_watermark(text):
+    """Small semi-transparent channel mark, top-right (clear of TikTok/Shorts UI and captions)."""
+    if not text: return None
+    font = ImageFont.truetype(FONT_BOLD, 30); tw = font.getlength(text)
+    im = Image.new("RGBA", (int(tw) + 70, 56), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, im.width - 1, 55], radius=28, fill=(10, 12, 30, 110))
+    d.ellipse([16, 15, 42, 41], fill=(255, 214, 140, 235))          # little moon
+    d.ellipse([25, 11, 51, 37], fill=(10, 12, 30, 0))
+    d.text((54, 28), text, font=font, anchor="lm", fill=(255, 243, 214, 215))
+    a = np.array(im); a[..., 3] = (a[..., 3] * 0.85).astype(np.uint8)
+    return Image.fromarray(a)
+
 # ---------------------------------------------------------------- captions
 class Captions:
     def __init__(self): self.font = ImageFont.truetype(FONT_BOLD, 82); self.cache = {}
@@ -577,6 +590,7 @@ def render(story_path, out_path):
     voice, sr = tts_scenes(story, work)
     hl = set(w.lower() for w in story.get("highlight", []))
     caps = Captions(); files = []
+    wm = make_watermark(story.get("watermark", "Tiny Tales Daily"))
     for i, (sc, vo) in enumerate(zip(story["scenes"], voice)):
         dur = vo["dur"]; nfr = int(round(dur * FPS)); vo["nfr"] = nfr
         scene = Scene(sc, dur, random.Random(i))
@@ -586,6 +600,7 @@ def render(story_path, out_path):
         for f in range(nfr):
             now = f / FPS; fr = scene.frame(now).convert("RGBA")
             if sc.get("captions", True): caps.draw(fr, vo["chunks"], now, sc.get("caption_y", 700), hl)
+            if wm is not None and sc.get("watermark", True): fr.alpha_composite(wm, dest=(W - wm.width - 36, 330))
             p.stdin.write(fr.convert("RGB").tobytes())
         p.stdin.close()
         if p.wait() != 0: raise SystemExit(f"ffmpeg failed on scene {i}")
@@ -624,6 +639,8 @@ def stills(story_path, outdir, times):
     for si, ts in times:
         si = int(si); sc = story["scenes"][si]; scene = Scene(sc, sc.get("preview_dur", 8), random.Random(si))
         fr = scene.frame(ts).convert("RGBA")
+        wm = make_watermark(story.get("watermark", "Tiny Tales Daily"))
+        if wm is not None and sc.get("watermark", True): fr.alpha_composite(wm, dest=(W - wm.width - 36, 330))
         if sc.get("captions", True): Captions().draw(fr, [{"text": "Sample caption text here", "start": 0, "end": 99}], 1, sc.get("caption_y", 700), set(story.get("highlight", [])))
         fr.convert("RGB").save(os.path.join(outdir, f"p{si}_{ts}.jpg"), quality=88)
 
