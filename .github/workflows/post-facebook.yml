@@ -1,0 +1,61 @@
+name: Post to Facebook
+
+# Runs at ~6:13 PM Sri Lanka time (12:43 UTC) and posts today's video as a Facebook Reel on the Page.
+on:
+  schedule:
+    - cron: "43 12 * * *"
+  workflow_dispatch:
+    inputs:
+      story:
+        description: "Story JSON to post (default: newest in stories/)"
+        required: false
+
+concurrency: facebook
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: read
+    env:
+      FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+      NTFY_TOPIC: tinytales-e609ad0ab2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick story
+        id: story
+        run: |
+          f="${{ github.event.inputs.story }}"
+          [ -n "$f" ] || f=$(ls stories/*.json | sort | tail -1)
+          name=$(basename "$f" .json)
+          echo "file=$f" >> "$GITHUB_OUTPUT"; echo "name=$name" >> "$GITHUB_OUTPUT"
+          if grep -q "| $name |.*facebook" stories/PUBLISHED.md 2>/dev/null; then echo "skip=1" >> "$GITHUB_OUTPUT"; echo "Already posted"; fi
+      - name: Download today's rendered video
+        if: steps.story.outputs.skip != '1' && env.FB_PAGE_TOKEN != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out
+          gh run download -R "$GITHUB_REPOSITORY" -n "${{ steps.story.outputs.name }}" -D out
+      - name: Post Reel to Facebook Page
+        if: steps.story.outputs.skip != '1' && env.FB_PAGE_TOKEN != ''
+        id: fb
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: python3 scripts/upload_facebook.py "${{ steps.story.outputs.file }}" "out/${{ steps.story.outputs.name }}.mp4"
+      - name: Phone notification (Facebook)
+        if: steps.fb.outcome == 'success'
+        run: |
+          curl -s -H "Title: ✅ Facebook Reel posted" -H "Tags: blue_book" -H "Click: ${{ steps.fb.outputs.facebook_link }}" -d "${{ steps.story.outputs.name }}" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+      - name: Phone notification (failed)
+        if: failure()
+        run: |
+          curl -s -H "Title: ❌ Facebook post failed" -H "Priority: high" -H "Click: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" -d "Today's Facebook Reel didn't go through. Tap to see the error." "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+      - name: Log
+        if: steps.fb.outcome == 'success'
+        run: |
+          echo "| $(date +%F) | ${{ steps.story.outputs.name }} | facebook: ${{ steps.fb.outputs.facebook_link }} |" >> stories/PUBLISHED.md
+          git config user.name "story-bot"; git config user.email "story-bot@users.noreply.github.com"
+          git add stories/PUBLISHED.md && git commit -m "Log Facebook ${{ steps.story.outputs.name }} [skip ci]" && git pull --rebase -q && git push
