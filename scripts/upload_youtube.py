@@ -1,7 +1,7 @@
 """Upload a rendered story to YouTube Shorts, scheduled to go public at a set local time.
 
 Env (GitHub Secrets): YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN
-Optional env: PUBLISH_AT_LOCAL ("18:30"), PUBLISH_TZ ("Asia/Colombo"), YT_PRIVACY ("public"|"private"|"unlisted")
+Optional env: PUBLISH_AT_LOCAL ("05:45"), PUBLISH_TZ ("Asia/Colombo"), YT_PRIVACY ("public"|"private"|"unlisted")
 Usage: python scripts/upload_youtube.py stories/<story>.json out/<video>.mp4
 """
 import json, os, sys, datetime
@@ -18,9 +18,11 @@ yt = build("youtube", "v3", credentials=creds)
 
 status = {"selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}
 tz = ZoneInfo(os.environ.get("PUBLISH_TZ", "Asia/Colombo"))
-hh, mm = map(int, os.environ.get("PUBLISH_AT_LOCAL", "18:30").split(":"))
+hh, mm = map(int, os.environ.get("PUBLISH_AT_LOCAL", "05:45").split(":"))
 now = datetime.datetime.now(tz); at = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
-if at > now + datetime.timedelta(minutes=10):
+if at <= now + datetime.timedelta(minutes=10):
+    at += datetime.timedelta(days=1)          # next peak slot (e.g. tomorrow 5:45 AM Sri Lanka = 7:15 PM New York)
+if True:
     status.update(privacyStatus="private", publishAt=at.astimezone(datetime.timezone.utc).isoformat().replace("+00:00", "Z"))
 else:
     status["privacyStatus"] = os.environ.get("YT_PRIVACY", "public")
@@ -34,4 +36,4 @@ while resp is None:
     st, resp = req.next_chunk()
     if st: print(f"uploaded {int(st.progress() * 100)}%")
 vid = resp["id"]; print(f"YouTube video id: {vid}  https://youtube.com/shorts/{vid}  status={resp['status']}")
-with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f: f.write(f"youtube_id={vid}\n")
+with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f: f.write(f"youtube_id={vid}\npublish_at={at.strftime('%a %d %b, %I:%M %p')}\n")

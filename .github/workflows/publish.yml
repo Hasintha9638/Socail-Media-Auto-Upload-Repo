@@ -73,7 +73,7 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-          PUBLISH_AT_LOCAL: "18:30"
+          PUBLISH_AT_LOCAL: "05:45"
           PUBLISH_TZ: "Asia/Colombo"
         run: python scripts/upload_youtube.py "${{ steps.story.outputs.file }}" "${{ steps.render.outputs.video }}"
 
@@ -82,7 +82,7 @@ jobs:
         run: |
           curl -s -H "Title: ✅ YouTube Short uploaded" -H "Tags: tv" -H "Click: https://youtube.com/shorts/${{ steps.yt.outputs.youtube_id }}" \
             -d "$(jq -r .youtube_title '${{ steps.story.outputs.file }}')
-          Goes live 6:30 PM: https://youtube.com/shorts/${{ steps.yt.outputs.youtube_id }}" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+          Goes live ${{ steps.yt.outputs.publish_at }} (Sri Lanka): https://youtube.com/shorts/${{ steps.yt.outputs.youtube_id }}" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
 
       - if: failure()
         name: Phone notification (failed)

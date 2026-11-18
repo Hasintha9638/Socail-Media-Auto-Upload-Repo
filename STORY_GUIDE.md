@@ -3,7 +3,7 @@
 Channel name: **Tiny Tales Daily** (YouTube + TikTok). Use this exact name in end cards and descriptions.
 
 Each day: write ONE new story as `stories/YYYY-MM-DD-<slug>.json`, preview it, commit it to `main`.
-GitHub Actions renders it and uploads it to YouTube Shorts (goes live 6:30 PM Asia/Colombo).
+GitHub Actions renders it and schedules it on YouTube Shorts for the US evening peak (5:45 AM Sri Lanka next morning = 7:15 PM New York); Facebook Reels post at the same time.
 
 ## Content formats: rotate in this order
 Each story JSON must include `"format": "<name>"`. Look at the newest story in `stories/`: today's format is the **next one after its format** in this list (wrap around; if the newest has no `format`, start at Moral story).

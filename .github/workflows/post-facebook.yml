@@ -1,9 +1,9 @@
 name: Post to Facebook
 
-# Runs at ~6:13 PM Sri Lanka time (12:43 UTC) and posts today's video as a Facebook Reel on the Page.
+# Runs at ~5:41 AM Sri Lanka time (00:11 UTC = ~7:11 PM New York, US evening peak) and posts the newest video as a Facebook Reel.
 on:
   schedule:
-    - cron: "43 12 * * *"
+    - cron: "11 0 * * *"
   workflow_dispatch:
     inputs:
       story:
