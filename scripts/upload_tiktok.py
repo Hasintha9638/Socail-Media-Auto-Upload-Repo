@@ -62,9 +62,13 @@ def main():
                           "disable_stitch": False, "video_cover_timestamp_ms": 1500, "is_aigc": True},
             "source_info": {"source": "FILE_UPLOAD", "video_size": size, "chunk_size": size, "total_chunk_count": 1}}, auth, soft=True)
     init = init_post(privacy)
-    if init.get("error", {}).get("code") == "unaudited_client_can_only_post_to_private_accounts" and privacy != "SELF_ONLY":
-        print("App not yet approved by TikTok: posting as private (SELF_ONLY) for now.")
-        privacy = "SELF_ONLY"; init = init_post(privacy)
+    mode = "direct"
+    if init.get("error", {}).get("code") == "unaudited_client_can_only_post_to_private_accounts":
+        # App not approved yet and the account is public: send to the creator's TikTok inbox as a draft instead.
+        print("App not yet approved by TikTok: sending the video to your TikTok inbox to post from the app.")
+        mode = "inbox"; privacy = "inbox draft"
+        init = call("POST", f"{API}/v2/post/publish/inbox/video/init/", {
+            "source_info": {"source": "FILE_UPLOAD", "video_size": size, "chunk_size": size, "total_chunk_count": 1}}, auth, soft=True)
     if init.get("error", {}).get("code") not in (None, "ok"):
         raise SystemExit(f"TikTok init failed: {init['error']}")
     publish_id, upload_url = init["data"]["publish_id"], init["data"]["upload_url"]
@@ -77,6 +81,11 @@ def main():
         time.sleep(10)
         st = call("POST", f"{API}/v2/post/publish/status/fetch/", {"publish_id": publish_id}, auth).get("data", {})
         status = st.get("status")
+        if status == "SEND_TO_USER_INBOX" or (mode == "inbox" and status == "PUBLISH_COMPLETE"):
+            print("Sent to TikTok inbox. Open TikTok > notifications (inbox) to post it.")
+            with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f:
+                f.write("tiktok_status=sent to your TikTok inbox: open TikTok and tap Post\n")
+            return
         if status == "PUBLISH_COMPLETE":
             ids = st.get("publicaly_available_post_id") or st.get("publicly_available_post_id") or []
             print(f"TikTok post complete. publish_id={publish_id} post_ids={ids}")
