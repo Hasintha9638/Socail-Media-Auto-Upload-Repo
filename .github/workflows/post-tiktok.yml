@@ -1,9 +1,9 @@
 name: Post to TikTok
 
-# Runs at ~6:30 PM Sri Lanka time (13:00 UTC), after the daily render, and posts today's video.
+# Runs at ~6:11 PM Sri Lanka time (12:41 UTC, off-peak minute so GitHub runs it on time), after the daily render, and posts today's video.
 on:
   schedule:
-    - cron: "0 13 * * *"
+    - cron: "41 12 * * *"
   workflow_dispatch:
     inputs:
       story:
