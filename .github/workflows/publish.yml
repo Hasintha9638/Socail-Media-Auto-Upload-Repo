@@ -78,6 +78,18 @@ jobs:
         run: python scripts/upload_youtube.py "${{ steps.story.outputs.file }}" "${{ steps.render.outputs.video }}"
 
       - if: steps.yt.outputs.youtube_id != ''
+        name: Phone notification (YouTube)
+        run: |
+          curl -s -H "Title: ✅ YouTube Short uploaded" -H "Tags: tv" -H "Click: https://youtube.com/shorts/${{ steps.yt.outputs.youtube_id }}" \
+            -d "$(jq -r .youtube_title '${{ steps.story.outputs.file }}')
+          Goes live 6:30 PM: https://youtube.com/shorts/${{ steps.yt.outputs.youtube_id }}" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+
+      - if: failure()
+        name: Phone notification (failed)
+        run: |
+          curl -s -H "Title: ❌ YouTube upload failed" -H "Priority: high" -H "Click: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" -d "Today's video didn't upload. Tap to see the error." "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+
+      - if: steps.yt.outputs.youtube_id != ''
         name: Log published video
         run: |
           echo "| $(date +%F) | ${{ steps.render.outputs.name }} | https://youtube.com/shorts/${{ steps.yt.outputs.youtube_id }} |" >> stories/PUBLISHED.md
@@ -85,3 +97,4 @@ jobs:
           git add stories/PUBLISHED.md && git commit -m "Log ${{ steps.render.outputs.name }} [skip ci]" && git push
     env:
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      NTFY_TOPIC: tinytales-e609ad0ab2

@@ -18,6 +18,7 @@ jobs:
     timeout-minutes: 20
     env:
       TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+      NTFY_TOPIC: tinytales-e609ad0ab2
     steps:
       - uses: actions/checkout@v4
       - name: Pick story
@@ -44,6 +45,14 @@ jobs:
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           GH_PAT: ${{ secrets.GH_PAT }}
         run: python3 scripts/upload_tiktok.py "${{ steps.story.outputs.file }}" "out/${{ steps.story.outputs.name }}.mp4"
+      - name: Phone notification (TikTok)
+        if: steps.tt.outcome == 'success'
+        run: |
+          curl -s -H "Title: ✅ TikTok posted" -H "Tags: musical_note" -H "Click: https://www.tiktok.com/@hasintha.ranaweer" -d "${{ steps.story.outputs.name }} (${{ steps.tt.outputs.tiktok_status }})" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+      - name: Phone notification (failed)
+        if: failure()
+        run: |
+          curl -s -H "Title: ❌ TikTok post failed" -H "Priority: high" -H "Click: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" -d "Today's TikTok post didn't go through. Tap to see the error." "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
       - name: Log
         if: steps.tt.outcome == 'success'
         run: |
