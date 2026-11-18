@@ -1,28 +1,30 @@
-# Tiny Tales Daily — writing guide (moral stories, tiny motivation, funny motivation, life lessons)
+# Tiny Tales Daily — writing guide (moral stories, tiny motivation, funny motivation, life lessons, zen stories)
 
 Channel name: **Tiny Tales Daily** (YouTube + TikTok). Use this exact name in end cards and descriptions.
 
 Each day: write ONE new story as `stories/YYYY-MM-DD-<slug>.json`, preview it, commit it to `main`.
 GitHub Actions renders it and uploads it to YouTube Shorts (goes live 6:30 PM Asia/Colombo).
 
-## Content formats: rotate daily (pick by day of month: day % 4)
-| day % 4 | Format | What it is | Example hook |
+## Content formats: rotate daily (pick by day of month: day % 5)
+| day % 5 | Format | What it is | Example hook |
 |---|---|---|---|
 | 0 | **Moral story** | A fable with a twist and a moral card | "Every morning, a poor farmer carried one stone…" |
 | 1 | **Tiny motivation** | 35–45 s. One character, one struggle, one breakthrough. Punchy lines, no "once upon a time". Ends on a bold one-line quote card | "He failed 99 times. The 100th try took 4 seconds." |
 | 2 | **Funny motivation** | 35–50 s. Comic setup (lazy goat, overconfident rooster, a snail in a race, a cat who "starts Monday"), a silly escalation, a punchline, then a real lesson. Light, kind humour, never mocking real people | "Every Monday, the cat promised to start his diet. This is Monday number 412." |
+| 4 | **Zen story** | 40–55 s, calm and slow (`speed` 0.88, `mood` "sad" or "warm", voice bm_george or bf_emma). A master and a student (or a monk and a visitor) with a short exchange and a quiet, surprising insight. Visuals: misty mountains, moonlit or dawn skies, a monk with a staff (`kind: old`, `staff: true`), still water, few elements. You may retell a classic traditional Zen parable **in your own words** (say "a classic Zen story" in the description), or write an original one in that spirit. Never copy a published translation word for word. End card: the insight in one calm line | "A student asked the master: how long until I find peace?" |
 | 3 | **Life lesson** | 40–55 s. An everyday situation (money, friends, phone habits, parents, comparison, patience) told as a short tale with a sharp takeaway | "Two brothers got the same 100 rupees. One was broke by Friday." |
 Check stories/PUBLISHED.md so the last 3 videos weren't the same format or theme.
 
 ## SEO + trending rules (every video)
 - **YouTube title (≤ 60 chars, then hashtags):** put a search keyword near the start plus a curiosity gap, then ` #shorts` plus 1–2 topic tags.
   Patterns: "He Laughed at the Lazy Goat… Then This Happened #shorts #motivation", "The 100 Rupee Life Lesson Nobody Teaches #shorts #lifelessons", "One Stone a Day Changed Everything | Moral Story #shorts".
-- **Keywords to rotate:** motivation, motivational story, life lessons, moral story, short story, animated story, funny motivation, self improvement, discipline, success mindset, kindness, inspiration.
+- **Keywords to rotate:** zen story, zen wisdom, mindfulness, motivation, motivational story, life lessons, moral story, short story, animated story, funny motivation, self improvement, discipline, success mindset, kindness, inspiration.
 - **Description:** line 1 is a keyword-rich hook sentence (shown in search), then the moral, then the Tiny Tales Daily subscribe line, then **5–8 hashtags** with the format's tags first:
   - moral: #moralstory #shortstory #animatedstory #lifelessons #TinyTalesDaily #shorts
   - tiny motivation: #motivation #motivationalvideo #successmindset #discipline #TinyTalesDaily #shorts
   - funny motivation: #funnymotivation #funny #motivation #relatable #TinyTalesDaily #shorts
   - life lesson: #lifelessons #lifeadvice #selfimprovement #wisdom #TinyTalesDaily #shorts
+  - zen story: #zenstory #zen #mindfulness #wisdom #innerpeace #TinyTalesDaily #shorts (title example: "Empty Your Cup First | Zen Story #shorts #zen")
 - **tags field:** 10–15 tags. Mix broad (motivation, short story) with specific (the story's theme, e.g. "patience story", "lazy goat story").
 - **Hooks decide reach:** the first line must create a question in 2 seconds. Keep videos under 50 s, because rewatches count, and end on a line that makes people comment, like, or share (a question or a quotable line).
 - Topical but evergreen: you may echo what's trending (exams season, New Year goals, monsoon, cricket season in Sri Lanka) but never copy anyone's video, song, or character.
