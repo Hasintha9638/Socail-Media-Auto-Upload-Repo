@@ -13,6 +13,14 @@ jobs:
   connect:
     runs-on: ubuntu-latest
     steps:
+      - name: Hide the code in logs
+        run: echo "::add-mask::$(jq -r '.inputs.code' "$GITHUB_EVENT_PATH")"
+      - name: Check client key
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+        run: |
+          k="$(printf '%s' "$TIKTOK_CLIENT_KEY" | tr -d '[:space:]')"
+          if ! printf '%s' "$k" | grep -Eq '^[a-z0-9]{10,40}$'; then echo "TIKTOK_CLIENT_KEY secret doesn't look like a TikTok client key (letters/numbers only, e.g. sbaw...). Please re-check it."; exit 1; fi
       - name: Exchange code and save refresh token
         env:
           CODE: ${{ github.event.inputs.code }}
@@ -20,11 +28,10 @@ jobs:
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          echo "::add-mask::$CODE"
           resp=$(curl -sS -X POST https://open.tiktokapis.com/v2/oauth/token/ \
             -H 'Content-Type: application/x-www-form-urlencoded' \
-            --data-urlencode "client_key=$TIKTOK_CLIENT_KEY" \
-            --data-urlencode "client_secret=$TIKTOK_CLIENT_SECRET" \
+            --data-urlencode "client_key=$(printf %s "$TIKTOK_CLIENT_KEY" | tr -d '[:space:]')" \
+            --data-urlencode "client_secret=$(printf %s "$TIKTOK_CLIENT_SECRET" | tr -d '[:space:]')" \
             --data-urlencode "code=$CODE" \
             --data-urlencode "grant_type=authorization_code" \
             --data-urlencode "redirect_uri=https://hasintha9638.github.io/tiktok-callback.html")
