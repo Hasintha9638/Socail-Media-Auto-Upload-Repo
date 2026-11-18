@@ -268,68 +268,147 @@ class Scene:
                 for k in [k for k in self.cache if isinstance(k, tuple) and k[0] == "wall"][:30]: self.cache.pop(k)
         return self.cache[("wall", n)]
 
+    # ------------------------------------------------------------------ characters
+    PALETTES = {
+        "farmer":     dict(skin="#b07a4f", shirt="#e8dcc4", pants="#3f6e8c", sarong=True,  hair="#2a1d16", hat="straw"),
+        "old":        dict(skin="#a8764f", shirt="#efe6d3", pants="#8a6a4a", sarong=True,  hair="#e9e6df", beard=True, staff=True),
+        "villager":   dict(skin="#9c6a45", shirt="#d0573f", pants="#2e3b55", sarong=False, hair="#1d1612"),
+        "villager_f": dict(skin="#b8835a", shirt="#2f8f83", pants="#2f8f83", dress=True,   hair="#1a1210", bun=True),
+        "child":      dict(skin="#c08a5e", shirt="#f2b134", pants="#3b5ba5", sarong=False, hair="#1d1612"),
+        "monk":       dict(skin="#b07a4f", shirt="#e07b24", pants="#e07b24", robe=True,    hair=None),
+        "student":    dict(skin="#a8724a", shirt="#ffffff", pants="#25324d", sarong=False, hair="#1a1210", bag=True),
+    }
+
     def person(self, e, t, now):
-        if anim_hold := (e.get("anim") == "carry" and kf(e.get("holding", 1), t) < .5): e = dict(e, anim="idle")
+        if e.get("anim") == "carry" and kf(e.get("holding", 1), t) < .5: e = dict(e, anim="idle")
         kind = e.get("kind", "villager"); sc = kf(e.get("s", 1), t); x = kf(e["x"], t); y = kf(e.get("y", self.ground), t)
-        anim = e.get("anim", "idle"); face = e.get("facing", 1)
-        col = hexc(e.get("color", "#141824"))
-        Hh = 360 * sc * (0.62 if kind == "child" else 1)
-        walk = anim in ("walk", "carry") and (e.get("moving", True))
-        moving = isinstance(e["x"], list) and kf(e["x"], min(1, t + .01)) != kf(e["x"], t)
-        sw = math.sin(now * 7 + e.get("phase", 0)) if (walk and moving) else 0
-        bob = 0
-        if anim == "laugh": bob = abs(math.sin(now * 9 + e.get("phase", 0))) * 10 * sc
-        if walk and moving: bob = abs(sw) * 5 * sc
-        bend = kf(e.get("bend", 0), t)  # 0..1 forward lean
-        Sw, Sh = int(Hh * 1.2), int(Hh * 1.3)
-        ox, oy = Sw / 2, Sh - 4
+        anim = e.get("anim", "idle"); face = e.get("facing", 1); ph = e.get("phase", 0)
+        pal = dict(self.PALETTES.get(kind, self.PALETTES["villager"])); pal.update({k: v for k, v in e.items() if k in ("skin", "shirt", "pants", "hair", "hat")})
+        if e.get("staff"): pal["staff"] = True
+        if "shirt" not in e and kind in ("villager", "villager_f", "child", "student"):
+            import zlib; v = zlib.crc32(f"{kind}{e.get('phase', 0)}{str(e.get('x'))[:12]}".encode()) % 5
+            pal["shirt"] = ["#d0573f", "#3d7ea6", "#8a5cb5", "#e0a030", "#4f9a5a"][v] if kind != "villager_f" else ["#2f8f83", "#c2466b", "#d98e2b", "#5a6fc0", "#8c4f9e"][v]
+            if kind == "villager_f": pal["pants"] = pal["shirt"]
+        if e.get("silhouette"):
+            c = e.get("color", "#141824"); pal.update(skin=c, shirt=c, pants=c, hair=c if pal.get("hair") else None, shade=c)
+        H = 360 * sc * (0.66 if kind == "child" else 1.0)
+        moving = isinstance(e["x"], list) and abs(kf(e["x"], min(1, t + .01)) - kf(e["x"], t)) > 1e-6
+        walking = anim in ("walk", "carry") and moving
+        sw = math.sin(now * 7 + ph) if walking else 0.0
+        bob = abs(sw) * 5 * sc if walking else (abs(math.sin(now * 9 + ph)) * 9 * sc if anim == "laugh" else math.sin(now * 2 + ph) * 1.5 * sc)
+        bend = kf(e.get("bend", 0), t)
+        Sw, Sh = int(H * 1.5), int(H * 1.35); ox, oy = Sw / 2, Sh - 6
+        def C(hexs, a=255, dk=0.0):
+            r, g, b, _ = hexc(hexs); return (int(r * (1 - dk)), int(g * (1 - dk)), int(b * (1 - dk)), a)
         def f(d, s):
             def P(px, py): return ((ox + px * face) * s, (oy + py) * s)
-            hip = (0, -Hh * .46 - bob); sh_ = (Hh * .06 * bend, -Hh * .80 - bob + bend * Hh * .08)
-            lw = int(Hh * .075 * s)
-            if anim == "sit":
-                d.line([P(*hip), P(Hh * .32, hip[1] + Hh * .02), P(Hh * .34, hip[1] + Hh * .30)], fill=col, width=lw, joint="curve")
+            def limb(pts, col, w):
+                q = [P(*p) for p in pts]; d.line(q, fill=col, width=int(w * s), joint="curve")
+                for (qx, qy) in (q[0], q[-1]): r = w * s / 2; d.ellipse([qx - r, qy - r, qx + r, qy + r], fill=col)
+            def circ(cx, cy, r, col):
+                X, Y = P(cx, cy); d.ellipse([X - r * s, Y - r * s, X + r * s, Y + r * s], fill=col)
+            lean = bend * H * .07
+            hip = (lean * .3, -H * .46 - bob); sho = (lean, -H * .77 - bob + bend * H * .05)
+            legw, armw = H * .085, H * .068
+            skin, shirt, pants = C(pal["skin"]), C(pal["shirt"]), C(pal["pants"])
+            skin_b, shirt_b, pants_b = C(pal["skin"], dk=.18), C(pal["shirt"], dk=.18), C(pal["pants"], dk=.18)
+            shoe = C("#2b2420")
+            # ---- legs (back then front)
+            def leg(k, col):
+                if anim == "sit":
+                    knee = (hip[0] + H * .2, hip[1] + H * .01); foot = (knee[0] + H * .02, knee[1] + H * .22)
+                else:
+                    a = k * sw * .5; knee = (hip[0] + math.sin(a) * H * .22, hip[1] + math.cos(a) * H * .22)
+                    a2 = a - (abs(sw) * .35 if k * sw < 0 else 0); foot = (knee[0] + math.sin(a2) * H * .22, -2 + 0 * bob)
+                limb([hip, knee, foot], col, legw)
+                fx, fy = P(foot[0] + H * .03, foot[1]); d.ellipse([fx - H * .065 * s, fy - H * .035 * s, fx + H * .065 * s, fy + H * .012 * s], fill=shoe)
+            if not pal.get("robe") and not pal.get("dress"):
+                leg(-1, pants_b); leg(1, pants)
             else:
-                for k in (1, -1):
-                    a = k * sw * .45
-                    foot = (hip[0] + math.sin(a) * Hh * .46, hip[1] + math.cos(a) * Hh * .46 + bob)
-                    d.line([P(*hip), P(*foot)], fill=col, width=lw)
-                    d.ellipse([P(foot[0] - Hh * .03, foot[1] - Hh * .03)[0] if face > 0 else P(foot[0] + Hh * .03, 0)[0], (oy + foot[1] - Hh * .035) * s,
-                               P(foot[0] + Hh * .07, 0)[0] if face > 0 else P(foot[0] - Hh * .07, 0)[0], (oy + foot[1] + 2) * s] if face > 0 else
-                              [P(foot[0] + Hh * .07, 0)[0], (oy + foot[1] - Hh * .035) * s, P(foot[0] - Hh * .03, 0)[0], (oy + foot[1] + 2) * s], fill=col)
-            wb = Hh * (.13 if kind != "child" else .12)
-            body = [P(sh_[0] - wb, sh_[1]), P(sh_[0] + wb, sh_[1]), P(hip[0] + wb * .85, hip[1] + Hh * .04), P(hip[0] - wb * .85, hip[1] + Hh * .04)]
-            if kind in ("villager_f",): body = [P(sh_[0] - wb * .8, sh_[1]), P(sh_[0] + wb * .8, sh_[1]), P(hip[0] + wb * 1.5, hip[1] + Hh * .28), P(hip[0] - wb * 1.5, hip[1] + Hh * .28)]
-            d.polygon(body, fill=col)
-            hr = Hh * .085; hc = (sh_[0] + Hh * .03 * bend + (Hh * .02 if anim == "laugh" else 0), sh_[1] - hr * 1.15 - (math.sin(now * 9) * 3 if anim == "laugh" else 0))
-            d.ellipse([P(hc[0] - hr, hc[1] - hr)[0] if face > 0 else P(hc[0] + hr, 0)[0], (oy + hc[1] - hr) * s,
-                       P(hc[0] + hr, 0)[0] if face > 0 else P(hc[0] - hr, 0)[0], (oy + hc[1] + hr) * s], fill=col)
-            if kind in ("farmer", "old"):  # conical hat
-                d.polygon([P(hc[0] - hr * 2.6, hc[1] - hr * .35), P(hc[0], hc[1] - hr * 2.0), P(hc[0] + hr * 2.6, hc[1] - hr * .35)], fill=col)
-            if kind == "villager_f":
-                d.ellipse([P(hc[0] - hr * 1.6, hc[1] - hr * .6)[0] if face > 0 else P(hc[0] - hr * .4, 0)[0], (oy + hc[1] - hr * .9) * s,
-                           P(hc[0] - hr * .4, 0)[0] if face > 0 else P(hc[0] - hr * 1.6, 0)[0], (oy + hc[1] + hr * .3) * s], fill=col)  # bun
-            # arms
-            shp = (sh_[0], sh_[1] + Hh * .03); aw = int(Hh * .05 * s)
+                for k in (-1, 1):
+                    a = k * sw * .3; fx_ = hip[0] + math.sin(a) * H * .44
+                    X, Y = P(fx_ + H * .03, -2); d.ellipse([X - H * .06 * s, Y - H * .035 * s, X + H * .06 * s, Y + H * .012 * s], fill=shoe)
+            # ---- back arm
+            def arm(k, col, hand):
+                sh = (sho[0] - k * H * .03, sho[1] + H * .035)
+                if anim == "carry":
+                    el = (sh[0] + H * .1, sh[1] + H * .13); hd = (sh[0] + H * .2, sh[1] + H * .08)
+                elif anim == "wave" and k == 1:
+                    a = math.sin(now * 8 + ph) * .35; el = (sh[0] + H * .18, sh[1] - H * .02); hd = (el[0] + H * .05 + math.sin(a) * H * .09, el[1] - H * .15)
+                elif anim == "laugh" and k == 1:
+                    el = (sh[0] + H * .14, sh[1] + H * .04); hd = (el[0] + H * .1, el[1] - H * .12 - bob * .4)   # pointing
+                elif anim == "laugh":
+                    el = (sh[0] + H * .07, sh[1] + H * .16); hd = (sh[0] + H * .02, sh[1] + H * .26)           # hand on belly
+                elif anim == "cheer":
+                    jump = abs(math.sin(now * 6 + ph)) * H * .03
+                    el = (sh[0] + (H * .1 if k == 1 else -H * .07), sh[1] - H * .1); hd = (sh[0] + (H * .2 if k == 1 else -H * .1), sh[1] - H * .25 - jump)
+                elif anim == "think" and k == 1:
+                    el = (sh[0] + H * .12, sh[1] + H * .14); hd = (sh[0] + H * .1, sh[1] - H * .02)
+                elif pal.get("staff") and k == 1:
+                    el = (sh[0] + H * .1, sh[1] + H * .14); hd = (sh[0] + H * .2, sh[1] + H * .2)
+                else:
+                    a = -k * sw * .45 + .08; el = (sh[0] + math.sin(a) * H * .16, sh[1] + math.cos(a) * H * .16)
+                    hd = (el[0] + math.sin(a + .15) * H * .15, el[1] + math.cos(a + .15) * H * .15)
+                limb([sh, el, hd], col, armw); circ(hd[0], hd[1], H * .04, hand)
+                return hd
+            arm(-1, shirt_b, skin_b)
+            # ---- body
+            tw_s, tw_h = H * .135, H * .11
+            if pal.get("robe") or pal.get("dress"):
+                hem = H * (.2 if pal.get("robe") else .17)
+                d.polygon([P(sho[0] - tw_s, sho[1]), P(sho[0] + tw_s, sho[1]), P(hip[0] + hem, -H * .07), P(hip[0] - hem, -H * .07)], fill=shirt)
+                if pal.get("robe"): d.line([P(sho[0] - tw_s * .6, sho[1]), P(hip[0] + tw_s, hip[1] + H * .1)], fill=C(pal["shirt"], dk=.25), width=int(H * .03 * s))
+            else:
+                x0, y0 = P(sho[0] - tw_s, sho[1]); x1, y1 = P(hip[0] + tw_h, hip[1] + H * .05)
+                d.rounded_rectangle([min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1)], radius=int(H * .06 * s), fill=shirt)
+                if pal.get("sarong"):
+                    d.polygon([P(hip[0] - tw_h * 1.05, hip[1] + H * .02), P(hip[0] + tw_h * 1.05, hip[1] + H * .02),
+                               P(hip[0] + tw_h * 1.25, -H * .14), P(hip[0] - tw_h * 1.25, -H * .14)], fill=pants)
+                    d.line([P(hip[0] - tw_h, hip[1] + H * .03), P(hip[0] + tw_h, hip[1] + H * .03)], fill=C(pal["pants"], dk=.3), width=int(H * .02 * s))
+                if pal.get("bag"):
+                    d.rounded_rectangle([*P(sho[0] - tw_s * 1.5, sho[1] + H * .03), *P(sho[0] - tw_s * .7, hip[1])] if face > 0 else
+                                        [*P(sho[0] - tw_s * .7, sho[1] + H * .03), *P(sho[0] - tw_s * 1.5, hip[1])], radius=int(H * .03 * s), fill=C("#c2463b"))
+            # neck + head
+            hr = H * (.115 if kind == "child" else .1)
+            hc = (sho[0] + H * .015 + (H * .02 if anim == "laugh" else 0), sho[1] - hr * 1.05 - (math.sin(now * 9) * 2 * sc if anim == "laugh" else 0))
+            limb([(sho[0], sho[1]), (hc[0], hc[1] + hr * .6)], skin, H * .05)
+            circ(hc[0], hc[1], hr, skin)
+            hair = pal.get("hair")
+            if hair and kind != "old":
+                X, Y = P(hc[0], hc[1]); R = hr * s * 1.04
+                d.pieslice([X - R, Y - R, X + R, Y + R], 180, 360, fill=C(hair))
+                bx = hc[0] - hr * .55; circ(bx, hc[1] - hr * .1, hr * .5, C(hair))                         # back of head
+                if pal.get("bun"): circ(hc[0] - hr * .95, hc[1] - hr * .45, hr * .42, C(hair))
+            if kind == "old":
+                X, Y = P(hc[0], hc[1]); R = hr * s * 1.02
+                a0, a1 = (115, 235) if face > 0 else (-55, 65)
+                d.arc([X - R, Y - R, X + R, Y + R], a0, a1, fill=C(pal["hair"]), width=int(hr * .42 * s))
+                d.pieslice([*P(hc[0] - hr * .2, hc[1] + hr * .1), *P(hc[0] + hr * .9, hc[1] + hr * 1.1)] if face > 0 else
+                           [*P(hc[0] + hr * .9, hc[1] + hr * .1), *P(hc[0] - hr * .2, hc[1] + hr * 1.1)], 0, 180, fill=C(pal["hair"]))   # beard
+            # face (side 3/4 view)
+            blink = (now * 1.0 + ph) % 3.4 < .12
+            ex, ey = hc[0] + hr * .45, hc[1] + hr * .14
+            if blink: d.line([P(ex - hr * .12, ey), P(ex + hr * .12, ey)], fill=C("#1b1410"), width=max(2, int(H * .012 * s)))
+            else: circ(ex, ey, hr * .11, C("#1b1410"))
+            circ(ex - hr * .55, ey, hr * .1, C("#1b1410"))
+            mx, my = hc[0] + hr * .45, hc[1] + hr * .58
+            if anim in ("laugh", "cheer", "wave"):
+                X, Y = P(mx - hr * .25, my - hr * .15); X2, Y2 = P(mx + hr * .25, my + hr * .2)
+                d.pieslice([min(X, X2), Y, max(X, X2), Y2], 0, 180, fill=C("#5a1e1a"))
+            else:
+                X, Y = P(mx - hr * .2, my - hr * .12); X2, Y2 = P(mx + hr * .2, my + hr * .1)
+                d.arc([min(X, X2), Y, max(X, X2), Y2], 20, 160, fill=C("#5a2a20"), width=max(2, int(H * .012 * s)))
+            sk = hexc(pal["skin"]); ck = tuple(int(a * .7 + b * .3) for a, b in zip(sk[:3], (230, 120, 110))) + (255,)
+            if not e.get("silhouette"): circ(hc[0] + hr * .12, hc[1] + hr * .42, hr * .12, ck)            # cheek
+            if pal.get("hat") == "straw":
+                d.polygon([P(hc[0] - hr * 2.3, hc[1] - hr * .45), P(hc[0] + hr * .1, hc[1] - hr * 1.95), P(hc[0] + hr * 2.4, hc[1] - hr * .45)], fill=C("#d9b26a"))
+                d.line([P(hc[0] - hr * 1.6, hc[1] - hr * .75), P(hc[0] + hr * 1.7, hc[1] - hr * .75)], fill=C("#a8823f"), width=int(H * .014 * s))
+            # ---- front arm + props
+            hd = arm(1, shirt, skin)
             if anim == "carry":
-                hand = (shp[0] + Hh * .2, shp[1] + Hh * .16)
-                d.line([P(*shp), P(shp[0] + Hh * .12, shp[1] + Hh * .14), P(*hand)], fill=col, width=aw, joint="curve")
-                sr = Hh * .085; st = hexc(e.get("stone", "#8f897c"))
-                cx, cy = hand[0] + sr * .2, hand[1] - sr * .5
-                d.ellipse([P(cx - sr, 0)[0] if face > 0 else P(cx + sr, 0)[0], (oy + cy - sr * .8) * s, P(cx + sr, 0)[0] if face > 0 else P(cx - sr, 0)[0], (oy + cy + sr * .8) * s], fill=st)
-            elif anim == "laugh":
-                d.line([P(*shp), P(shp[0] + Hh * .1, shp[1] + Hh * .2), P(shp[0] + Hh * .02, shp[1] + Hh * .28)], fill=col, width=aw, joint="curve")
-                d.line([P(*shp), P(shp[0] + Hh * .2, shp[1] - Hh * .02 - bob * .5), P(shp[0] + Hh * .3, shp[1] - Hh * .08 - bob)], fill=col, width=aw, joint="curve")  # pointing
-            elif kind == "old" or e.get("staff"):
-                hand = (shp[0] + Hh * .2, shp[1] + Hh * .25)
-                d.line([P(*shp), P(*hand)], fill=col, width=aw)
-                d.line([P(hand[0], hand[1] - Hh * .12), P(hand[0] + Hh * .02, Hh * 0 + 0)], fill=col, width=int(Hh * .025 * s))
-            elif anim == "wave":
-                a = math.sin(now * 6) * .3
-                d.line([P(*shp), P(shp[0] + Hh * .12, shp[1] - Hh * .12), P(shp[0] + Hh * .12 + math.sin(a) * Hh * .12, shp[1] - Hh * .28)], fill=col, width=aw, joint="curve")
-            else:
-                a = -sw * .4
-                d.line([P(*shp), P(shp[0] + math.sin(a) * Hh * .3, shp[1] + math.cos(a) * Hh * .3)], fill=col, width=aw)
+                circ(hd[0] + H * .03, hd[1] - H * .05, H * .085, C(e.get("stone", "#8f897c"))); circ(hd[0] + H * .01, hd[1] - H * .08, H * .025, C("#b9b3a6"))
+            if pal.get("staff"):
+                d.line([P(hd[0] + H * .01, hd[1] - H * .16), P(hd[0] + H * .03, -2)], fill=C("#6b4a2b"), width=int(H * .025 * s))
         im = hi(f, (Sw, Sh))
         return im, (int(x - ox), int(y - oy))
 

@@ -78,7 +78,7 @@ Captions sit around y=640, so keep the sky area y=520–780 free of busy element
 | ground | `color`, `furrow`, `grass_color`, `furrows`, `riverbed: [x_end, depth]` (river dip on the left) |
 | water | `level` (y), `x1` (right edge), `color`, `top`, `rough` |
 | wall | `x0`, `x1`, `height`, `fill` 0–1 (stone-by-stone growth), `seed` |
-| person | `kind`: farmer, old, villager, villager_f, child · `anim`: idle, walk, carry, laugh, wave, sit · `x` (keyframe it to walk), `y`, `s`, `facing` ±1, `bend` 0–1, `holding` (carry), `staff`, `color`, `show: [t0, t1]` |
+| person | Flat-cartoon people with faces. `kind`: farmer (straw hat, sarong), old (white hair, beard, staff), monk (orange robe), villager, villager_f (dress, bun), child, student (backpack) · `anim`: idle, walk, carry, laugh, wave, cheer, think, sit · optional colours `skin`, `shirt`, `pants`, `hair` (hex) · `silhouette: true` + `color` for dark night/moral-card silhouettes · `x` (keyframe it to walk), `y`, `s`, `facing` ±1, `bend` 0–1, `holding` (carry), `staff`, `color`, `show: [t0, t1]` |
 | rain | `intensity` · lightning: `times: [seconds]` (thunder is added automatically) |
 | splash | `x`, `y`, `intensity` |
 | fireflies | `count`, `y` |
