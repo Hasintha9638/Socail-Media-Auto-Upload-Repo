@@ -568,7 +568,7 @@ def make_watermark(text):
     im = Image.new("RGBA", (int(tw) + 70, 56), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     d.rounded_rectangle([0, 0, im.width - 1, 55], radius=28, fill=(10, 12, 30, 110))
     d.ellipse([16, 15, 42, 41], fill=(255, 214, 140, 235))          # little moon
-    d.ellipse([25, 11, 51, 37], fill=(10, 12, 30, 0))
+    d.ellipse([25, 11, 51, 37], fill=(10, 12, 30, 110))
     d.text((54, 28), text, font=font, anchor="lm", fill=(255, 243, 214, 215))
     a = np.array(im); a[..., 3] = (a[..., 3] * 0.85).astype(np.uint8)
     return Image.fromarray(a)
