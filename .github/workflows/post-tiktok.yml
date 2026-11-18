@@ -1,0 +1,55 @@
+name: Post to TikTok
+
+# Runs at ~6:30 PM Sri Lanka time (13:00 UTC), after the daily render, and posts today's video.
+on:
+  schedule:
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      story:
+        description: "Story JSON to post (default: newest in stories/)"
+        required: false
+
+concurrency: tiktok
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick story
+        id: story
+        run: |
+          f="${{ github.event.inputs.story }}"
+          [ -n "$f" ] || f=$(ls stories/*.json | sort | tail -1)
+          name=$(basename "$f" .json)
+          echo "file=$f" >> "$GITHUB_OUTPUT"; echo "name=$name" >> "$GITHUB_OUTPUT"
+          if grep -q "| $name |.*tiktok" stories/PUBLISHED.md 2>/dev/null; then echo "skip=1" >> "$GITHUB_OUTPUT"; echo "Already posted"; fi
+      - name: Download today's rendered video
+        if: steps.story.outputs.skip != '1' && env.TIKTOK_REFRESH_TOKEN != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out
+          gh run download -R "$GITHUB_REPOSITORY" -n "${{ steps.story.outputs.name }}" -D out
+          ls -la out
+      - name: Post to TikTok
+        if: steps.story.outputs.skip != '1' && env.TIKTOK_REFRESH_TOKEN != ''
+        id: tt
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: python3 scripts/upload_tiktok.py "${{ steps.story.outputs.file }}" "out/${{ steps.story.outputs.name }}.mp4"
+      - name: Log
+        if: steps.tt.outcome == 'success'
+        run: |
+          echo "| $(date +%F) | ${{ steps.story.outputs.name }} | tiktok: ${{ steps.tt.outputs.tiktok_status }} |" >> stories/PUBLISHED.md
+          git config user.name "story-bot"; git config user.email "story-bot@users.noreply.github.com"
+          git add stories/PUBLISHED.md && git commit -m "Log TikTok ${{ steps.story.outputs.name }} [skip ci]" && git pull --rebase -q && git push
+    permissions:
+      contents: write
+      actions: read
