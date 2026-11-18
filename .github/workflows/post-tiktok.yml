@@ -48,7 +48,7 @@ jobs:
       - name: Phone notification (TikTok)
         if: steps.tt.outcome == 'success'
         run: |
-          curl -s -H "Title: ✅ TikTok ready" -H "Tags: musical_note" -H "Click: https://www.tiktok.com/@hasintha.ranaweer" -d "${{ steps.story.outputs.name }} (${{ steps.tt.outputs.tiktok_status }})" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+          curl -s -H "Title: ✅ TikTok ready" -H "Tags: musical_note" -H "Click: https://www.tiktok.com/@tinytalesdailystories" -d "${{ steps.story.outputs.name }} (${{ steps.tt.outputs.tiktok_status }})" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
       - name: Phone notification (failed)
         if: failure()
         run: |
