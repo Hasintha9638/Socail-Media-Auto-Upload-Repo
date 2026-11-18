@@ -91,6 +91,9 @@ Captions sit around y=640, so keep the sky area y=520–780 free of busy element
 - Use the same background layers in every scene of a story so the place feels continuous. Change only the colours for time of day and weather.
 - Match colour palettes to the mood: warm dawn and golden for hope, cold blue night and storm for danger.
 
+## Names
+Use short, clear names that speech-to-text won't mishear (YouTube auto-captions turned "Kamal" into "Camel"). Good: Ravi, Nimal, Maya, Leo, Asha, Tom, Sara. Or use roles: "the old monk", "the young farmer", "a little goat".
+
 ## Before committing (required)
 1. `python storykit/storykit.py --stills stories/<file>.json prev 0:2 1:3 2:4 ...` and **look at every frame**.
    Check that captions don't collide with the title, people stand on the ground, nothing is cut off, and the scene reads clearly at small size.
