@@ -20,7 +20,11 @@ def req(method, url, data=None, headers=None, raw=None):
 
 def main():
     story = json.load(open(sys.argv[1])); video = sys.argv[2]
-    page, token = os.environ["FB_PAGE_ID"], os.environ["FB_PAGE_TOKEN"]
+    token = os.environ["FB_PAGE_TOKEN"].strip()
+    page = os.environ.get("FB_PAGE_ID", "").strip()
+    if not page.isdigit():  # missing or mistyped: a Page token knows its own Page
+        me = req("GET", f"{GRAPH}/me?fields=id,name&access_token={token}")
+        page = me["id"]; print(f"Using Page from token: {me.get('name')} ({page})")
     tags = " ".join(w for w in story.get("description", "").split() if w.startswith("#"))[:300]
     caption = f"{story['youtube_title'].split('#')[0].strip()}\n\n{story['scenes'][-1]['narration']}\n\nA new tiny tale every day 🌙 Follow Tiny Tales Daily.\n{tags}"
 
