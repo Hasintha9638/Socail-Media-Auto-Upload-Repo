@@ -1,0 +1,1240 @@
+{
+  "format": "Rich vs Poor mindset",
+  "publish_at": "05:45",
+  "publish_date": "2026-11-20",
+  "title": "Same Bad Week, Two Mindsets",
+  "youtube_title": "Poor Mindset vs Rich Mindset After a Bad Week #shorts #mindset",
+  "description": "Poor mindset vs rich mindset: two friends get the same bad week, criticism, a coworker's promotion, a free Saturday and a failed exam. Ten years later, only one is thriving.\n\nThe moral: the bad day is the same, but your first thought decides where you end up.\n\nA new tiny tale every day on Tiny Tales Daily. Subscribe so you don't miss tomorrow's story.\n\n#richmindset #mindset #successmindset #moneymindset #selfimprovement #TinyTalesDaily #shorts",
+  "tags": [
+    "rich mindset",
+    "poor mindset vs rich mindset",
+    "mindset",
+    "success mindset",
+    "growth mindset",
+    "self improvement",
+    "motivation",
+    "handling criticism",
+    "learning from failure",
+    "animated story",
+    "short story",
+    "life lessons",
+    "habits of successful people"
+  ],
+  "voice": "am_michael",
+  "speed": 1.0,
+  "mood": "hopeful",
+  "highlight": [
+    "Poor",
+    "Rich",
+    "mindset",
+    "learning",
+    "thought",
+    "blaming"
+  ],
+  "scenes": [
+    {
+      "narration": "Two friends. Same job, same pay, same bad week. Ten years later, one is stuck and one is thriving. The difference started with one thought.",
+      "camera": {
+        "zoom": 1.0,
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "alpha": 0.6,
+          "y": [
+            820,
+            1050
+          ],
+          "speed": 0.4,
+          "seed": 2
+        },
+        {
+          "type": "hills",
+          "color": "#7fa36b",
+          "base_y": 1260,
+          "amp": 110,
+          "seed": 21
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              170,
+              1452,
+              0.9
+            ],
+            [
+              460,
+              1452,
+              0.75
+            ],
+            [
+              700,
+              1452,
+              0.8
+            ],
+            [
+              930,
+              1452,
+              0.95
+            ]
+          ],
+          "color": "#c9b79c",
+          "lit": false
+        },
+        {
+          "type": "ground",
+          "color": "#6b8f4e",
+          "grass_color": "#7fa85a",
+          "furrows": false
+        },
+        {
+          "type": "divider",
+          "x": 540,
+          "y0": 380,
+          "y1": 1450,
+          "color": "#ffffff",
+          "alpha": 0.75
+        },
+        {
+          "type": "text",
+          "text": "POOR MINDSET",
+          "x": 270,
+          "y": 470,
+          "size": 40,
+          "box": "#c0392b",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "RICH MINDSET",
+          "x": 810,
+          "y": 470,
+          "size": 40,
+          "box": "#1e8449",
+          "color": "#ffffff"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": [
+            [
+              0,
+              60
+            ],
+            [
+              0.5,
+              270
+            ],
+            [
+              1,
+              270
+            ]
+          ],
+          "facing": 1,
+          "shirt": "#7d7d86",
+          "pants": "#3a3a44",
+          "anim": "walk",
+          "bend": 0.0
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": [
+            [
+              0,
+              1020
+            ],
+            [
+              0.5,
+              810
+            ],
+            [
+              1,
+              810
+            ]
+          ],
+          "facing": -1,
+          "shirt": "#2e8b57",
+          "pants": "#2a2a35",
+          "anim": "walk",
+          "bend": 0.0
+        },
+        {
+          "type": "text",
+          "text": "SAME WEEK. TWO MINDSETS.",
+          "y": 250,
+          "size": 62,
+          "color": "#ffe7b0",
+          "stroke": 5,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.08,
+              1
+            ],
+            [
+              0.85,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Monday. The boss says their report is weak. Poor mindset: he just hates me. Rich mindset: what exactly can I fix by Friday?",
+      "camera": {
+        "zoom": 1.0,
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "alpha": 0.6,
+          "y": [
+            820,
+            1050
+          ],
+          "speed": 0.4,
+          "seed": 2
+        },
+        {
+          "type": "hills",
+          "color": "#7fa36b",
+          "base_y": 1260,
+          "amp": 110,
+          "seed": 21
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              170,
+              1452,
+              0.9
+            ],
+            [
+              460,
+              1452,
+              0.75
+            ],
+            [
+              700,
+              1452,
+              0.8
+            ],
+            [
+              930,
+              1452,
+              0.95
+            ]
+          ],
+          "color": "#c9b79c",
+          "lit": false
+        },
+        {
+          "type": "ground",
+          "color": "#6b8f4e",
+          "grass_color": "#7fa85a",
+          "furrows": false
+        },
+        {
+          "type": "divider",
+          "x": 540,
+          "y0": 380,
+          "y1": 1450,
+          "color": "#ffffff",
+          "alpha": 0.75
+        },
+        {
+          "type": "text",
+          "text": "POOR MINDSET",
+          "x": 270,
+          "y": 470,
+          "size": 40,
+          "box": "#c0392b",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "RICH MINDSET",
+          "x": 810,
+          "y": 470,
+          "size": 40,
+          "box": "#1e8449",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "MONDAY: CRITICISM",
+          "y": 250,
+          "size": 64,
+          "color": "#ffe7b0",
+          "stroke": 5
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 270,
+          "facing": 1,
+          "shirt": "#7d7d86",
+          "pants": "#3a3a44",
+          "anim": "idle",
+          "bend": 0.4
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 810,
+          "facing": -1,
+          "shirt": "#2e8b57",
+          "pants": "#2a2a35",
+          "anim": "think",
+          "bend": 0.0
+        },
+        {
+          "type": "text",
+          "text": "\"He just hates me.\"",
+          "x": 270,
+          "y": 930,
+          "size": 42,
+          "width": 460,
+          "color": "#ffffff",
+          "stroke": 4,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.35,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "\"What can I fix by Friday?\"",
+          "x": 810,
+          "y": 930,
+          "size": 42,
+          "width": 460,
+          "color": "#ffffff",
+          "stroke": 4,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.35,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Wednesday. A coworker gets promoted. Poor mindset: lucky her. Rich mindset: what did she do that I didn't? I'll go ask her.",
+      "camera": {
+        "zoom": 1.0,
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "alpha": 0.6,
+          "y": [
+            820,
+            1050
+          ],
+          "speed": 0.4,
+          "seed": 2
+        },
+        {
+          "type": "hills",
+          "color": "#7fa36b",
+          "base_y": 1260,
+          "amp": 110,
+          "seed": 21
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              170,
+              1452,
+              0.9
+            ],
+            [
+              460,
+              1452,
+              0.75
+            ],
+            [
+              700,
+              1452,
+              0.8
+            ],
+            [
+              930,
+              1452,
+              0.95
+            ]
+          ],
+          "color": "#c9b79c",
+          "lit": false
+        },
+        {
+          "type": "ground",
+          "color": "#6b8f4e",
+          "grass_color": "#7fa85a",
+          "furrows": false
+        },
+        {
+          "type": "divider",
+          "x": 540,
+          "y0": 380,
+          "y1": 1450,
+          "color": "#ffffff",
+          "alpha": 0.75
+        },
+        {
+          "type": "text",
+          "text": "POOR MINDSET",
+          "x": 270,
+          "y": 470,
+          "size": 40,
+          "box": "#c0392b",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "RICH MINDSET",
+          "x": 810,
+          "y": 470,
+          "size": 40,
+          "box": "#1e8449",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "WEDNESDAY: A PROMOTION",
+          "y": 250,
+          "size": 64,
+          "color": "#ffe7b0",
+          "stroke": 5
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 270,
+          "facing": 1,
+          "shirt": "#7d7d86",
+          "pants": "#3a3a44",
+          "anim": "idle",
+          "bend": 0.2
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 810,
+          "facing": -1,
+          "shirt": "#2e8b57",
+          "pants": "#2a2a35",
+          "anim": "wave",
+          "bend": 0.0
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 950,
+          "facing": -1,
+          "shirt": "#8e44ad",
+          "anim": "cheer",
+          "s": 0.9
+        },
+        {
+          "type": "text",
+          "text": "\"Lucky her.\"",
+          "x": 270,
+          "y": 930,
+          "size": 42,
+          "width": 460,
+          "color": "#ffffff",
+          "stroke": 4,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.35,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "\"What did she do? I'll ask.\"",
+          "x": 760,
+          "y": 930,
+          "size": 42,
+          "width": 460,
+          "color": "#ffffff",
+          "stroke": 4,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.35,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Saturday. A free morning. Poor mindset: four hours of scrolling. Rich mindset: one hour learning a new skill, then rest without guilt.",
+      "camera": {
+        "zoom": 1.0,
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "alpha": 0.6,
+          "y": [
+            820,
+            1050
+          ],
+          "speed": 0.4,
+          "seed": 2
+        },
+        {
+          "type": "hills",
+          "color": "#a08a5f",
+          "base_y": 1260,
+          "amp": 110,
+          "seed": 21
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              170,
+              1452,
+              0.9
+            ],
+            [
+              460,
+              1452,
+              0.75
+            ],
+            [
+              700,
+              1452,
+              0.8
+            ],
+            [
+              930,
+              1452,
+              0.95
+            ]
+          ],
+          "color": "#c9b79c",
+          "lit": false
+        },
+        {
+          "type": "ground",
+          "color": "#6b8f4e",
+          "grass_color": "#7fa85a",
+          "furrows": false
+        },
+        {
+          "type": "divider",
+          "x": 540,
+          "y0": 380,
+          "y1": 1450,
+          "color": "#ffffff",
+          "alpha": 0.75
+        },
+        {
+          "type": "text",
+          "text": "POOR MINDSET",
+          "x": 270,
+          "y": 470,
+          "size": 40,
+          "box": "#c0392b",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "RICH MINDSET",
+          "x": 810,
+          "y": 470,
+          "size": 40,
+          "box": "#1e8449",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "SATURDAY: FREE TIME",
+          "y": 250,
+          "size": 64,
+          "color": "#ffe7b0",
+          "stroke": 5
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 270,
+          "facing": 1,
+          "shirt": "#7d7d86",
+          "pants": "#3a3a44",
+          "anim": "sit",
+          "bend": 0.0
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 810,
+          "facing": -1,
+          "shirt": "#2e8b57",
+          "pants": "#2a2a35",
+          "anim": "think",
+          "bend": 0.0
+        },
+        {
+          "type": "text",
+          "text": "4 HOURS SCROLLING",
+          "x": 270,
+          "y": 930,
+          "size": 38,
+          "width": 440,
+          "color": "#ff9f8f",
+          "stroke": 4
+        },
+        {
+          "type": "text",
+          "text": "1 HOUR LEARNING",
+          "x": 810,
+          "y": 930,
+          "size": 38,
+          "width": 440,
+          "color": "#9df0b4",
+          "stroke": 4
+        }
+      ]
+    },
+    {
+      "narration": "Sunday night. Both fail an online exam. Poor mindset: I'm just not smart. Rich mindset: I'm not ready yet. Same score, different story.",
+      "camera": {
+        "zoom": 1.0,
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "night"
+        },
+        {
+          "type": "stars",
+          "alpha": 0.6
+        },
+        {
+          "type": "moon",
+          "x": 110,
+          "y": 380,
+          "r": 45
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "alpha": 0.6,
+          "y": [
+            820,
+            1050
+          ],
+          "speed": 0.4,
+          "seed": 2
+        },
+        {
+          "type": "hills",
+          "color": "#2c3a55",
+          "base_y": 1260,
+          "amp": 110,
+          "seed": 21
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              170,
+              1452,
+              0.9
+            ],
+            [
+              460,
+              1452,
+              0.75
+            ],
+            [
+              700,
+              1452,
+              0.8
+            ],
+            [
+              930,
+              1452,
+              0.95
+            ]
+          ],
+          "color": "#c9b79c",
+          "lit": true
+        },
+        {
+          "type": "ground",
+          "color": "#2a3a2c",
+          "grass_color": "#33472f",
+          "furrows": false
+        },
+        {
+          "type": "divider",
+          "x": 540,
+          "y0": 380,
+          "y1": 1450,
+          "color": "#ffffff",
+          "alpha": 0.75
+        },
+        {
+          "type": "text",
+          "text": "POOR MINDSET",
+          "x": 270,
+          "y": 470,
+          "size": 40,
+          "box": "#c0392b",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "RICH MINDSET",
+          "x": 810,
+          "y": 470,
+          "size": 40,
+          "box": "#1e8449",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "SUNDAY: FAILURE",
+          "y": 250,
+          "size": 64,
+          "color": "#ffe7b0",
+          "stroke": 5
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 270,
+          "facing": 1,
+          "shirt": "#7d7d86",
+          "pants": "#3a3a44",
+          "anim": "idle",
+          "bend": 0.7
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 810,
+          "facing": -1,
+          "shirt": "#2e8b57",
+          "pants": "#2a2a35",
+          "anim": "idle",
+          "bend": 0.0
+        },
+        {
+          "type": "text",
+          "text": "\"I'm just not smart.\"",
+          "x": 270,
+          "y": 930,
+          "size": 42,
+          "width": 460,
+          "color": "#ffffff",
+          "stroke": 4,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.35,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "\"I'm not ready YET.\"",
+          "x": 810,
+          "y": 930,
+          "size": 42,
+          "width": 460,
+          "color": "#ffffff",
+          "stroke": 4,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.35,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Ten years pass. Same start, same chances. One kept blaming. The other kept learning, one small thought at a time.",
+      "camera": {
+        "zoom": 1.0,
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day",
+          "cycle": 3
+        },
+        {
+          "type": "sun",
+          "x": 540,
+          "y": 500,
+          "r": 80,
+          "cycle_arc": true
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "alpha": 0.6,
+          "y": [
+            820,
+            1050
+          ],
+          "speed": 0.4,
+          "seed": 2
+        },
+        {
+          "type": "hills",
+          "color": "#7fa36b",
+          "base_y": 1260,
+          "amp": 110,
+          "seed": 21
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              170,
+              1452,
+              0.9
+            ],
+            [
+              460,
+              1452,
+              0.75
+            ],
+            [
+              700,
+              1452,
+              0.8
+            ],
+            [
+              930,
+              1452,
+              0.95
+            ]
+          ],
+          "color": "#c9b79c",
+          "lit": false
+        },
+        {
+          "type": "ground",
+          "color": "#6b8f4e",
+          "grass_color": "#7fa85a",
+          "furrows": false
+        },
+        {
+          "type": "divider",
+          "x": 540,
+          "y0": 380,
+          "y1": 1450,
+          "color": "#ffffff",
+          "alpha": 0.75
+        },
+        {
+          "type": "text",
+          "text": "POOR MINDSET",
+          "x": 270,
+          "y": 470,
+          "size": 40,
+          "box": "#c0392b",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "RICH MINDSET",
+          "x": 810,
+          "y": 470,
+          "size": 40,
+          "box": "#1e8449",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "",
+          "counter": {
+            "value": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                10
+              ]
+            ],
+            "fmt": "YEAR {}"
+          },
+          "y": 250,
+          "size": 80,
+          "color": "#ffe7b0",
+          "stroke": 6
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 270,
+          "facing": 1,
+          "shirt": "#7d7d86",
+          "pants": "#3a3a44",
+          "anim": "idle",
+          "bend": [
+            [
+              0,
+              0.2
+            ],
+            [
+              1,
+              0.8
+            ]
+          ]
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 810,
+          "facing": -1,
+          "shirt": "#2e8b57",
+          "pants": "#2a2a35",
+          "anim": "cheer",
+          "bend": 0.0
+        }
+      ]
+    },
+    {
+      "narration": "Which side did your mind live on this week? Be honest in the comments.",
+      "camera": {
+        "zoom": 1.0,
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "alpha": 0.6,
+          "y": [
+            820,
+            1050
+          ],
+          "speed": 0.4,
+          "seed": 2
+        },
+        {
+          "type": "hills",
+          "color": "#a08a5f",
+          "base_y": 1260,
+          "amp": 110,
+          "seed": 21
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              170,
+              1452,
+              0.9
+            ],
+            [
+              460,
+              1452,
+              0.75
+            ],
+            [
+              700,
+              1452,
+              0.8
+            ],
+            [
+              930,
+              1452,
+              0.95
+            ]
+          ],
+          "color": "#c9b79c",
+          "lit": false
+        },
+        {
+          "type": "ground",
+          "color": "#6b8f4e",
+          "grass_color": "#7fa85a",
+          "furrows": false
+        },
+        {
+          "type": "divider",
+          "x": 540,
+          "y0": 380,
+          "y1": 1450,
+          "color": "#ffffff",
+          "alpha": 0.75
+        },
+        {
+          "type": "text",
+          "text": "POOR MINDSET",
+          "x": 270,
+          "y": 470,
+          "size": 40,
+          "box": "#c0392b",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "RICH MINDSET",
+          "x": 810,
+          "y": 470,
+          "size": 40,
+          "box": "#1e8449",
+          "color": "#ffffff"
+        },
+        {
+          "type": "text",
+          "text": "WHICH SIDE ARE YOU?",
+          "y": 250,
+          "size": 64,
+          "color": "#ffe7b0",
+          "stroke": 5
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 270,
+          "facing": 1,
+          "shirt": "#7d7d86",
+          "pants": "#3a3a44",
+          "anim": "think",
+          "bend": 0.0
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 810,
+          "facing": -1,
+          "shirt": "#2e8b57",
+          "pants": "#2a2a35",
+          "anim": "wave",
+          "bend": 0.0
+        }
+      ]
+    },
+    {
+      "narration": "Same bad day. Your first thought decides where you end up.",
+      "captions": false,
+      "lead": 0.6,
+      "tail": 2.2,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.06
+          ],
+          [
+            1,
+            1.0
+          ]
+        ],
+        "cx": 540,
+        "cy": 1000
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "card"
+        },
+        {
+          "type": "stars"
+        },
+        {
+          "type": "moon",
+          "x": 180,
+          "y": 330,
+          "r": 62
+        },
+        {
+          "type": "hills",
+          "color": "#1d1b38",
+          "base_y": 1210,
+          "amp": 120,
+          "seed": 7
+        },
+        {
+          "type": "ground",
+          "color": "#11121c",
+          "grass_color": "#171a26",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 300,
+          "facing": 1,
+          "silhouette": true,
+          "color": "#07070d",
+          "bend": 0.5
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 780,
+          "facing": -1,
+          "silhouette": true,
+          "color": "#07070d",
+          "anim": "cheer"
+        },
+        {
+          "type": "fireflies",
+          "count": 20,
+          "y": [
+            1150,
+            1450
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Same bad day. Your first thought decides where you end up.",
+          "serif": true,
+          "size": 72,
+          "width": 860,
+          "y": 640,
+          "color": "#fff3d6",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.12,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Tiny Tales Daily  •  New story every day",
+          "size": 38,
+          "y": 900,
+          "color": "#ffd27a",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.55,
+              0
+            ],
+            [
+              0.7,
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

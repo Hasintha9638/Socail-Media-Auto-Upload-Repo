@@ -1,0 +1,1107 @@
+{
+  "format": "Stoic wisdom",
+  "publish_at": "18:45",
+  "publish_date": "2026-11-20",
+  "title": "The Missed Bus",
+  "youtube_title": "Missed the Bus in the Rain… One Stoic Idea Saved Her Day #shorts #stoicism",
+  "description": "Stoic wisdom for a bad morning: Maya misses her bus in the rain on interview day, and one idea from Epictetus changes how the whole day goes.\n\nThe moral: things don't upset you, your story about them does. (Epictetus: \"We are not disturbed by things, but by our opinions about things.\")\n\nA new tiny tale every day on Tiny Tales Daily. Subscribe so you don't miss tomorrow's story.\n\n#stoicism #stoic #epictetus #mindset #wisdom #TinyTalesDaily #shorts",
+  "tags": [
+    "stoicism",
+    "stoic wisdom",
+    "epictetus",
+    "stoic philosophy",
+    "mindset",
+    "control what you can",
+    "bad day motivation",
+    "self improvement",
+    "wisdom",
+    "short story",
+    "animated story",
+    "life lessons",
+    "calm mind",
+    "stoic quotes"
+  ],
+  "voice": "bm_george",
+  "speed": 1.0,
+  "mood": "hopeful",
+  "highlight": [
+    "Epictetus",
+    "control",
+    "opinions",
+    "calm",
+    "story",
+    "steady"
+  ],
+  "scenes": [
+    {
+      "narration": "Epictetus was born a slave. Yet emperors studied his words. One of his ideas can save your whole day.",
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.0
+          ],
+          [
+            1,
+            1.06
+          ]
+        ],
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#e6ecf2",
+          "alpha": 0.6,
+          "y": [
+            800,
+            1060
+          ],
+          "speed": 0.5,
+          "seed": 9
+        },
+        {
+          "type": "hills",
+          "color": "#9a8fb0",
+          "base_y": 1250,
+          "amp": 130,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              1.0
+            ],
+            [
+              400,
+              1452,
+              0.8
+            ],
+            [
+              880,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#b9a58c",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              640,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f5a3a",
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#5d6b5a",
+          "grass_color": "#6e7f62",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "old",
+          "x": 540,
+          "facing": 1,
+          "anim": "idle",
+          "staff": true,
+          "shirt": "#e8e1cf"
+        },
+        {
+          "type": "text",
+          "text": "ONE STOIC IDEA",
+          "y": 250,
+          "size": 64,
+          "color": "#ffe7b0",
+          "stroke": 5,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.08,
+              1
+            ],
+            [
+              0.85,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Meet Maya. Big interview at nine. She runs to the bus stop, and the bus pulls away right in front of her.",
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.0
+          ],
+          [
+            1,
+            1.08
+          ]
+        ],
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#e6ecf2",
+          "alpha": 0.6,
+          "y": [
+            800,
+            1060
+          ],
+          "speed": 0.5,
+          "seed": 9
+        },
+        {
+          "type": "hills",
+          "color": "#8aa6b8",
+          "base_y": 1250,
+          "amp": 130,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              1.0
+            ],
+            [
+              400,
+              1452,
+              0.8
+            ],
+            [
+              880,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#b9a58c",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              640,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f5a3a",
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#5d6b5a",
+          "grass_color": "#6e7f62",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": [
+            [
+              0,
+              120
+            ],
+            [
+              0.6,
+              560
+            ],
+            [
+              1,
+              600
+            ]
+          ],
+          "facing": 1,
+          "shirt": "#d35400",
+          "hair": "#2b1d16",
+          "anim": "walk"
+        },
+        {
+          "type": "text",
+          "text": "8:41 AM",
+          "y": 250,
+          "size": 70,
+          "color": "#ffe7b0",
+          "stroke": 5
+        }
+      ]
+    },
+    {
+      "narration": "Then the rain starts. Her shoes are soaked. She wants to scream.",
+      "sfx_rain": 0.7,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.08
+          ],
+          [
+            1,
+            1.18
+          ]
+        ],
+        "cx": 580,
+        "cy": 1200
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "storm"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#7a8494",
+          "alpha": 0.6,
+          "y": [
+            800,
+            1060
+          ],
+          "speed": 0.5,
+          "seed": 9
+        },
+        {
+          "type": "hills",
+          "color": "#4c5a6a",
+          "base_y": 1250,
+          "amp": 130,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              1.0
+            ],
+            [
+              400,
+              1452,
+              0.8
+            ],
+            [
+              880,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#b9a58c",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              640,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f5a3a",
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#3f4a44",
+          "grass_color": "#4a5a4c",
+          "furrows": false
+        },
+        {
+          "type": "rain",
+          "intensity": 0.8
+        },
+        {
+          "type": "splash",
+          "x": 600,
+          "y": 1450,
+          "intensity": 0.6
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 600,
+          "facing": 1,
+          "shirt": "#d35400",
+          "hair": "#2b1d16",
+          "anim": "wave"
+        }
+      ]
+    },
+    {
+      "narration": "Here is what Epictetus taught. We are not upset by things, but by our opinions about them.",
+      "sfx_rain": 0.5,
+      "dark": 0.15,
+      "camera": {
+        "zoom": 1.05,
+        "cx": 540,
+        "cy": 1150
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "storm"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#7a8494",
+          "alpha": 0.6,
+          "y": [
+            800,
+            1060
+          ],
+          "speed": 0.5,
+          "seed": 9
+        },
+        {
+          "type": "hills",
+          "color": "#4c5a6a",
+          "base_y": 1250,
+          "amp": 130,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              1.0
+            ],
+            [
+              400,
+              1452,
+              0.8
+            ],
+            [
+              880,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#b9a58c",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              640,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f5a3a",
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#3f4a44",
+          "grass_color": "#4a5a4c",
+          "furrows": false
+        },
+        {
+          "type": "rain",
+          "intensity": 0.5
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 600,
+          "facing": 1,
+          "shirt": "#d35400",
+          "hair": "#2b1d16",
+          "anim": "think"
+        },
+        {
+          "type": "text",
+          "text": "\"We are not disturbed by things, but by our opinions about things.\"",
+          "serif": true,
+          "y": 930,
+          "size": 48,
+          "width": 820,
+          "color": "#fff3d6",
+          "stroke": 3,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.42,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "— Epictetus",
+          "serif": true,
+          "y": 1060,
+          "size": 40,
+          "color": "#ffd27a",
+          "stroke": 3,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.55,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "So Maya asks herself: what is actually in my control? Not the bus. Not the rain. Only my next step and my mood.",
+      "sfx_rain": 0.4,
+      "camera": {
+        "zoom": 1.0,
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "storm"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#7a8494",
+          "alpha": 0.6,
+          "y": [
+            800,
+            1060
+          ],
+          "speed": 0.5,
+          "seed": 9
+        },
+        {
+          "type": "hills",
+          "color": "#4c5a6a",
+          "base_y": 1250,
+          "amp": 130,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              1.0
+            ],
+            [
+              400,
+              1452,
+              0.8
+            ],
+            [
+              880,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#b9a58c",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              640,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f5a3a",
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#3f4a44",
+          "grass_color": "#4a5a4c",
+          "furrows": false
+        },
+        {
+          "type": "rain",
+          "intensity": 0.4
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 540,
+          "facing": 1,
+          "shirt": "#d35400",
+          "hair": "#2b1d16",
+          "anim": "think"
+        },
+        {
+          "type": "text",
+          "text": "NOT MINE: the bus, the rain",
+          "x": 540,
+          "y": 200,
+          "size": 50,
+          "box": "#c0392b",
+          "color": "#ffffff",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.38,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "MINE: my next step, my mood",
+          "x": 540,
+          "y": 470,
+          "size": 50,
+          "box": "#1e8449",
+          "color": "#ffffff",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.65,
+              0
+            ],
+            [
+              0.72,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "She calls ahead, apologizes calmly, and walks. Twenty minutes in the rain, practicing her answers out loud.",
+      "sfx_rain": 0.3,
+      "camera": {
+        "zoom": 1.04,
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#7a8494",
+          "alpha": 0.6,
+          "y": [
+            800,
+            1060
+          ],
+          "speed": 0.5,
+          "seed": 9
+        },
+        {
+          "type": "hills",
+          "color": "#6f8597",
+          "base_y": 1250,
+          "amp": 130,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              1.0
+            ],
+            [
+              400,
+              1452,
+              0.8
+            ],
+            [
+              880,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#b9a58c",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              640,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f5a3a",
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#3f4a44",
+          "grass_color": "#4a5a4c",
+          "furrows": false
+        },
+        {
+          "type": "rain",
+          "intensity": 0.25
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": [
+            [
+              0,
+              140
+            ],
+            [
+              1,
+              900
+            ]
+          ],
+          "facing": 1,
+          "shirt": "#d35400",
+          "hair": "#2b1d16",
+          "anim": "walk"
+        },
+        {
+          "type": "text",
+          "text": "",
+          "counter": {
+            "value": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                20
+              ]
+            ],
+            "fmt": "{} MIN"
+          },
+          "y": 250,
+          "size": 70,
+          "color": "#ffe7b0",
+          "stroke": 5
+        }
+      ]
+    },
+    {
+      "narration": "She arrives late and wet, but steady. The manager smiles. Most people blame the traffic. You just handled a problem.",
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.02
+          ],
+          [
+            1,
+            1.08
+          ]
+        ],
+        "cx": 540,
+        "cy": 960
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#e6ecf2",
+          "alpha": 0.6,
+          "y": [
+            800,
+            1060
+          ],
+          "speed": 0.5,
+          "seed": 9
+        },
+        {
+          "type": "hills",
+          "color": "#b49a7a",
+          "base_y": 1250,
+          "amp": 130,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              1.0
+            ],
+            [
+              400,
+              1452,
+              0.8
+            ],
+            [
+              880,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#b9a58c",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              640,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f5a3a",
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#6b6a50",
+          "grass_color": "#7d7a58",
+          "furrows": false
+        },
+        {
+          "type": "sun",
+          "x": 820,
+          "y": 980,
+          "r": 90
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 380,
+          "facing": 1,
+          "shirt": "#d35400",
+          "hair": "#2b1d16",
+          "anim": "idle"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 700,
+          "facing": -1,
+          "shirt": "#34495e",
+          "pants": "#22262e",
+          "anim": "wave"
+        },
+        {
+          "type": "text",
+          "text": "HIRED",
+          "y": 250,
+          "size": 80,
+          "color": "#9df0b4",
+          "stroke": 6,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.75,
+              0
+            ],
+            [
+              0.85,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "What small thing ruined your day this week? Write it below, then let it go.",
+      "camera": {
+        "zoom": 1.0,
+        "cx": 540,
+        "cy": 1100
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dusk"
+        },
+        {
+          "type": "stars",
+          "alpha": 0.4
+        },
+        {
+          "type": "moon",
+          "x": 800,
+          "y": 330,
+          "r": 55
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#e6ecf2",
+          "alpha": 0.6,
+          "y": [
+            800,
+            1060
+          ],
+          "speed": 0.5,
+          "seed": 9
+        },
+        {
+          "type": "hills",
+          "color": "#5b5a86",
+          "base_y": 1250,
+          "amp": 130,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              1.0
+            ],
+            [
+              400,
+              1452,
+              0.8
+            ],
+            [
+              880,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#b9a58c",
+          "lit": true
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              640,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f5a3a",
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#3a4238",
+          "grass_color": "#4a5644",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 540,
+          "facing": 1,
+          "shirt": "#d35400",
+          "hair": "#2b1d16",
+          "anim": "cheer"
+        },
+        {
+          "type": "text",
+          "text": "WHAT RUINED YOUR DAY?",
+          "y": 250,
+          "size": 60,
+          "color": "#ffe7b0",
+          "stroke": 5
+        }
+      ]
+    },
+    {
+      "narration": "Things don't upset you. Your story about them does.",
+      "captions": false,
+      "lead": 0.6,
+      "tail": 2.2,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.06
+          ],
+          [
+            1,
+            1.0
+          ]
+        ],
+        "cx": 540,
+        "cy": 1000
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "card"
+        },
+        {
+          "type": "stars"
+        },
+        {
+          "type": "moon",
+          "x": 180,
+          "y": 330,
+          "r": 62
+        },
+        {
+          "type": "hills",
+          "color": "#1d1b38",
+          "base_y": 1210,
+          "amp": 120,
+          "seed": 7
+        },
+        {
+          "type": "ground",
+          "color": "#11121c",
+          "grass_color": "#171a26",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 540,
+          "facing": 1,
+          "silhouette": true,
+          "color": "#07070d"
+        },
+        {
+          "type": "fireflies",
+          "count": 20,
+          "y": [
+            1150,
+            1450
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Things don't upset you. Your story about them does.",
+          "serif": true,
+          "size": 72,
+          "width": 860,
+          "y": 640,
+          "color": "#fff3d6",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.12,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "— Epictetus",
+          "serif": true,
+          "size": 46,
+          "y": 880,
+          "color": "#d8cfe8",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.42,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Tiny Tales Daily  •  New story every day",
+          "size": 38,
+          "y": 1000,
+          "color": "#ffd27a",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.55,
+              0
+            ],
+            [
+              0.7,
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
