@@ -5,6 +5,10 @@ name: Post to TikTok
 on:
   schedule:
     - cron: "41 12 * * *"
+    - cron: "47 13 * * *"   # backups: GitHub sometimes skips scheduled runs; already-sent videos are never sent twice
+    - cron: "53 15 * * *"
+  push:
+    paths: [".github/kick/**"]
   workflow_dispatch:
     inputs:
       story:

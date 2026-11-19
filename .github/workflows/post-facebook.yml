@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: "11 0 * * *"    # ~5:41 AM Sri Lanka  (= ~7:11 PM New York)
     - cron: "11 13 * * *"   # ~6:41 PM Sri Lanka  (= ~8:11 AM New York)
+    - cron: "43 1 * * *"    # backups: GitHub sometimes skips scheduled runs; a Reel is never posted twice
+    - cron: "43 14 * * *"
+  push:
+    paths: [".github/kick/**"]
   workflow_dispatch:
     inputs:
       story:
