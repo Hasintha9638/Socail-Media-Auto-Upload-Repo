@@ -18,14 +18,17 @@ yt = build("youtube", "v3", credentials=creds)
 
 status = {"selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}
 tz = ZoneInfo(os.environ.get("PUBLISH_TZ", "Asia/Colombo"))
-hh, mm = map(int, os.environ.get("PUBLISH_AT_LOCAL", "05:45").split(":"))
-now = datetime.datetime.now(tz); at = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
-if at <= now + datetime.timedelta(minutes=10):
-    at += datetime.timedelta(days=1)          # next peak slot (e.g. tomorrow 5:45 AM Sri Lanka = 7:15 PM New York)
-if True:
-    status.update(privacyStatus="private", publishAt=at.astimezone(datetime.timezone.utc).isoformat().replace("+00:00", "Z"))
+# The story may name its own slot: "publish_at": "05:45" or "18:45" (Sri Lanka), optional "publish_date": "YYYY-MM-DD".
+hh, mm = map(int, (story.get("publish_at") or os.environ.get("PUBLISH_AT_LOCAL", "05:45")).split(":"))
+now = datetime.datetime.now(tz)
+if story.get("publish_date"):
+    y, mo, d = map(int, story["publish_date"].split("-"))
+    at = datetime.datetime(y, mo, d, hh, mm, tzinfo=tz)
 else:
-    status["privacyStatus"] = os.environ.get("YT_PRIVACY", "public")
+    at = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
+while at <= now + datetime.timedelta(minutes=10):
+    at += datetime.timedelta(days=1)          # next peak slot
+status.update(privacyStatus="private", publishAt=at.astimezone(datetime.timezone.utc).isoformat().replace("+00:00", "Z"))
 
 body = {"snippet": {"title": story["youtube_title"][:100], "description": story["description"],
                     "tags": story.get("tags", []), "categoryId": "24", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
@@ -36,4 +39,5 @@ while resp is None:
     st, resp = req.next_chunk()
     if st: print(f"uploaded {int(st.progress() * 100)}%")
 vid = resp["id"]; print(f"YouTube video id: {vid}  https://youtube.com/shorts/{vid}  status={resp['status']}")
-with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f: f.write(f"youtube_id={vid}\npublish_at={at.strftime('%a %d %b, %I:%M %p')}\n")
+with open(os.environ.get("RESULTS_FILE", os.devnull), "a") as f:
+    f.write(json.dumps({"id": vid, "at": at.isoformat(timespec="minutes"), "at_human": at.strftime("%a %d %b, %I:%M %p"), "title": story["youtube_title"]}) + "\n")

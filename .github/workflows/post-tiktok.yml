@@ -1,13 +1,14 @@
 name: Post to TikTok
 
-# Runs at ~6:11 PM Sri Lanka time (12:41 UTC, off-peak minute so GitHub runs it on time), after the daily render, and posts today's video.
+# ~6:11 PM Sri Lanka (12:41 UTC, off-peak minute): sends every rendered video not yet sent to the TikTok inbox,
+# so you can tap Post at each peak (morning video ~6:45 PM, evening video ~5:45 AM Sri Lanka).
 on:
   schedule:
     - cron: "41 12 * * *"
   workflow_dispatch:
     inputs:
       story:
-        description: "Story JSON to post (default: newest in stories/)"
+        description: "Story name to post (default: everything not yet sent)"
         required: false
 
 concurrency: tiktok
@@ -15,50 +16,42 @@ concurrency: tiktok
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      actions: read
     env:
       TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
       NTFY_TOPIC: tinytales-e609ad0ab2
     steps:
       - uses: actions/checkout@v4
-      - name: Pick story
-        id: story
+      - name: Pick stories to send
+        id: due
         run: |
-          f="${{ github.event.inputs.story }}"
-          [ -n "$f" ] || f=$(ls stories/*.json | sort | tail -1)
-          name=$(basename "$f" .json)
-          echo "file=$f" >> "$GITHUB_OUTPUT"; echo "name=$name" >> "$GITHUB_OUTPUT"
-          if grep -q "| $name |.*tiktok" stories/PUBLISHED.md 2>/dev/null; then echo "skip=1" >> "$GITHUB_OUTPUT"; echo "Already posted"; fi
-      - name: Download today's rendered video
-        if: steps.story.outputs.skip != '1' && env.TIKTOK_REFRESH_TOKEN != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p out
-          gh run download -R "$GITHUB_REPOSITORY" -n "${{ steps.story.outputs.name }}" -D out
-          ls -la out
-      - name: Post to TikTok
-        if: steps.story.outputs.skip != '1' && env.TIKTOK_REFRESH_TOKEN != ''
-        id: tt
+          names="${{ github.event.inputs.story }}"
+          [ -n "$names" ] || names=$(python3 scripts/due.py tiktok | tr '\n' ' ')
+          echo "names=$names" >> "$GITHUB_OUTPUT"; echo "To send: ${names:-none}"
+      - name: Send to TikTok
+        if: steps.due.outputs.names != '' && env.TIKTOK_REFRESH_TOKEN != ''
         env:
           TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           GH_PAT: ${{ secrets.GH_PAT }}
-        run: python3 scripts/upload_tiktok.py "${{ steps.story.outputs.file }}" "out/${{ steps.story.outputs.name }}.mp4"
-      - name: Phone notification (TikTok)
-        if: steps.tt.outcome == 'success'
+          GH_TOKEN: ${{ github.token }}
         run: |
-          curl -s -H "Title: ✅ TikTok ready" -H "Tags: musical_note" -H "Click: https://www.tiktok.com/@tinytalesdailystories" -d "${{ steps.story.outputs.name }} (${{ steps.tt.outputs.tiktok_status }})" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+          git config user.name "story-bot"; git config user.email "story-bot@users.noreply.github.com"
+          mkdir -p out
+          for name in ${{ steps.due.outputs.names }}; do
+            gh run download -R "$GITHUB_REPOSITORY" -n "$name" -D out
+            : > "$GITHUB_OUTPUT.tt"
+            GITHUB_OUTPUT="$GITHUB_OUTPUT.tt" python3 scripts/upload_tiktok.py "stories/$name.json" "out/$name.mp4"
+            status=$(sed -n 's/^tiktok_status=//p' "$GITHUB_OUTPUT.tt")
+            curl -s -H "Title: ✅ TikTok ready" -H "Tags: musical_note" -H "Click: https://www.tiktok.com/@tinytalesdailystories" -d "$name ($status)" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+            echo "| $(date +%F) | $name | tiktok: $status |" >> stories/PUBLISHED.md
+            sleep 20
+          done
+          git add stories/PUBLISHED.md && git commit -m "Log TikTok sends [skip ci]" && git pull --rebase -q && git push
       - name: Phone notification (failed)
         if: failure()
         run: |
-          curl -s -H "Title: ❌ TikTok post failed" -H "Priority: high" -H "Click: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" -d "Today's TikTok post didn't go through. Tap to see the error." "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
-      - name: Log
-        if: steps.tt.outcome == 'success'
-        run: |
-          echo "| $(date +%F) | ${{ steps.story.outputs.name }} | tiktok: ${{ steps.tt.outputs.tiktok_status }} |" >> stories/PUBLISHED.md
-          git config user.name "story-bot"; git config user.email "story-bot@users.noreply.github.com"
-          git add stories/PUBLISHED.md && git commit -m "Log TikTok ${{ steps.story.outputs.name }} [skip ci]" && git pull --rebase -q && git push
-    permissions:
-      contents: write
-      actions: read
+          curl -s -H "Title: ❌ TikTok post failed" -H "Priority: high" -H "Click: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" -d "A TikTok send didn't go through. Tap to see the error." "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true

@@ -5,8 +5,17 @@ Channel name: **Tiny Tales Daily** (YouTube + TikTok). Use this exact name in en
 Each day: write ONE new story as `stories/YYYY-MM-DD-<slug>.json`, preview it, commit it to `main`.
 GitHub Actions renders it and schedules it on YouTube Shorts for the US evening peak (5:45 AM Sri Lanka next morning = 7:15 PM New York); Facebook Reels post at the same time.
 
+## Two videos a day
+Each daily run writes **two** stories, committed together in ONE commit:
+| File | Slot | `publish_at` | `publish_date` | Goes live |
+|---|---|---|---|---|
+| `stories/<D>-a-<slug>.json` | US evening | `"05:45"` | D+1 | 5:45 AM Sri Lanka = 7:15 PM New York |
+| `stories/<D>-b-<slug>.json` | US morning | `"18:45"` | D+1 | 6:45 PM Sri Lanka = 8:15 AM New York |
+D = today's date in Asia/Colombo. Both JSONs carry `"publish_at"` and `"publish_date"`.
+Story a takes the next format in the rotation, and story b the one after it. Give them different themes, characters and settings, so the two videos of a day never feel alike.
+
 ## Content formats: rotate in this order
-Each story JSON must include `"format": "<name>"`. Look at the newest story in `stories/`: today's format is the **next one after its format** in this list (wrap around; if the newest has no `format`, start at Moral story).
+Each story JSON must include `"format": "<name>"`. Look at the newest story in `stories/` (by file name): the next video's format is the **next one after its format** in this list (wrap around; if the newest has no `format`, start at Moral story).
 
 | # | Format | What it is | Example hook |
 |---|---|---|---|

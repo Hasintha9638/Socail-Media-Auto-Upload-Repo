@@ -1,13 +1,14 @@
 name: Post to Facebook
 
-# Runs at ~5:41 AM Sri Lanka time (00:11 UTC = ~7:11 PM New York, US evening peak) and posts the newest video as a Facebook Reel.
+# Twice a day, just before each YouTube go-live (5:45 AM and 6:45 PM Sri Lanka), post the Reel that is due.
 on:
   schedule:
-    - cron: "11 0 * * *"
+    - cron: "11 0 * * *"    # ~5:41 AM Sri Lanka  (= ~7:11 PM New York)
+    - cron: "11 13 * * *"   # ~6:41 PM Sri Lanka  (= ~8:11 AM New York)
   workflow_dispatch:
     inputs:
       story:
-        description: "Story JSON to post (default: newest in stories/)"
+        description: "Story name to post (default: whatever is due)"
         required: false
 
 concurrency: facebook
@@ -15,7 +16,7 @@ concurrency: facebook
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     permissions:
       contents: write
       actions: read
@@ -24,38 +25,30 @@ jobs:
       NTFY_TOPIC: tinytales-e609ad0ab2
     steps:
       - uses: actions/checkout@v4
-      - name: Pick story
-        id: story
+      - name: Pick due stories
+        id: due
         run: |
-          f="${{ github.event.inputs.story }}"
-          [ -n "$f" ] || f=$(ls stories/*.json | sort | tail -1)
-          name=$(basename "$f" .json)
-          echo "file=$f" >> "$GITHUB_OUTPUT"; echo "name=$name" >> "$GITHUB_OUTPUT"
-          if grep -q "| $name |.*facebook" stories/PUBLISHED.md 2>/dev/null; then echo "skip=1" >> "$GITHUB_OUTPUT"; echo "Already posted"; fi
-      - name: Download today's rendered video
-        if: steps.story.outputs.skip != '1' && env.FB_PAGE_TOKEN != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p out
-          gh run download -R "$GITHUB_REPOSITORY" -n "${{ steps.story.outputs.name }}" -D out
-      - name: Post Reel to Facebook Page
-        if: steps.story.outputs.skip != '1' && env.FB_PAGE_TOKEN != ''
-        id: fb
+          names="${{ github.event.inputs.story }}"
+          [ -n "$names" ] || names=$(python3 scripts/due.py facebook --window-min 90 | tr '\n' ' ')
+          echo "names=$names" >> "$GITHUB_OUTPUT"; echo "Due: ${names:-none}"
+      - name: Post Reels
+        if: steps.due.outputs.names != '' && env.FB_PAGE_TOKEN != ''
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
-        run: python3 scripts/upload_facebook.py "${{ steps.story.outputs.file }}" "out/${{ steps.story.outputs.name }}.mp4"
-      - name: Phone notification (Facebook)
-        if: steps.fb.outcome == 'success'
+          GH_TOKEN: ${{ github.token }}
         run: |
-          curl -s -H "Title: ✅ Facebook Reel posted" -H "Tags: blue_book" -H "Click: ${{ steps.fb.outputs.facebook_link }}" -d "${{ steps.story.outputs.name }}" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+          git config user.name "story-bot"; git config user.email "story-bot@users.noreply.github.com"
+          mkdir -p out
+          for name in ${{ steps.due.outputs.names }}; do
+            gh run download -R "$GITHUB_REPOSITORY" -n "$name" -D out
+            : > "$GITHUB_OUTPUT.fb"
+            GITHUB_OUTPUT="$GITHUB_OUTPUT.fb" python3 scripts/upload_facebook.py "stories/$name.json" "out/$name.mp4"
+            link=$(sed -n 's/^facebook_link=//p' "$GITHUB_OUTPUT.fb")
+            curl -s -H "Title: ✅ Facebook Reel posted" -H "Tags: blue_book" -H "Click: $link" -d "$name" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+            echo "| $(date +%F) | $name | facebook: $link |" >> stories/PUBLISHED.md
+          done
+          git add stories/PUBLISHED.md && git commit -m "Log Facebook posts [skip ci]" && git pull --rebase -q && git push
       - name: Phone notification (failed)
         if: failure()
         run: |
-          curl -s -H "Title: ❌ Facebook post failed" -H "Priority: high" -H "Click: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" -d "Today's Facebook Reel didn't go through. Tap to see the error." "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
-      - name: Log
-        if: steps.fb.outcome == 'success'
-        run: |
-          echo "| $(date +%F) | ${{ steps.story.outputs.name }} | facebook: ${{ steps.fb.outputs.facebook_link }} |" >> stories/PUBLISHED.md
-          git config user.name "story-bot"; git config user.email "story-bot@users.noreply.github.com"
-          git add stories/PUBLISHED.md && git commit -m "Log Facebook ${{ steps.story.outputs.name }} [skip ci]" && git pull --rebase -q && git push
+          curl -s -H "Title: ❌ Facebook post failed" -H "Priority: high" -H "Click: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" -d "A Facebook Reel didn't go through. Tap to see the error." "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
