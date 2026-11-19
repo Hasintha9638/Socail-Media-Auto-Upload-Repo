@@ -712,6 +712,11 @@ def thunder(sr, seed=2):
 def render(story_path, out_path):
     story = json.load(open(story_path)); work = os.path.splitext(out_path)[0] + "_work"; os.makedirs(work, exist_ok=True)
     voice, sr = tts_scenes(story, work)
+    # TikTok only pays for videos of 60 s or more: hold the final card longer if the story runs short.
+    total = sum(v["dur"] for v in voice); min_total = float(story.get("min_seconds", 62))
+    if total < min_total:
+        voice[-1]["dur"] += min_total - total
+        print(f"Story ran {total:.1f}s; holding the last card {min_total - total:.1f}s longer to reach {min_total:.0f}s")
     hl = set(w.lower() for w in story.get("highlight", []))
     caps = Captions(); files = []
     wm = make_watermark(story.get("watermark", "Tiny Tales Daily"))

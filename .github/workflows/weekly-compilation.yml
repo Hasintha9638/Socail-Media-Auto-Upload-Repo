@@ -1,0 +1,60 @@
+name: Weekly compilation (long video)
+
+# Every Sunday ~3:51 PM Sri Lanka: joins the week's Shorts into one 8-15 min horizontal video,
+# uploads it to YouTube as a normal (long) video, scheduled for ~6:15 AM Monday Sri Lanka (= Sunday evening in the US).
+on:
+  schedule:
+    - cron: "21 10 * * 0"
+  workflow_dispatch:
+
+concurrency: weekly
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      actions: read
+    env:
+      NTFY_TOPIC: tinytales-e609ad0ab2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - name: Install
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q -r requirements.txt
+      - name: Download this week's videos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out
+          for name in $(python3 scripts/compile_weekly.py --list); do
+            gh run download -R "$GITHUB_REPOSITORY" -n "$name" -D out || echo "missing $name"
+          done
+          ls -la out
+      - name: Build and upload compilation
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          RESULTS_FILE: /tmp/weekly.json
+        run: |
+          python3 scripts/compile_weekly.py
+          if [ -s /tmp/weekly.json ]; then
+            id=$(jq -r .id /tmp/weekly.json); human=$(jq -r .at_human /tmp/weekly.json); title=$(jq -r .title /tmp/weekly.json)
+            curl -s -H "Title: ✅ Weekly compilation uploaded" -H "Tags: film_strip" -H "Click: https://youtu.be/$id" -d "$title
+          Goes live $human (Sri Lanka)" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
+            git config user.name "story-bot"; git config user.email "story-bot@users.noreply.github.com"
+            echo "| $(date +%F) | weekly-compilation | weekly: https://youtu.be/$id |" >> stories/PUBLISHED.md
+            git add stories/PUBLISHED.md && git commit -m "Log weekly compilation [skip ci]" && (git pull --rebase -q || (git checkout --theirs stories/PUBLISHED.md; git add stories/PUBLISHED.md; GIT_EDITOR=true git rebase --continue)) && git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: "weekly-${{ github.run_id }}", path: "comp/weekly.mp4", retention-days: 7, if-no-files-found: ignore }
+      - name: Phone notification (failed)
+        if: failure()
+        run: |
+          curl -s -H "Title: ❌ Weekly compilation failed" -H "Priority: high" -H "Click: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" -d "Tap to see the error." "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true

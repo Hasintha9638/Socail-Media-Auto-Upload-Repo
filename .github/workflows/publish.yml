@@ -68,14 +68,14 @@ jobs:
         run: mkdir -p out && python storykit/storykit.py "${{ steps.story.outputs.f1 }}" "out/${{ steps.story.outputs.n1 }}.mp4"
       - if: steps.story.outputs.f1 != ''
         uses: actions/upload-artifact@v4
-        with: { name: "${{ steps.story.outputs.n1 }}", path: "out/${{ steps.story.outputs.n1 }}.mp4", retention-days: 7 }
+        with: { name: "${{ steps.story.outputs.n1 }}", path: "out/${{ steps.story.outputs.n1 }}.mp4", retention-days: 10 }
 
       - if: steps.story.outputs.f2 != ''
         name: Render video 2
         run: python storykit/storykit.py "${{ steps.story.outputs.f2 }}" "out/${{ steps.story.outputs.n2 }}.mp4"
       - if: steps.story.outputs.f2 != ''
         uses: actions/upload-artifact@v4
-        with: { name: "${{ steps.story.outputs.n2 }}", path: "out/${{ steps.story.outputs.n2 }}.mp4", retention-days: 7 }
+        with: { name: "${{ steps.story.outputs.n2 }}", path: "out/${{ steps.story.outputs.n2 }}.mp4", retention-days: 10 }
 
       - if: steps.story.outputs.count != '0' && env.YT_REFRESH_TOKEN != ''
         name: Upload to YouTube, notify, log
