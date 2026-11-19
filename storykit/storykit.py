@@ -521,12 +521,17 @@ class Scene:
             font = serif_font(e.get("size", 70)) if e.get("serif") else ImageFont.truetype(FONT_BOLD, e.get("size", 70))
             lines = wrap(e["text"], font, e.get("width", 900))
             lh = int(e.get("size", 70) * 1.3); im = Image.new("RGBA", (W, lh * len(lines) + 40), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+            if e.get("box"):
+                tw = max(font.getlength(ln) for ln in lines); pad = e.get("size", 70) * .45
+                d.rounded_rectangle([W / 2 - tw / 2 - pad, 20 - pad * .3, W / 2 + tw / 2 + pad, 20 + lh * len(lines) + pad * .3],
+                                    radius=int(pad), fill=hexc(e["box"], 225))
             for i, ln in enumerate(lines):
                 d.text((W / 2, 20 + i * lh + lh / 2), ln, font=font, anchor="mm", fill=hexc(e.get("color", "#ffffff")),
                        stroke_width=e.get("stroke", 0), stroke_fill=(10, 10, 20, 255))
             self.cache[key] = im
         im = self.cache[key]
-        return self._alpha(im, a), (0, int(kf(e.get("y", 300), t) - im.height / 2))
+        cx = kf(e.get("x", W / 2), t)                       # optional horizontal centre (default: middle)
+        return self._alpha(im, a), (int(cx - W / 2), int(kf(e.get("y", 300), t) - im.height / 2))
 
     # --- frame
     def frame(self, now):
@@ -551,6 +556,10 @@ class Scene:
             elif ty == "person": res = self.person(e, t, now)
             elif ty == "text": res = self.text_el(e, t)
             elif ty == "tea": res = self.tea(e, t, now)
+            elif ty == "divider":
+                lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); dd = ImageDraw.Draw(lay); xx = e.get("x", W / 2)
+                dd.line([(xx, e.get("y0", 180)), (xx, e.get("y1", self.ground))], fill=hexc(e.get("color", "#ffffff"), int(255 * kf(e.get("alpha", .7), t))), width=e.get("width", 6))
+                res = (lay, (0, 0))
             elif ty in ("rain", "birds", "fireflies", "splash", "lightning"):
                 lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
                 if ty == "lightning": self.bolt(e, now, d)

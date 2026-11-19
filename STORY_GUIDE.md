@@ -15,17 +15,15 @@ D = today's date in Asia/Colombo. Both JSONs carry `"publish_at"` and `"publish_
 Story a takes the next format in the rotation, and story b the one after it. Give them different themes, characters and settings, so the two videos of a day never feel alike.
 
 ## Content formats: rotate in this order
-Each story JSON must include `"format": "<name>"`. Look at the newest story in `stories/` (by file name): the next video's format is the **next one after its format** in this list (wrap around; if the newest has no `format`, start at Moral story).
+These four get the most views. Each story JSON must include `"format": "<name>"`. Look at the newest story in `stories/` (by file name): the next video's format is the **next one after its format** in this list (wrap around; if the newest has another or no `format`, start at Success tips).
 
 | # | Format | What it is | Example hook |
 |---|---|---|---|
-| 1 | **Moral story** | A fable with a twist and a moral card | "Every morning, a poor farmer carried one stone…" |
+| 1 | **Success tips** | 40–55 s. "3 things/habits/rules…" style, told through one animated character's day (a student, a shopkeeper, a young farmer) — each tip shown as a big numbered `text` element (e.g. "1. Start before you're ready") while the scene acts it out. Practical, specific, no hype or get-rich promises. End card: the one tip to remember | "3 habits that quietly made a poor boy rich." |
 | 2 | **Tiny motivation** | 35–45 s. One character, one struggle, one breakthrough. Punchy lines, no "once upon a time". Ends on a bold one-line quote card | "He failed 99 times. The 100th try took 4 seconds." |
-| 3 | **Funny motivation** | 35–50 s. Comic setup (lazy goat, overconfident rooster, a snail in a race, a cat who "starts Monday"), a silly escalation, a punchline, then a real lesson. Light, kind humour, never mocking real people | "Every Monday, the cat promised to start his diet. This is Monday number 412." |
-| 4 | **Zen story** | 40–55 s, calm and slow (`speed` 0.88, `mood` "sad" or "warm", voice bm_george or bf_emma). A master and a student (or a monk and a visitor) with a short exchange and a quiet, surprising insight. Visuals: misty mountains, moonlit or dawn skies, a monk with a staff (`kind: old`, `staff: true`), still water, few elements. You may retell a classic traditional Zen parable **in your own words** (say "a classic Zen story" in the description), or write an original one in that spirit. Never copy a published translation word for word. End card: the insight in one calm line | "A student asked the master: how long until I find peace?" |
-| 5 | **Success tips** | 40–55 s. "3 things/habits/rules…" style, told through one animated character's day (a student, a shopkeeper, a young farmer) — each tip shown as a big numbered `text` element (e.g. "1. Start before you're ready") while the scene acts it out. Practical, specific, no hype or get-rich promises. End card: the one tip to remember | "3 habits that quietly made a poor boy rich." |
-| 6 | **Life lesson** | 40–55 s. An everyday situation (money, friends, phone habits, parents, comparison, patience) told as a short tale with a sharp takeaway | "Two brothers got the same 100 rupees. One was broke by Friday." |
-Also check stories/PUBLISHED.md so the theme differs from the last 5 videos.
+| 3 | **Zen story** | 40–55 s, calm and slow (`speed` 0.88, `mood` "sad" or "warm", voice bm_george or bf_emma). A master and a student (or a monk and a visitor) with a short exchange and a quiet, surprising insight. Visuals: misty mountains, moonlit or dawn skies, a monk with a staff (`kind: old`, `staff: true`), still water, few elements. You may retell a classic traditional Zen parable **in your own words** (say "a classic Zen story" in the description), or write an original one in that spirit. Never copy a published translation word for word. End card: the insight in one calm line | "A student asked the master: how long until I find peace?" |
+| 4 | **Rich vs Poor mindset** | 35–50 s split screen: a `divider` at x=540, a red-boxed "POOR MINDSET" label (`x`: 270, `box`: "#c0392b") and a green-boxed "RICH MINDSET" label (`x`: 810, `box`: "#1e8449"), one character on each side reacting to the same situation (payday, a free hour, a failure, criticism, a new skill, a phone at midnight). 3–4 contrasts, each its own scene, then a one-line takeaway card. It's about **thinking and habits** (spending vs investing in skills, blaming vs learning, consuming vs creating), never shaming people with little money, and no promises of getting rich or advice to buy any investment | "Payday. Poor mindset: 'Time to treat myself.' Rich mindset: 'Time to pay myself first.'" |
+Also check stories/PUBLISHED.md so the theme differs from the last 6 videos. (Moral story, Funny motivation and Life lesson are retired from the rotation; use only when asked.)
 
 ## SEO + trending rules (every video)
 - **YouTube title (≤ 60 chars, then hashtags):** put a search keyword near the start plus a curiosity gap, then ` #shorts` plus 1–2 topic tags.
@@ -37,6 +35,7 @@ Also check stories/PUBLISHED.md so the theme differs from the last 5 videos.
   - funny motivation: #funnymotivation #funny #motivation #relatable #TinyTalesDaily #shorts
   - life lesson: #lifelessons #lifeadvice #selfimprovement #wisdom #TinyTalesDaily #shorts
   - success tips: #successtips #success #habits #selfimprovement #motivation #TinyTalesDaily #shorts (title example: "3 Habits That Made a Poor Boy Rich #shorts #success")
+  - rich vs poor mindset: #richmindset #mindset #successmindset #moneymindset #selfimprovement #TinyTalesDaily #shorts (title example: "Poor Mindset vs Rich Mindset on Payday #shorts #mindset")
   - zen story: #zenstory #zen #mindfulness #wisdom #innerpeace #TinyTalesDaily #shorts (title example: "Empty Your Cup First | Zen Story #shorts #zen")
 - **tags field:** 10–15 tags. Mix broad (motivation, short story) with specific (the story's theme, e.g. "patience story", "lazy goat story").
 - **Hooks decide reach:** the first line must create a question in 2 seconds. Keep videos under 50 s, because rewatches count, and end on a line that makes people comment, like, or share (a question or a quotable line).
@@ -92,7 +91,8 @@ Captions sit around y=640, so keep the sky area y=520–780 free of busy element
 | splash | `x`, `y`, `intensity` |
 | fireflies | `count`, `y` |
 | tea | low table with a cup: `x`, `fill` 0–1 fills, above 1 overflows and spills; `pour` 0/1 shows a stream (a person with `anim: carry`, `stone: "#5b4636"` as the teapot, standing ~85 px left of x, facing right) |
-| text | `text`, `y`, `size`, `color`, `stroke`, `serif`, `alpha`, `counter: {value, fmt: "YEAR {}"}` |
+| divider | vertical line: `x`, `y0`, `y1`, `color`, `alpha` (split screens) |
+| text | `text`, `y`, `x` (centre, default 540), `box` (hex: coloured pill behind the text), `size`, `color`, `stroke`, `serif`, `alpha`, `counter: {value, fmt: "YEAR {}"}` |
 
 ### Recurring patterns
 - **Scene 1:** the hook action, plus a gold title `text` at y=250 that fades out.
