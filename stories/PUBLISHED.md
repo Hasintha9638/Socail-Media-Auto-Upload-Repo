@@ -11,3 +11,5 @@
 | 2026-11-19 | 2026-11-20-a-same-bad-week-two-mindsets | https://youtube.com/shorts/6CtI_K91CnA | live 2026-11-20T05:45+05:30 |
 | 2026-11-19 | 2026-11-20-b-the-missed-bus | https://youtube.com/shorts/doj6a6c0R38 | live 2026-11-20T18:45+05:30 |
 | 2026-11-19 | 2026-11-19-b-empty-your-cup | facebook: https://www.facebook.com/reel/1460621846037366/ |
+| 2026-11-19 | 2026-11-19-a-3-tiny-habits | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
+| 2026-11-19 | 2026-11-19-b-empty-your-cup | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
