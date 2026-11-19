@@ -367,7 +367,7 @@ class Scene:
                     d.line([P(hip[0] - tw_h, hip[1] + H * .03), P(hip[0] + tw_h, hip[1] + H * .03)], fill=C(pal["pants"], dk=.3), width=int(H * .02 * s))
                 if pal.get("bag"):
                     d.rounded_rectangle([*P(sho[0] - tw_s * 1.5, sho[1] + H * .03), *P(sho[0] - tw_s * .7, hip[1])] if face > 0 else
-                                        [*P(sho[0] - tw_s * .7, sho[1] + H * .03), *P(sho[0] - tw_s * 1.5, hip[1])], radius=int(H * .03 * s), fill=C("#c2463b"))
+                                        [*P(sho[0] - tw_s * .7, sho[1] + H * .03), *P(sho[0] - tw_s * 1.5, hip[1])], radius=int(H * .03 * s), fill=C(pal.get("shade") or "#c2463b"))
             # neck + head
             hr = H * (.115 if kind == "child" else .1)
             hc = (sho[0] + H * .015 + (H * .02 if anim == "laugh" else 0), sho[1] - hr * 1.05 - (math.sin(now * 9) * 2 * sc if anim == "laugh" else 0))

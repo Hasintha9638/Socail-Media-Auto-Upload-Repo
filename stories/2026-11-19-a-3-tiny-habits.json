@@ -1,0 +1,782 @@
+{
+  "format": "Success tips",
+  "publish_at": "09:15",
+  "publish_date": "2026-11-19",
+  "title": "3 Tiny Habits",
+  "youtube_title": "3 Tiny Habits That Changed a Lazy Student's Life #shorts #success",
+  "description": "He wasn't smart. He wasn't lucky. He just did three tiny things every single day. These simple habits work for school, work and life.\n\nSmall habits, done daily, beat big plans you never start.\n\nA new tiny tale every day on Tiny Tales Daily. Subscribe so you don't miss tomorrow's story.\n\n#successtips #habits #selfimprovement #motivation #discipline #TinyTalesDaily #shorts",
+  "tags": [
+    "success tips",
+    "habits",
+    "tiny habits",
+    "self improvement",
+    "motivation",
+    "discipline",
+    "study motivation",
+    "success mindset",
+    "productivity",
+    "animated story",
+    "short story",
+    "life lessons"
+  ],
+  "voice": "am_michael",
+  "speed": 0.97,
+  "mood": "hopeful",
+  "highlight": [
+    "habit",
+    "one",
+    "two",
+    "three",
+    "every",
+    "day"
+  ],
+  "scenes": [
+    {
+      "narration": "Leo failed every test. His teacher said he was lazy. Then he tried three tiny habits.",
+      "caption_y": 700,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.0
+          ],
+          [
+            1,
+            1.06
+          ]
+        ],
+        "cx": 520,
+        "cy": 1200
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "sun",
+          "x": 830,
+          "y": 470,
+          "r": 90,
+          "color": "#fff1b8"
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#ffffff",
+          "alpha": 0.8,
+          "y": [
+            150,
+            650
+          ],
+          "seed": 6
+        },
+        {
+          "type": "hills",
+          "color": "#7fa6c9",
+          "base_y": 1220,
+          "amp": 110,
+          "seed": 2
+        },
+        {
+          "type": "houses",
+          "color": "#8a5a4a",
+          "lit": false,
+          "items": [
+            [
+              760,
+              1352,
+              0.6
+            ],
+            [
+              905,
+              1356,
+              0.55
+            ]
+          ]
+        },
+        {
+          "type": "hills",
+          "color": "#4d7a5c",
+          "base_y": 1340,
+          "amp": 70,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4a36",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ]
+          ],
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#5b6b3a",
+          "grass_color": "#6d8044",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 440,
+          "facing": 1,
+          "anim": "idle",
+          "bend": 0.6
+        },
+        {
+          "type": "person",
+          "kind": "old",
+          "x": 720,
+          "facing": -1,
+          "shirt": "#7a6a9a"
+        },
+        {
+          "type": "text",
+          "text": "3 TINY HABITS",
+          "y": 250,
+          "size": 60,
+          "color": "#ffd27a",
+          "stroke": 5,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.08,
+              1
+            ],
+            [
+              0.85,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Habit one. Make your bed the moment you wake up. Your first win, before breakfast.",
+      "caption_y": 700,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.05
+          ],
+          [
+            1,
+            1.12
+          ]
+        ],
+        "cx": 500,
+        "cy": 1220
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "sun",
+          "x": 820,
+          "y": [
+            [
+              0,
+              1180
+            ],
+            [
+              1,
+              1090
+            ]
+          ],
+          "r": 100,
+          "color": "#ffc27a"
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#ffffff",
+          "alpha": 0.8,
+          "y": [
+            150,
+            650
+          ],
+          "seed": 6
+        },
+        {
+          "type": "hills",
+          "color": "#6b5a86",
+          "base_y": 1220,
+          "amp": 110,
+          "seed": 2
+        },
+        {
+          "type": "houses",
+          "color": "#8a5a4a",
+          "lit": false,
+          "items": [
+            [
+              760,
+              1352,
+              0.6
+            ],
+            [
+              905,
+              1356,
+              0.55
+            ]
+          ]
+        },
+        {
+          "type": "hills",
+          "color": "#40395e",
+          "base_y": 1340,
+          "amp": 70,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4a36",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ]
+          ],
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#3f3a4a",
+          "grass_color": "#4a4256",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 440,
+          "facing": 1,
+          "anim": "cheer"
+        },
+        {
+          "type": "text",
+          "text": "1. Win the first minute",
+          "y": 225,
+          "size": 58,
+          "color": "#fff3d6",
+          "stroke": 6,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Habit two. Study just ten minutes. Not two hours. Ten minutes is too small to skip.",
+      "caption_y": 700,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.05
+          ],
+          [
+            1,
+            1.12
+          ]
+        ],
+        "cx": 500,
+        "cy": 1220
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "sun",
+          "x": 830,
+          "y": 470,
+          "r": 90,
+          "color": "#fff1b8"
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#ffffff",
+          "alpha": 0.8,
+          "y": [
+            150,
+            650
+          ],
+          "seed": 6
+        },
+        {
+          "type": "hills",
+          "color": "#7fa6c9",
+          "base_y": 1220,
+          "amp": 110,
+          "seed": 2
+        },
+        {
+          "type": "houses",
+          "color": "#8a5a4a",
+          "lit": false,
+          "items": [
+            [
+              760,
+              1352,
+              0.6
+            ],
+            [
+              905,
+              1356,
+              0.55
+            ]
+          ]
+        },
+        {
+          "type": "hills",
+          "color": "#4d7a5c",
+          "base_y": 1340,
+          "amp": 70,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4a36",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ]
+          ],
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#5b6b3a",
+          "grass_color": "#6d8044",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 440,
+          "facing": 1,
+          "anim": "think"
+        },
+        {
+          "type": "text",
+          "text": "2. Make it too small to skip",
+          "y": 225,
+          "size": 58,
+          "color": "#fff3d6",
+          "stroke": 6,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Habit three. Every night, write one thing you learned. Just one line.",
+      "caption_y": 700,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.05
+          ],
+          [
+            1,
+            1.12
+          ]
+        ],
+        "cx": 500,
+        "cy": 1220
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dusk"
+        },
+        {
+          "type": "moon",
+          "x": 800,
+          "y": 430,
+          "r": 62
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#ffffff",
+          "alpha": 0.8,
+          "y": [
+            150,
+            650
+          ],
+          "seed": 6
+        },
+        {
+          "type": "hills",
+          "color": "#5b5a86",
+          "base_y": 1220,
+          "amp": 110,
+          "seed": 2
+        },
+        {
+          "type": "houses",
+          "color": "#8a5a4a",
+          "lit": false,
+          "items": [
+            [
+              760,
+              1352,
+              0.6
+            ],
+            [
+              905,
+              1356,
+              0.55
+            ]
+          ]
+        },
+        {
+          "type": "hills",
+          "color": "#3e3f66",
+          "base_y": 1340,
+          "amp": 70,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4a36",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ]
+          ],
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#3a4238",
+          "grass_color": "#4a5644",
+          "furrows": false
+        },
+        {
+          "type": "stars",
+          "alpha": 0.6
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 440,
+          "facing": 1,
+          "anim": "idle",
+          "bend": 0.5
+        },
+        {
+          "type": "text",
+          "text": "3. One line every night",
+          "y": 225,
+          "size": 58,
+          "color": "#fff3d6",
+          "stroke": 6,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Ten minutes became an hour. One line became a notebook. A year later, Leo topped his class.",
+      "caption_y": 700,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.0
+          ],
+          [
+            1,
+            1.1
+          ]
+        ],
+        "cx": 540,
+        "cy": 1200
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "sun",
+          "x": 300,
+          "y": 950,
+          "r": 110,
+          "color": "#ffd08a"
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#ffffff",
+          "alpha": 0.8,
+          "y": [
+            150,
+            650
+          ],
+          "seed": 6
+        },
+        {
+          "type": "hills",
+          "color": "#8a7a96",
+          "base_y": 1220,
+          "amp": 110,
+          "seed": 2
+        },
+        {
+          "type": "houses",
+          "color": "#8a5a4a",
+          "lit": false,
+          "items": [
+            [
+              760,
+              1352,
+              0.6
+            ],
+            [
+              905,
+              1356,
+              0.55
+            ]
+          ]
+        },
+        {
+          "type": "hills",
+          "color": "#5a6a58",
+          "base_y": 1340,
+          "amp": 70,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4a36",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ]
+          ],
+          "seed": 3
+        },
+        {
+          "type": "ground",
+          "color": "#4f7038",
+          "grass_color": "#77a04a",
+          "furrows": false
+        },
+        {
+          "type": "birds",
+          "count": 5,
+          "y": [
+            400,
+            650
+          ]
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 440,
+          "facing": 1,
+          "anim": "cheer"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "anim": "laugh",
+          "x": 680,
+          "facing": -1,
+          "phase": 1
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "anim": "wave",
+          "x": 800,
+          "facing": -1,
+          "phase": 2
+        },
+        {
+          "type": "text",
+          "counter": {
+            "value": [
+              [
+                0.05,
+                1
+              ],
+              [
+                0.6,
+                365
+              ]
+            ],
+            "fmt": "DAY {}"
+          },
+          "text": "DAY 1",
+          "y": 225,
+          "size": 64,
+          "color": "#ffd27a",
+          "stroke": 6
+        }
+      ]
+    },
+    {
+      "narration": "Small habits, done every day, beat big plans you never start.",
+      "captions": false,
+      "lead": 0.6,
+      "tail": 2.2,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.1
+          ],
+          [
+            1,
+            1.0
+          ]
+        ],
+        "cx": 540,
+        "cy": 1100
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "card"
+        },
+        {
+          "type": "stars"
+        },
+        {
+          "type": "moon",
+          "x": 800,
+          "y": 330,
+          "r": 62
+        },
+        {
+          "type": "hills",
+          "color": "#1d1b38",
+          "base_y": 1220,
+          "amp": 110,
+          "seed": 2
+        },
+        {
+          "type": "hills",
+          "color": "#141329",
+          "base_y": 1340,
+          "amp": 70,
+          "seed": 5
+        },
+        {
+          "type": "ground",
+          "color": "#11121c",
+          "grass_color": "#171a26",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 540,
+          "facing": 1,
+          "silhouette": true,
+          "color": "#07070d"
+        },
+        {
+          "type": "fireflies",
+          "count": 22,
+          "y": [
+            1150,
+            1450
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Small habits, done every day, beat big plans you never start.",
+          "serif": true,
+          "size": 72,
+          "width": 860,
+          "y": 640,
+          "color": "#fff3d6",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.12,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Tiny Tales Daily  •  New story every day",
+          "size": 38,
+          "y": 900,
+          "color": "#ffd27a",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.55,
+              0
+            ],
+            [
+              0.7,
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
