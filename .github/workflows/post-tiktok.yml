@@ -50,7 +50,7 @@ jobs:
             echo "| $(date +%F) | $name | tiktok: $status |" >> stories/PUBLISHED.md
             sleep 20
           done
-          git add stories/PUBLISHED.md && git commit -m "Log TikTok sends [skip ci]" && git pull --rebase -q && git push
+          git add stories/PUBLISHED.md && git commit -m "Log TikTok sends [skip ci]" && (git pull --rebase -q || (git checkout --theirs stories/PUBLISHED.md 2>/dev/null; git add stories/PUBLISHED.md; GIT_EDITOR=true git rebase --continue)) && git push
       - name: Phone notification (failed)
         if: failure()
         run: |

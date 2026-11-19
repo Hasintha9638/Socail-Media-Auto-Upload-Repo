@@ -94,7 +94,7 @@ jobs:
           Goes live $human (Sri Lanka)" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
             echo "| $(date +%F) | $name | https://youtube.com/shorts/$id | live $at |" >> stories/PUBLISHED.md
           done
-          git add stories/PUBLISHED.md && git commit -m "Log uploads [skip ci]" && git pull --rebase -q && git push
+          git add stories/PUBLISHED.md && git commit -m "Log uploads [skip ci]" && (git pull --rebase -q || (git checkout --theirs stories/PUBLISHED.md 2>/dev/null; git add stories/PUBLISHED.md; GIT_EDITOR=true git rebase --continue)) && git push
 
       - if: failure()
         name: Phone notification (failed)

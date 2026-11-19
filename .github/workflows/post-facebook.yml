@@ -47,7 +47,7 @@ jobs:
             curl -s -H "Title: ✅ Facebook Reel posted" -H "Tags: blue_book" -H "Click: $link" -d "$name" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
             echo "| $(date +%F) | $name | facebook: $link |" >> stories/PUBLISHED.md
           done
-          git add stories/PUBLISHED.md && git commit -m "Log Facebook posts [skip ci]" && git pull --rebase -q && git push
+          git add stories/PUBLISHED.md && git commit -m "Log Facebook posts [skip ci]" && (git pull --rebase -q || (git checkout --theirs stories/PUBLISHED.md 2>/dev/null; git add stories/PUBLISHED.md; GIT_EDITOR=true git rebase --continue)) && git push
       - name: Phone notification (failed)
         if: failure()
         run: |
