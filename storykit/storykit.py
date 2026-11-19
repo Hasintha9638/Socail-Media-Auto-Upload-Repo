@@ -673,7 +673,48 @@ def tts_scenes(story, workdir):
         if chunks: chunks[-1]["end"] = tcur - .05
         voice_audio = np.concatenate(pieces); dur = max(len(voice_audio) / sr, sc.get("min_dur", 0))
         out.append({"audio": voice_audio, "dur": dur, "chunks": chunks})
+    add_signature(story, out, sr)
     return out, sr
+
+SIGNATURE = {"intro": ["Here's today's tiny tale.", "One minute, one story, one lesson.", "Tiny Tales Daily. Let's go!"],
+             "outro": ["If this helped you, follow for tomorrow's tale.", "See you tomorrow on Tiny Tales Daily!",
+                       "Share this with someone who needs it today."]}
+
+def add_signature(story, out, sr):
+    """Hasintha's own recorded intro (start of scene 1) and outro (end of the last scene), rotating per video.
+    Story keys: "intro"/"outro" = 1-3 to pick a take, or 0 to leave it out."""
+    import soundfile as sf, datetime
+    vdir = os.path.join(HERE, "..", "voice")
+    if not os.path.isdir(vdir) or not out: return
+    try: day = datetime.date.fromisoformat(story.get("publish_date", "")).toordinal()
+    except ValueError: day = sum(map(ord, story.get("title", "")))
+    slot = day * 2 + (1 if story.get("publish_at", "05:45") >= "12:00" else 0)
+    allv = np.concatenate([o["audio"] for o in out]); ref = np.sqrt(np.mean(allv[np.abs(allv) > .02] ** 2))   # loudness of the story voice
+    for kind, k in (("intro", 0), ("outro", 1)):
+        n = story.get(kind, (slot + k) % 3 + 1)
+        f = os.path.join(vdir, f"{kind}{n}.wav")
+        if not n or not os.path.exists(f): continue
+        a, r = sf.read(f, dtype="float32")
+        if a.ndim > 1: a = a.mean(1)
+        if r != sr: a = np.interp(np.arange(int(len(a) * sr / r)) * r / sr, np.arange(len(a)), a).astype(np.float32)
+        a *= min(4.0, ref / (np.sqrt(np.mean(a[np.abs(a) > .02] ** 2)) + 1e-9))
+        d = len(a) / sr; text = SIGNATURE[kind][n - 1]
+        if kind == "intro":
+            sc = out[0]; lead = .35; pad = .45
+            sc["audio"] = np.concatenate([np.zeros(int(lead * sr), np.float32), a, np.zeros(int(pad * sr), np.float32), sc["audio"]])
+            shift = lead + d + pad
+            for c in sc["chunks"]: c["start"] += shift; c["end"] += shift
+            sc["chunks"][:0] = [{"text": t, "start": lead + d * i / 2, "end": lead + d * (i + 1) / 2} for i, t in enumerate(chunk_halves(text))]
+            sc["dur"] += shift
+        else:
+            sc = out[-1]; start = len(sc["audio"]) / sr + .2
+            sc["audio"] = np.concatenate([sc["audio"], np.zeros(int(.2 * sr), np.float32), a, np.zeros(int(.6 * sr), np.float32)])
+            sc["chunks"] += [{"text": t, "start": start + d * i / 2, "end": start + d * (i + 1) / 2} for i, t in enumerate(chunk_halves(text))]
+            sc["dur"] = max(sc["dur"], len(sc["audio"]) / sr)
+
+def chunk_halves(text):
+    w = text.split(); h = (len(w) + 1) // 2
+    return [" ".join(w[:h]), " ".join(w[h:])] if len(w) > 4 else [text]
 
 def trim(a, sr, th=.01):
     idx = np.where(np.abs(a) > th)[0]
