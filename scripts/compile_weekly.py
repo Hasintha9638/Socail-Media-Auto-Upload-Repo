@@ -86,11 +86,11 @@ def main():
     themed = {"Zen story": "Zen Stories to Calm Your Mind", "Stoic wisdom": "Stoic Lessons for a Stronger Mind",
               "Rich vs Poor mindset": "Rich vs Poor Mindset Lessons", "Success tips": "Success Habits That Change Your Life"}
     if formats.count(top) >= len(names) * .6 and top in themed:
-        title = f"{len(names)} {themed[top]} 🌙 | Tiny Tales Daily"
+        title = f"{len(names)} {themed[top]} | Mindset Minute"
     else:
-        title = f"{len(names)} Short Stories With Big Life Lessons 🌙 | Tiny Tales Daily"
+        title = f"{len(names)} Short Stories With Big Life Lessons | Mindset Minute"
     os.makedirs("comp", exist_ok=True); parts, chapters, t = [], [], 0.0
-    card("comp/intro.png", "TINY TALES DAILY", title.split(" 🌙")[0], "Animated stories with a lesson • New every day")
+    card("comp/intro.png", "MINDSET MINUTE", title.split(" | ")[0], "One-minute lessons • New every day")
     still_clip("comp/intro.png", 4, "comp/000_intro.mp4"); parts.append("comp/000_intro.mp4"); chapters.append((0, "Intro")); t += duration(parts[-1])
     for i, (n, s) in enumerate(zip(names, stories), 1):
         name = s.get("title") or s["youtube_title"].split("#")[0].split("|")[0].strip()
@@ -99,7 +99,7 @@ def main():
         chapters.append((t, f"{i}. {name}")); parts += [f"comp/{i:02d}a.mp4", f"comp/{i:02d}b.mp4"]
         t += duration(f"comp/{i:02d}a.mp4") + duration(f"comp/{i:02d}b.mp4")
         print(f"added {n}")
-    card("comp/outro.png", "THANK YOU FOR WATCHING", "Subscribe for a new tiny tale every day", "Tiny Tales Daily")
+    card("comp/outro.png", "THANK YOU FOR WATCHING", "Subscribe for a new lesson every day", "Mindset Minute")
     still_clip("comp/outro.png", 5, "comp/999_outro.mp4"); parts.append("comp/999_outro.mp4")
     open("comp/list.txt", "w").write("".join(f"file '{os.path.abspath(p)}'\n" for p in parts))
     run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", "comp/list.txt", "-c", "copy", "-movflags", "+faststart", "comp/weekly.mp4"])
@@ -109,15 +109,15 @@ def main():
     run(["ffmpeg", "-y", "-ss", str(min(6, duration("comp/01b.mp4") / 2)), "-i", "comp/01b.mp4", "-frames:v", "1", "comp/thumb_bg.jpg"])
     th = Image.open("comp/thumb_bg.jpg").convert("RGB").resize((1280, 720)); d = ImageDraw.Draw(th)
     d.rectangle([0, 470, 1280, 720], fill=(10, 12, 30))
-    d.text((640, 545), title.split(" 🌙")[0].replace(" | Tiny Tales Daily", ""), font=font("Poppins-Bold.ttf", 54), anchor="mm", fill=(255, 210, 122))
-    d.text((640, 640), "TINY TALES DAILY", font=font("Poppins-Bold.ttf", 34), anchor="mm", fill=(255, 243, 214))
+    d.text((640, 545), title.split(" | ")[0], font=font("Poppins-Bold.ttf", 54), anchor="mm", fill=(255, 210, 122))
+    d.text((640, 640), "MINDSET MINUTE", font=font("Poppins-Bold.ttf", 34), anchor="mm", fill=(255, 243, 214))
     th.save("comp/thumb.jpg", quality=90)
 
     def ts(x): x = int(x); return f"{x // 60}:{x % 60:02d}" if x < 3600 else f"{x // 3600}:{x % 3600 // 60:02d}:{x % 60:02d}"
     tags = sorted({tg for s in stories for tg in s.get("tags", [])})[:25]
-    desc = (f"{len(names)} animated stories with a lesson, from this week on Tiny Tales Daily. Watch them all, or jump to one:\n\n"
+    desc = (f"{len(names)} animated stories with a lesson, from this week on Mindset Minute. Watch them all, or jump to one:\n\n"
             + "\n".join(f"{ts(a)} {b}" for a, b in chapters)
-            + "\n\nA new tiny tale every day. Subscribe so you don't miss tomorrow's story.\n\n#TinyTalesDaily #shortstories #lifelessons #motivation #zen #mindset")
+            + "\n\nA new one-minute lesson every day. Subscribe so you don't miss tomorrow's story.\n\n#MindsetMinute #shortstories #lifelessons #motivation #zen #mindset")
     publish(title, desc, tags)
 
 

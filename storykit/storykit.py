@@ -612,8 +612,9 @@ def make_watermark(text):
     font = ImageFont.truetype(FONT_BOLD, 30); tw = font.getlength(text)
     im = Image.new("RGBA", (int(tw) + 70, 56), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     d.rounded_rectangle([0, 0, im.width - 1, 55], radius=28, fill=(10, 12, 30, 110))
-    d.ellipse([16, 15, 42, 41], fill=(255, 214, 140, 235))          # little moon
-    d.ellipse([25, 11, 51, 37], fill=(10, 12, 30, 110))
+    gold = (255, 214, 140, 235)                                       # little stopwatch
+    d.ellipse([16, 16, 44, 44], outline=gold, width=4)
+    d.rectangle([27, 9, 33, 13], fill=gold); d.line([(30, 30), (30, 21)], fill=gold, width=3); d.line([(30, 30), (36, 33)], fill=gold, width=3)
     d.text((54, 28), text, font=font, anchor="lm", fill=(255, 243, 214, 215))
     a = np.array(im); a[..., 3] = (a[..., 3] * 0.85).astype(np.uint8)
     return Image.fromarray(a)
@@ -680,6 +681,10 @@ SIGNATURE = {"intro": ["Here's today's tiny tale.", "One minute, one story, one 
              "outro": ["If this helped you, follow for tomorrow's tale.", "See you tomorrow on Tiny Tales Daily!",
                        "Share this with someone who needs it today."]}
 
+# "Tiny Tales Daily. Let's go!" (intro 3) and "See you tomorrow on Tiny Tales Daily!" (outro 2) name the old channel name.
+# Re-record them with "Mindset Minute" and add the numbers back here.
+ACTIVE_TAKES = {"intro": [1, 2], "outro": [1, 3]}
+
 def add_signature(story, out, sr):
     """Hasintha's own recorded intro (start of scene 1) and outro (end of the last scene), rotating per video.
     Story keys: "intro"/"outro" = 1-3 to pick a take, or 0 to leave it out."""
@@ -691,7 +696,7 @@ def add_signature(story, out, sr):
     slot = day * 2 + (1 if story.get("publish_at", "05:45") >= "12:00" else 0)
     allv = np.concatenate([o["audio"] for o in out]); ref = np.sqrt(np.mean(allv[np.abs(allv) > .02] ** 2))   # loudness of the story voice
     for kind, k in (("intro", 0), ("outro", 1)):
-        n = story.get(kind, (slot + k) % 3 + 1)
+        takes = ACTIVE_TAKES[kind]; n = story.get(kind, takes[(slot + k) % len(takes)])
         f = os.path.join(vdir, f"{kind}{n}.wav")
         if not n or not os.path.exists(f): continue
         a, r = sf.read(f, dtype="float32")
@@ -760,7 +765,7 @@ def render(story_path, out_path):
         print(f"Story ran {total:.1f}s; holding the last card {min_total - total:.1f}s longer to reach {min_total:.0f}s")
     hl = set(w.lower() for w in story.get("highlight", []))
     caps = Captions(); files = []
-    wm = make_watermark(story.get("watermark", "Tiny Tales Daily"))
+    wm = make_watermark(story.get("watermark", "Mindset Minute"))
     for i, (sc, vo) in enumerate(zip(story["scenes"], voice)):
         dur = vo["dur"]; nfr = int(round(dur * FPS)); vo["nfr"] = nfr
         scene = Scene(sc, dur, random.Random(i))
@@ -809,7 +814,7 @@ def stills(story_path, outdir, times):
     for si, ts in times:
         si = int(si); sc = story["scenes"][si]; scene = Scene(sc, sc.get("preview_dur", 8), random.Random(si))
         fr = scene.frame(ts).convert("RGBA")
-        wm = make_watermark(story.get("watermark", "Tiny Tales Daily"))
+        wm = make_watermark(story.get("watermark", "Mindset Minute"))
         if wm is not None and sc.get("watermark", True): fr.alpha_composite(wm, dest=(W - wm.width - 36, 330))
         if sc.get("captions", True): Captions().draw(fr, [{"text": "Sample caption text here", "start": 0, "end": 99}], 1, sc.get("caption_y", 700), set(story.get("highlight", [])))
         fr.convert("RGB").save(os.path.join(outdir, f"p{si}_{ts}.jpg"), quality=88)

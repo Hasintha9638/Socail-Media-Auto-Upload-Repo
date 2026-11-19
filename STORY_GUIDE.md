@@ -1,6 +1,6 @@
-# Tiny Tales Daily — writing guide (moral stories, tiny motivation, funny motivation, zen stories, success tips, life lessons)
+# Mindset Minute — writing guide (moral stories, tiny motivation, funny motivation, zen stories, success tips, life lessons)
 
-Channel name: **Tiny Tales Daily** (YouTube + TikTok). Use this exact name in end cards and descriptions.
+Channel name: **Mindset Minute** (YouTube + TikTok + Facebook; renamed from Tiny Tales Daily on 2026-11-19). Use this exact name in end cards and descriptions. Never write "Tiny Tales Daily" in new stories.
 
 Each day: write ONE new story as `stories/YYYY-MM-DD-<slug>.json`, preview it, commit it to `main`.
 GitHub Actions renders it and schedules it on YouTube Shorts for the US evening peak (5:45 AM Sri Lanka next morning = 7:15 PM New York); Facebook Reels post at the same time.
@@ -33,18 +33,18 @@ Also check stories/PUBLISHED.md so the theme differs from the last 6 videos. (Mo
 - **YouTube title (≤ 60 chars, then hashtags):** put a search keyword near the start plus a curiosity gap, then ` #shorts` plus 1–2 topic tags.
   Patterns: "He Laughed at the Lazy Goat… Then This Happened #shorts #motivation", "The 100 Rupee Life Lesson Nobody Teaches #shorts #lifelessons", "One Stone a Day Changed Everything | Moral Story #shorts".
 - **Keywords to rotate:** success tips, habits of successful people, zen story, zen wisdom, mindfulness, motivation, motivational story, life lessons, moral story, short story, animated story, funny motivation, self improvement, discipline, success mindset, kindness, inspiration.
-- **Description:** line 1 is a keyword-rich hook sentence (shown in search), then the moral, then the Tiny Tales Daily subscribe line, then **5–8 hashtags** with the format's tags first:
-  - moral: #moralstory #shortstory #animatedstory #lifelessons #TinyTalesDaily #shorts
-  - tiny motivation: #motivation #motivationalvideo #successmindset #discipline #TinyTalesDaily #shorts
-  - funny motivation: #funnymotivation #funny #motivation #relatable #TinyTalesDaily #shorts
-  - life lesson: #lifelessons #lifeadvice #selfimprovement #wisdom #TinyTalesDaily #shorts
-  - success tips: #successtips #success #habits #selfimprovement #motivation #TinyTalesDaily #shorts (title example: "3 Habits That Made a Poor Boy Rich #shorts #success")
-  - rich vs poor mindset: #richmindset #mindset #successmindset #moneymindset #selfimprovement #TinyTalesDaily #shorts (title example: "Poor Mindset vs Rich Mindset on Payday #shorts #mindset")
-  - stoic wisdom: #stoicism #stoic #marcusaurelius #mindset #wisdom #TinyTalesDaily #shorts
-  - grandpa's life advice: #lifeadvice #lifelessons #grandpa #wisdom #motivation #TinyTalesDaily #shorts
-  - discipline day 1 vs 365: #discipline #habits #consistency #selfimprovement #motivation #TinyTalesDaily #shorts
-  - smart money lessons: #moneylessons #personalfinance #moneytips #financialliteracy #mindset #TinyTalesDaily #shorts
-  - zen story: #zenstory #zen #mindfulness #wisdom #innerpeace #TinyTalesDaily #shorts (title example: "Empty Your Cup First | Zen Story #shorts #zen")
+- **Description:** line 1 is a keyword-rich hook sentence (shown in search), then the moral, then the Mindset Minute subscribe line, then **5–8 hashtags** with the format's tags first:
+  - moral: #moralstory #shortstory #animatedstory #lifelessons #MindsetMinute #shorts
+  - tiny motivation: #motivation #motivationalvideo #successmindset #discipline #MindsetMinute #shorts
+  - funny motivation: #funnymotivation #funny #motivation #relatable #MindsetMinute #shorts
+  - life lesson: #lifelessons #lifeadvice #selfimprovement #wisdom #MindsetMinute #shorts
+  - success tips: #successtips #success #habits #selfimprovement #motivation #MindsetMinute #shorts (title example: "3 Habits That Made a Poor Boy Rich #shorts #success")
+  - rich vs poor mindset: #richmindset #mindset #successmindset #moneymindset #selfimprovement #MindsetMinute #shorts (title example: "Poor Mindset vs Rich Mindset on Payday #shorts #mindset")
+  - stoic wisdom: #stoicism #stoic #marcusaurelius #mindset #wisdom #MindsetMinute #shorts
+  - grandpa's life advice: #lifeadvice #lifelessons #grandpa #wisdom #motivation #MindsetMinute #shorts
+  - discipline day 1 vs 365: #discipline #habits #consistency #selfimprovement #motivation #MindsetMinute #shorts
+  - smart money lessons: #moneylessons #personalfinance #moneytips #financialliteracy #mindset #MindsetMinute #shorts
+  - zen story: #zenstory #zen #mindfulness #wisdom #innerpeace #MindsetMinute #shorts (title example: "Empty Your Cup First | Zen Story #shorts #zen")
 - **tags field:** 10–15 tags. Mix broad (motivation, short story) with specific (the story's theme, e.g. "patience story", "lazy goat story").
 - **Hooks decide reach:** the first line must create a question in 2 seconds. Keep videos under 50 s, because rewatches count, and end on a line that makes people comment, like, or share (a question or a quotable line).
 - Topical but evergreen: you may echo what's trending (exams season, New Year goals, monsoon, cricket season in Sri Lanka) but never copy anyone's video, song, or character.
@@ -64,7 +64,7 @@ Also check stories/PUBLISHED.md so the theme differs from the last 6 videos. (Mo
 ## JSON shape
 ```json
 {
-  "title": "...", "youtube_title": "...", "description": "...(story teaser, moral, then \"A new tiny tale every day on Tiny Tales Daily. Subscribe so you don't miss tomorrow's story.\", then 5-6 hashtags incl. #TinyTalesDaily)",
+  "title": "...", "youtube_title": "...", "description": "...(story teaser, moral, then \"A new one-minute lesson every day on Mindset Minute. Subscribe so you don't miss tomorrow's story.\", then 5-6 hashtags incl. #MindsetMinute)",
   "tags": ["moral story", "..."],
   "voice": "bm_george",            // also: bm_lewis, am_michael, bf_emma, af_heart (vary by story)
   "speed": 0.95, "mood": "warm",   // mood: warm | sad | hopeful
@@ -105,7 +105,7 @@ Captions sit around y=640, so keep the sky area y=520–780 free of busy element
 ### Recurring patterns
 - **Scene 1:** the hook action, plus a gold title `text` at y=250 that fades out.
 - **Time passing:** `sky.cycle: 3` + sun/moon `cycle_arc` + a `counter` text.
-- **Last scene (moral card):** `sky: card`, stars, moon, dark silhouettes, `captions: false`, serif `text` with the moral at y=640, and the gold line "Tiny Tales Daily  •  New story every day" at y=900. Use `lead: 0.6`, `tail: 2.2`.
+- **Last scene (moral card):** `sky: card`, stars, moon, dark silhouettes, `captions: false`, serif `text` with the moral at y=640, and the gold line "Mindset Minute  •  New lesson every day" at y=900. Use `lead: 0.6`, `tail: 2.2`.
 - Use the same background layers in every scene of a story so the place feels continuous. Change only the colours for time of day and weather.
 - Match colour palettes to the mood: warm dawn and golden for hope, cold blue night and storm for danger.
 

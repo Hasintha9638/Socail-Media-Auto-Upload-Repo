@@ -29,7 +29,7 @@ def main():
     except SystemExit:
         accts = None                       # a Page token can't list accounts: that's the normal case
     if accts:
-        pg = next((a for a in accts if (page and a["id"] == page) or "tiny tales" in a["name"].lower()), accts[0])
+        pg = next((a for a in accts if (page and a["id"] == page) or any(k in a["name"].lower() for k in ("mindset minute", "tiny tales"))), accts[0])
         page, token = pg["id"], pg["access_token"]
         print(f"FB_PAGE_TOKEN is a user token; using the Page token for {pg['name']} ({page}). "
               "Replace FB_PAGE_TOKEN with the Page token so it never expires.")
@@ -37,7 +37,7 @@ def main():
         me = req("GET", f"{GRAPH}/me?fields=id,name&access_token={token}")
         page = me["id"]; print(f"Using Page from token: {me.get('name')} ({page})")
     tags = " ".join(w for w in story.get("description", "").split() if w.startswith("#"))[:300]
-    caption = f"{story['youtube_title'].split('#')[0].strip()}\n\n{story['scenes'][-1]['narration']}\n\nA new tiny tale every day 🌙 Follow Tiny Tales Daily.\n{tags}"
+    caption = f"{story['youtube_title'].split('#')[0].strip()}\n\n{story['scenes'][-1]['narration']}\n\nA new one-minute lesson every day ⏱️ Follow Mindset Minute.\n{tags}"
 
     start = req("POST", f"{GRAPH}/{page}/video_reels", {"upload_phase": "start", "access_token": token})
     vid = start["video_id"]; upload_url = start.get("upload_url") or f"https://rupload.facebook.com/video-upload/v25.0/{vid}"

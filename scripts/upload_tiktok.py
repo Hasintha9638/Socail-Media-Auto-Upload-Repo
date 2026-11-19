@@ -53,7 +53,7 @@ def main():
     privacy = os.environ.get("TIKTOK_PRIVACY") or ("PUBLIC_TO_EVERYONE" if "PUBLIC_TO_EVERYONE" in options else (options or ["SELF_ONLY"])[0])
     print(f"Posting as @{info.get('creator_username')} with privacy {privacy} (allowed: {options})")
 
-    tags = " ".join("#" + t.replace(" ", "") for t in ["TinyTalesDaily", "moralstory", "storytime", "animation", "fyp"])
+    tags = " ".join("#" + t.replace(" ", "") for t in ["MindsetMinute", "mindset", "storytime", "animation", "fyp"])
     caption = f"{story['title']} — {story['scenes'][-1]['narration']} {tags}"[:2200]
     size = os.path.getsize(video)
     def init_post(priv):
