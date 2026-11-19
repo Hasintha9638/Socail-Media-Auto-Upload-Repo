@@ -1,0 +1,920 @@
+{
+  "format": "Zen story",
+  "publish_at": "18:45",
+  "publish_date": "2026-11-19",
+  "title": "Empty Your Cup",
+  "youtube_title": "The Monk Kept Pouring Tea… Until It Spilled | Zen Story #shorts #zen",
+  "description": "A proud scholar climbed a mountain to learn from an old monk — and talked the whole way. The monk answered with a cup of tea. A classic Zen story, retold.\n\nEmpty your cup: only an open mind can learn something new.\n\nA new tiny tale every day on Tiny Tales Daily. Subscribe so you don't miss tomorrow's story.\n\n#zenstory #zen #mindfulness #wisdom #innerpeace #TinyTalesDaily #shorts",
+  "tags": [
+    "zen story",
+    "zen",
+    "empty your cup",
+    "zen wisdom",
+    "mindfulness",
+    "short story",
+    "animated story",
+    "life lessons",
+    "humility",
+    "open mind",
+    "monk story",
+    "inner peace",
+    "wisdom"
+  ],
+  "voice": "bm_george",
+  "speed": 0.88,
+  "mood": "sad",
+  "highlight": [
+    "full",
+    "cup",
+    "empty",
+    "pouring",
+    "learn"
+  ],
+  "scenes": [
+    {
+      "narration": "A proud scholar climbed a mountain to learn from an old monk. He talked the whole way up.",
+      "caption_y": 640,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.0
+          ],
+          [
+            1,
+            1.06
+          ]
+        ],
+        "cx": 560,
+        "cy": 1200
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "sun",
+          "x": 800,
+          "y": [
+            [
+              0,
+              1100
+            ],
+            [
+              1,
+              1020
+            ]
+          ],
+          "r": 90,
+          "color": "#ffd9a0"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#cfd6e4",
+          "alpha": 0.55,
+          "speed": 0.5,
+          "y": [
+            700,
+            1050
+          ],
+          "seed": 8
+        },
+        {
+          "type": "hills",
+          "color": "#8e9bb8",
+          "base_y": 1150,
+          "amp": 230,
+          "seed": 11
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#cfd6e4",
+          "alpha": 0.45,
+          "speed": 0.7,
+          "y": [
+            1050,
+            1250
+          ],
+          "seed": 3
+        },
+        {
+          "type": "hills",
+          "color": "#5f6f8f",
+          "base_y": 1330,
+          "amp": 90,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4038",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              985,
+              1452,
+              1.15
+            ]
+          ],
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#4f5f48",
+          "grass_color": "#62764f",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "monk",
+          "x": 455,
+          "facing": 1,
+          "anim": "idle"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": [
+            [
+              0,
+              980
+            ],
+            [
+              0.55,
+              740
+            ],
+            [
+              1,
+              740
+            ]
+          ],
+          "facing": -1,
+          "shirt": "#2f5e8f",
+          "pants": "#2a2a35",
+          "anim": "laugh",
+          "phase": 1
+        },
+        {
+          "type": "text",
+          "text": "EMPTY YOUR CUP",
+          "y": 250,
+          "size": 60,
+          "color": "#ffe7b0",
+          "stroke": 5,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.08,
+              1
+            ],
+            [
+              0.85,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "I know philosophy, history and poetry, he said. Teach me something new.",
+      "caption_y": 640,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.08
+          ],
+          [
+            1,
+            1.14
+          ]
+        ],
+        "cx": 620,
+        "cy": 1220
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "sun",
+          "x": 800,
+          "y": [
+            [
+              0,
+              1100
+            ],
+            [
+              1,
+              1020
+            ]
+          ],
+          "r": 90,
+          "color": "#ffd9a0"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#cfd6e4",
+          "alpha": 0.55,
+          "speed": 0.5,
+          "y": [
+            700,
+            1050
+          ],
+          "seed": 8
+        },
+        {
+          "type": "hills",
+          "color": "#8e9bb8",
+          "base_y": 1150,
+          "amp": 230,
+          "seed": 11
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#cfd6e4",
+          "alpha": 0.45,
+          "speed": 0.7,
+          "y": [
+            1050,
+            1250
+          ],
+          "seed": 3
+        },
+        {
+          "type": "hills",
+          "color": "#5f6f8f",
+          "base_y": 1330,
+          "amp": 90,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4038",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              985,
+              1452,
+              1.15
+            ]
+          ],
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#4f5f48",
+          "grass_color": "#62764f",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 585,
+          "fill": 0
+        },
+        {
+          "type": "person",
+          "kind": "monk",
+          "x": 455,
+          "facing": 1,
+          "anim": "idle"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 740,
+          "facing": -1,
+          "shirt": "#2f5e8f",
+          "pants": "#2a2a35",
+          "anim": "laugh"
+        }
+      ]
+    },
+    {
+      "narration": "The monk only smiled, and began pouring tea into the scholar's cup.",
+      "caption_y": 640,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.12
+          ],
+          [
+            1,
+            1.22
+          ]
+        ],
+        "cx": 560,
+        "cy": 1250
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "sun",
+          "x": 820,
+          "y": 960,
+          "r": 95,
+          "color": "#ffd08a"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#cfd6e4",
+          "alpha": 0.55,
+          "speed": 0.5,
+          "y": [
+            700,
+            1050
+          ],
+          "seed": 8
+        },
+        {
+          "type": "hills",
+          "color": "#9a8aa8",
+          "base_y": 1150,
+          "amp": 230,
+          "seed": 11
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#cfd6e4",
+          "alpha": 0.45,
+          "speed": 0.7,
+          "y": [
+            1050,
+            1250
+          ],
+          "seed": 3
+        },
+        {
+          "type": "hills",
+          "color": "#6f6a86",
+          "base_y": 1330,
+          "amp": 90,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4038",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              985,
+              1452,
+              1.15
+            ]
+          ],
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#4f5f48",
+          "grass_color": "#62764f",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 585,
+          "fill": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0.85
+            ]
+          ],
+          "pour": [
+            [
+              0,
+              0
+            ],
+            [
+              0.15,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "person",
+          "kind": "monk",
+          "x": 500,
+          "facing": 1,
+          "anim": "carry",
+          "stone": "#5b4636",
+          "bend": 0.3
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 740,
+          "facing": -1,
+          "shirt": "#2f5e8f",
+          "pants": "#2a2a35",
+          "anim": "idle"
+        }
+      ]
+    },
+    {
+      "narration": "The cup filled. The monk kept pouring. Tea ran over the table.",
+      "caption_y": 640,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.25
+          ],
+          [
+            1,
+            1.32
+          ]
+        ],
+        "cx": 570,
+        "cy": 1300
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "sun",
+          "x": 820,
+          "y": 960,
+          "r": 95,
+          "color": "#ffd08a"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#cfd6e4",
+          "alpha": 0.55,
+          "speed": 0.5,
+          "y": [
+            700,
+            1050
+          ],
+          "seed": 8
+        },
+        {
+          "type": "hills",
+          "color": "#9a8aa8",
+          "base_y": 1150,
+          "amp": 230,
+          "seed": 11
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#cfd6e4",
+          "alpha": 0.45,
+          "speed": 0.7,
+          "y": [
+            1050,
+            1250
+          ],
+          "seed": 3
+        },
+        {
+          "type": "hills",
+          "color": "#6f6a86",
+          "base_y": 1330,
+          "amp": 90,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4038",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              985,
+              1452,
+              1.15
+            ]
+          ],
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#4f5f48",
+          "grass_color": "#62764f",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 585,
+          "fill": [
+            [
+              0,
+              0.85
+            ],
+            [
+              1,
+              1.7
+            ]
+          ],
+          "pour": 1
+        },
+        {
+          "type": "person",
+          "kind": "monk",
+          "x": 500,
+          "facing": 1,
+          "anim": "carry",
+          "stone": "#5b4636",
+          "bend": 0.3
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 740,
+          "facing": -1,
+          "shirt": "#2f5e8f",
+          "pants": "#2a2a35",
+          "anim": "cheer"
+        }
+      ]
+    },
+    {
+      "narration": "Stop! the scholar cried. It is full. No more will go in!",
+      "caption_y": 640,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.15
+          ],
+          [
+            1,
+            1.1
+          ]
+        ],
+        "cx": 640,
+        "cy": 1220
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "sun",
+          "x": 820,
+          "y": 960,
+          "r": 95,
+          "color": "#ffd08a"
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#cfd6e4",
+          "alpha": 0.55,
+          "speed": 0.5,
+          "y": [
+            700,
+            1050
+          ],
+          "seed": 8
+        },
+        {
+          "type": "hills",
+          "color": "#9a8aa8",
+          "base_y": 1150,
+          "amp": 230,
+          "seed": 11
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#cfd6e4",
+          "alpha": 0.45,
+          "speed": 0.7,
+          "y": [
+            1050,
+            1250
+          ],
+          "seed": 3
+        },
+        {
+          "type": "hills",
+          "color": "#6f6a86",
+          "base_y": 1330,
+          "amp": 90,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4038",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              985,
+              1452,
+              1.15
+            ]
+          ],
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#4f5f48",
+          "grass_color": "#62764f",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 585,
+          "fill": 1.7,
+          "pour": 0
+        },
+        {
+          "type": "person",
+          "kind": "monk",
+          "x": 455,
+          "facing": 1,
+          "anim": "idle"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 740,
+          "facing": -1,
+          "shirt": "#2f5e8f",
+          "pants": "#2a2a35",
+          "anim": "wave"
+        }
+      ]
+    },
+    {
+      "narration": "Like this cup, the monk said softly, you are full of your own ideas. How can I teach you, until you empty your cup?",
+      "caption_y": 640,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.08
+          ],
+          [
+            1,
+            1.18
+          ]
+        ],
+        "cx": 500,
+        "cy": 1220
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dusk"
+        },
+        {
+          "type": "moon",
+          "x": 790,
+          "y": 430,
+          "r": 62
+        },
+        {
+          "type": "clouds",
+          "count": 5,
+          "color": "#cfd6e4",
+          "alpha": 0.55,
+          "speed": 0.5,
+          "y": [
+            700,
+            1050
+          ],
+          "seed": 8
+        },
+        {
+          "type": "hills",
+          "color": "#5b5a86",
+          "base_y": 1150,
+          "amp": 230,
+          "seed": 11
+        },
+        {
+          "type": "clouds",
+          "count": 4,
+          "color": "#cfd6e4",
+          "alpha": 0.45,
+          "speed": 0.7,
+          "y": [
+            1050,
+            1250
+          ],
+          "seed": 3
+        },
+        {
+          "type": "hills",
+          "color": "#3e3f66",
+          "base_y": 1330,
+          "amp": 90,
+          "seed": 5
+        },
+        {
+          "type": "trees",
+          "color": "#2f4038",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              985,
+              1452,
+              1.15
+            ]
+          ],
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#3a4238",
+          "grass_color": "#4a5644",
+          "furrows": false
+        },
+        {
+          "type": "stars",
+          "alpha": 0.5
+        },
+        {
+          "type": "tea",
+          "x": 585,
+          "fill": 1.7
+        },
+        {
+          "type": "person",
+          "kind": "monk",
+          "x": 455,
+          "facing": 1,
+          "anim": "think"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 740,
+          "facing": -1,
+          "shirt": "#2f5e8f",
+          "pants": "#2a2a35",
+          "anim": "idle",
+          "bend": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "Empty your cup. Only an open mind can learn something new.",
+      "captions": false,
+      "lead": 0.6,
+      "tail": 2.2,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.1
+          ],
+          [
+            1,
+            1.0
+          ]
+        ],
+        "cx": 540,
+        "cy": 1100
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "card"
+        },
+        {
+          "type": "stars"
+        },
+        {
+          "type": "moon",
+          "x": 800,
+          "y": 330,
+          "r": 62
+        },
+        {
+          "type": "hills",
+          "color": "#1d1b38",
+          "base_y": 1150,
+          "amp": 230,
+          "seed": 11
+        },
+        {
+          "type": "hills",
+          "color": "#141329",
+          "base_y": 1330,
+          "amp": 90,
+          "seed": 5
+        },
+        {
+          "type": "ground",
+          "color": "#11121c",
+          "grass_color": "#171a26",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 540,
+          "fill": 0.15
+        },
+        {
+          "type": "person",
+          "kind": "monk",
+          "x": 420,
+          "facing": 1,
+          "silhouette": true,
+          "color": "#07070d"
+        },
+        {
+          "type": "fireflies",
+          "count": 22,
+          "y": [
+            1150,
+            1450
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Empty your cup. Only an open mind can learn something new.",
+          "serif": true,
+          "size": 72,
+          "width": 860,
+          "y": 640,
+          "color": "#fff3d6",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.12,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Tiny Tales Daily  •  New story every day",
+          "size": 38,
+          "y": 900,
+          "color": "#ffd27a",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.55,
+              0
+            ],
+            [
+              0.7,
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

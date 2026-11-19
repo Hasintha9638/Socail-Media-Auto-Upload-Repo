@@ -91,6 +91,7 @@ Captions sit around y=640, so keep the sky area y=520–780 free of busy element
 | rain | `intensity` · lightning: `times: [seconds]` (thunder is added automatically) |
 | splash | `x`, `y`, `intensity` |
 | fireflies | `count`, `y` |
+| tea | low table with a cup: `x`, `fill` 0–1 fills, above 1 overflows and spills; `pour` 0/1 shows a stream (a person with `anim: carry`, `stone: "#5b4636"` as the teapot, standing ~85 px left of x, facing right) |
 | text | `text`, `y`, `size`, `color`, `stroke`, `serif`, `alpha`, `counter: {value, fmt: "YEAR {}"}` |
 
 ### Recurring patterns

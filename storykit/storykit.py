@@ -461,6 +461,41 @@ class Scene:
             x = x0 + vx * ph; y = y0 + vy * ph + 900 * ph * ph; s = r.uniform(4, 9) * (1 - ph)
             d.ellipse([x - s, y - s, x + s, y + s], fill=(200, 225, 240, int(220 * (1 - ph))))
 
+    def tea(self, e, t, now):
+        """Low tea table with a cup; `fill` 0..1 fills the cup, above 1 overflows into a spreading puddle.
+        `pour` 0/1 shows a stream from above (the pourer's hand should be near x, y-170)."""
+        x, y = kf(e.get("x", 540), t), kf(e.get("y", self.ground), t)
+        fill, pour = kf(e.get("fill", 0), t), kf(e.get("pour", 0), t)
+        def f(d, s):
+            def R(a, b, c, dd, col, r=0): d.rounded_rectangle([a * s, b * s, c * s, dd * s], radius=int(r * s), fill=col)
+            R(x - 150, y - 70, x + 150, y - 52, hexc("#6b4a2b"), 6)                      # table top
+            R(x - 130, y - 54, x - 112, y, hexc("#5a3d23"), 3); R(x + 112, y - 54, x + 130, y, hexc("#5a3d23"), 3)
+            if fill > 1:                                                                  # spill on the table and down
+                w = min(140, 30 + (fill - 1) * 220)
+                d.ellipse([(x - w) * s, (y - 76) * s, (x + w) * s, (y - 62) * s], fill=hexc("#b5763a", 220))
+                if fill > 1.3:
+                    for k, dx in enumerate((-w * .7, w * .6)):
+                        L = min(52, (fill - 1.3) * 160)
+                        d.line([((x + dx) * s, (y - 56) * s), ((x + dx) * s, (y - 56 + L) * s)], fill=hexc("#b5763a", 220), width=int(6 * s))
+            cx, top, bot = x, y - 128, y - 70
+            d.polygon([((cx - 34) * s, top * s), ((cx + 34) * s, top * s), ((cx + 24) * s, bot * s), ((cx - 24) * s, bot * s)], fill=hexc("#f2ece0"))
+            lvl = top + (bot - top) * (1 - min(1, fill)) + 4
+            if fill > 0.02:
+                frac = (lvl - top) / (bot - top); hw = 34 - 10 * frac
+                d.polygon([((cx - hw + 3) * s, lvl * s), ((cx + hw - 3) * s, lvl * s), ((cx + 22) * s, (bot - 3) * s), ((cx - 22) * s, (bot - 3) * s)], fill=hexc("#b5763a"))
+            d.arc([(cx + 26) * s, (top + 14) * s, (cx + 50) * s, (top + 40) * s], -90, 90, fill=hexc("#f2ece0"), width=int(6 * s))
+            d.line([((cx - 34) * s, top * s), ((cx + 34) * s, top * s)], fill=hexc("#d8cfbf"), width=int(4 * s))
+            if pour > .5:
+                wob = math.sin(now * 20) * 2
+                d.line([((cx - 6 + wob) * s, (y - 230) * s), ((cx - 2) * s, top * s)], fill=hexc("#b5763a", 230), width=int(7 * s))
+            if fill > 1:                                                                  # overflow over the rim
+                d.line([((cx - 34) * s, top * s), ((cx - 40) * s, (bot + 2) * s)], fill=hexc("#b5763a", 230), width=int(6 * s))
+                d.line([((cx + 34) * s, top * s), ((cx + 40) * s, (bot + 2) * s)], fill=hexc("#b5763a", 230), width=int(6 * s))
+            for k in range(3):                                                            # steam
+                ph = (now * .6 + k / 3) % 1; sx = cx - 14 + k * 14 + math.sin(now * 2 + k) * 6
+                d.ellipse([(sx - 7) * s, (top - 20 - ph * 60) * s, (sx + 7) * s, (top - 6 - ph * 60) * s], fill=(255, 255, 255, int(110 * (1 - ph))))
+        return hi(f, (W, H)), (0, 0)
+
     def bolt(self, e, now, d):
         for tt in e.get("times", []):
             dt = now - tt
@@ -515,6 +550,7 @@ class Scene:
             elif ty == "wall": w = self.wall(e, t); res = (w, (0, 0)) if w else None
             elif ty == "person": res = self.person(e, t, now)
             elif ty == "text": res = self.text_el(e, t)
+            elif ty == "tea": res = self.tea(e, t, now)
             elif ty in ("rain", "birds", "fireflies", "splash", "lightning"):
                 lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
                 if ty == "lightning": self.bolt(e, now, d)
