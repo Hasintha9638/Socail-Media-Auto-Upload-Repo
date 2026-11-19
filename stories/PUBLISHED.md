@@ -13,3 +13,5 @@
 | 2026-11-19 | 2026-11-19-b-empty-your-cup | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
 | 2026-11-19 | 2026-11-20-a-same-bad-week-mindsets | https://youtube.com/shorts/EMQSU8KgRO8 | live 2026-11-20T05:45+05:30 |
 | 2026-11-19 | 2026-11-20-b-missed-the-bus | https://youtube.com/shorts/x84NpWoAb4o | live 2026-11-20T18:45+05:30 |
+| 2026-11-19 | 2026-11-20-a-same-bad-week-mindsets | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
+| 2026-11-19 | 2026-11-20-b-missed-the-bus | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
