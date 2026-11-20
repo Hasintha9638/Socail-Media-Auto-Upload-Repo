@@ -315,7 +315,8 @@ class Scene:
             def circ(cx, cy, r, col):
                 X, Y = P(cx, cy); d.ellipse([X - r * s, Y - r * s, X + r * s, Y + r * s], fill=col)
             lean = bend * H * .07
-            hip = (lean * .3, -H * .46 - bob); sho = (lean, -H * .77 - bob + bend * H * .05)
+            drop = H * .2 if anim == "sit" else 0   # sitting: lower body so the feet rest on the ground
+            hip = (lean * .3, -H * .46 - bob + drop); sho = (lean, -H * .77 - bob + bend * H * .05 + drop)
             legw, armw = H * .085, H * .068
             skin, shirt, pants = C(pal["skin"]), C(pal["shirt"]), C(pal["pants"])
             skin_b, shirt_b, pants_b = C(pal["skin"], dk=.18), C(pal["shirt"], dk=.18), C(pal["pants"], dk=.18)
@@ -348,13 +349,14 @@ class Scene:
                 if k < 0 and plain_: upper = (int(upper[0] * .82), int(upper[1] * .82), int(upper[2] * .82), 255)
                 if not plain_: upper = shoe
                 fx0, fx1 = foot[0] - H * .045, foot[0] + H * .085
-                X0, Y0 = P(fx0, -H * .055); X1, Y1 = P(fx1, H * .002)
+                fy_ = foot[1] + 2   # follows the foot (sitting feet are off the ground)
+                X0, Y0 = P(fx0, fy_ - H * .055); X1, Y1 = P(fx1, fy_ + H * .002)
                 d.rounded_rectangle([min(X0, X1), Y0, max(X0, X1), Y1], radius=int(H * .028 * s), fill=upper)
-                X0, Y0 = P(fx0 - H * .004, -H * .012); X1, Y1 = P(fx1 + H * .006, H * .006)
+                X0, Y0 = P(fx0 - H * .004, fy_ - H * .012); X1, Y1 = P(fx1 + H * .006, fy_ + H * .006)
                 d.rounded_rectangle([min(X0, X1), Y0, max(X0, X1), Y1], radius=int(H * .008 * s), fill=C("#f7f5ef") if sneaker else C("#1a1512"))
                 if sneaker:
                     for i in range(2):
-                        lx = foot[0] + H * (.02 + i * .022); X0, Y0 = P(lx, -H * .045); X1, Y1 = P(lx + H * .012, -H * .03)
+                        lx = foot[0] + H * (.02 + i * .022); X0, Y0 = P(lx, fy_ - H * .045); X1, Y1 = P(lx + H * .012, fy_ - H * .03)
                         d.line([(X0, Y0), (X1, Y1)], fill=C("#8c8a85") if kind == "student" else C("#dfe3ea"), width=max(1, int(H * .006 * s)))
             if anim == "sit" and not e.get("no_seat"):   # something to sit on, so nobody floats
                 rk = C(e.get("seat", "#7d7468")) if not e.get("silhouette") else C(pal["shirt"])
