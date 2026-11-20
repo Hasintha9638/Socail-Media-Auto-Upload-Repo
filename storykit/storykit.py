@@ -392,13 +392,13 @@ class Scene:
                     knee_x = hip[0] + H * .24
                     d.polygon([P(hip[0] - H * .12, hip[1] - H * .03), P(knee_x + H * .05, hip[1] - H * .01), P(knee_x + H * .07, hip[1] + H * .1), P(hip[0] - H * .14, hip[1] + H * .1)], fill=robe_d)
                     d.polygon([P(knee_x - H * .05, hip[1] + H * .05), P(knee_x + H * .07, hip[1] + H * .05), P(knee_x + H * .09, -H * .09), P(knee_x - H * .07, -H * .09)], fill=shirt)
-                    d.polygon([P(knee_x - H * .075, -H * .1), P(knee_x + H * .095, -H * .1), P(knee_x + H * .1, -H * .045), P(knee_x - H * .08, -H * .045)], fill=under)
+                    d.polygon([P(knee_x - H * .075, -H * .1), P(knee_x + H * .095, -H * .1), P(knee_x + H * .1, -H * .02), P(knee_x - H * .08, -H * .02)], fill=under)
                     for k_ in (-1, 1):
                         X, Y = P(knee_x + k_ * H * .03, -2); d.ellipse([X - H * .045 * s, Y - H * .03 * s, X + H * .045 * s, Y + H * .01 * s], fill=shoe)
                 else:
                     hem = H * .19; bot = -H * .1
                     d.polygon([P(hip[0] - hem * 1.03 + sway, -H * .13), P(hip[0] + hem * 1.03 + sway, -H * .13),
-                               P(hip[0] + hem * 1.05 + sway, -H * .05), P(hip[0] - hem * 1.05 + sway, -H * .05)], fill=under)
+                               P(hip[0] + hem * 1.05 + sway, -H * .02), P(hip[0] - hem * 1.05 + sway, -H * .02)], fill=under)   # reaches the sandals
                 tw = tw_s * .92
                 d.polygon([P(sho[0] - tw, sho[1] + H * .03), P(sho[0] - tw * .55, sho[1] - H * .012), P(sho[0] + tw * .6, sho[1] - H * .012), P(sho[0] + tw, sho[1] + H * .03),
                            P(hip[0] + hem * .98 + sway, bot), P(hip[0] + sway * .5, bot + H * .012), P(hip[0] - hem + sway, bot)], fill=shirt)
