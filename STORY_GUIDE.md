@@ -140,3 +140,9 @@ so every video gets the owner's real voice. When both folders have clips, mix ma
   Their mouth opens and closes with the voice and the head nods slightly. Never give `talk` to two people in the same moment,
   and don't use it while the narrator is describing the scene from outside (third person).
 - Characters standing still now breathe, sway their arms and tilt their head a little by themselves.
+- **Facial expressions:** every person has eyes, eyebrows, a nose and a mouth that show emotion. Set `"face"` on a person:
+  `"calm"` (default), `"happy"`, `"laugh"`, `"sad"`, `"worried"`, `"angry"`, `"surprised"`, `"think"`.
+  Change it during a scene with `[[0, "worried"], [0.6, "happy"]]` (times are fractions of the scene).
+  Without `face`, the pose decides: laugh → laugh, cheer/wave → happy, think → think, others → calm.
+  Use emotion to tell the story: the poor-mindset character `"worried"`/`"sad"`, the rich-mindset one `"calm"`/`"happy"`,
+  the angry moment `"angry"`, the lesson landing `"surprised"` then `"happy"`.

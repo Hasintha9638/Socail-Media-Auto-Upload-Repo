@@ -387,10 +387,12 @@ class Scene:
             hc = (sho[0] + H * .015 + (H * .02 if anim == "laugh" else 0) + nod * .4, sho[1] - hr * 1.05 - (math.sin(now * 9) * 2 * sc if anim == "laugh" else 0) + nod)
             limb([(sho[0], sho[1]), (hc[0], hc[1] + hr * .6)], skin, H * .05)
             circ(hc[0], hc[1], hr, skin)
+            if not e.get("silhouette"):   # ear (drawn before the hair so hair can cover its top)
+                circ(hc[0] - hr * .55, hc[1] + hr * .2, hr * .19, skin); circ(hc[0] - hr * .53, hc[1] + hr * .22, hr * .085, C(pal["skin"], dk=.16))
             hair = pal.get("hair")
             if hair and kind != "old":
                 X, Y = P(hc[0], hc[1]); R = hr * s * 1.04
-                d.pieslice([X - R, Y - R, X + R, Y + R], 180, 360, fill=C(hair))
+                Y -= hr * .2 * s; d.pieslice([X - R, Y - R, X + R, Y + R], 180, 360, fill=C(hair))   # hairline above the brows
                 bx = hc[0] - hr * .55; circ(bx, hc[1] - hr * .1, hr * .5, C(hair))                         # back of head
                 if pal.get("bun"): circ(hc[0] - hr * .95, hc[1] - hr * .45, hr * .42, C(hair))
             if kind == "old":
@@ -399,24 +401,72 @@ class Scene:
                 d.arc([X - R, Y - R, X + R, Y + R], a0, a1, fill=C(pal["hair"]), width=int(hr * .42 * s))
                 d.pieslice([*P(hc[0] - hr * .2, hc[1] + hr * .1), *P(hc[0] + hr * .9, hc[1] + hr * 1.1)] if face > 0 else
                            [*P(hc[0] + hr * .9, hc[1] + hr * .1), *P(hc[0] - hr * .2, hc[1] + hr * 1.1)], 0, 180, fill=C(pal["hair"]))   # beard
-            # face (side 3/4 view)
-            blink = (now * 1.0 + ph) % 3.4 < .12
-            ex, ey = hc[0] + hr * .45, hc[1] + hr * .14
-            if blink: d.line([P(ex - hr * .12, ey), P(ex + hr * .12, ey)], fill=C("#1b1410"), width=max(2, int(H * .012 * s)))
-            else: circ(ex, ey, hr * .11, C("#1b1410"))
-            circ(ex - hr * .55, ey, hr * .1, C("#1b1410"))
-            mx, my = hc[0] + hr * .45, hc[1] + hr * .58
-            if anim in ("laugh", "cheer", "wave"):
-                X, Y = P(mx - hr * .25, my - hr * .15); X2, Y2 = P(mx + hr * .25, my + hr * .2)
-                d.pieslice([min(X, X2), Y, max(X, X2), Y2], 0, 180, fill=C("#5a1e1a"))
-            elif talk > .12:   # speaking: mouth opens with the voice
-                op = hr * (.06 + .2 * min(1, talk)); X, Y = P(mx - hr * .17, my - op * .5); X2, Y2 = P(mx + hr * .17, my + op * .5)
-                d.ellipse([min(X, X2), Y, max(X, X2), Y2], fill=C("#5a1e1a"))
-            else:
-                X, Y = P(mx - hr * .2, my - hr * .12); X2, Y2 = P(mx + hr * .2, my + hr * .1)
-                d.arc([min(X, X2), Y, max(X, X2), Y2], 20, 160, fill=C("#5a2a20"), width=max(2, int(H * .012 * s)))
-            sk = hexc(pal["skin"]); ck = tuple(int(a * .7 + b * .3) for a, b in zip(sk[:3], (230, 120, 110))) + (255,)
-            if not e.get("silhouette"): circ(hc[0] + hr * .12, hc[1] + hr * .42, hr * .12, ck)            # cheek
+            # ---- face (3/4 view): ear, eyebrows, eyes with whites and shine, nose, expressive mouth, blush
+            if not e.get("silhouette"):
+                fx_ = e.get("face")
+                if isinstance(fx_, list): fx_ = ([v for tt, v in fx_ if tt <= t] or [fx_[0][1]])[-1]
+                expr = fx_ or {"laugh": "laugh", "cheer": "happy", "wave": "happy", "think": "think"}.get(anim, "calm")
+                ink = C("#1b1410"); lw = max(2, int(hr * .07 * s))
+                skin_d = C(pal["skin"], dk=.16); skin_dd = C(pal["skin"], dk=.3)
+                brow = C(pal["hair"], dk=.15) if pal.get("hair") and kind != "old" else (C(pal["hair"]) if kind == "old" else skin_dd)
+                # ear on the back side of the head
+                ey = hc[1] + hr * .08; eyes = [(hc[0] + hr * .46, 1.0), (hc[0] - hr * .08, .82)]   # near eye, far eye
+                blink = (now * 1.0 + ph) % 3.4 < .12
+                look = .045 * hr + (math.sin(now * .7 + ph) * .02 * hr)
+                for ex, k in eyes:
+                    rx, ry = hr * .15 * k, hr * .19
+                    if expr == "laugh" or blink:          # closed: happy arcs when laughing, flat line when blinking
+                        X0, Y0 = P(ex - rx, ey - ry * .5); X1, Y1 = P(ex + rx, ey + ry * .7)
+                        if expr == "laugh": d.arc([min(X0, X1), Y0, max(X0, X1), Y1], 200, 340, fill=ink, width=lw)
+                        else: d.line([P(ex - rx, ey + ry * .1), P(ex + rx, ey + ry * .1)], fill=ink, width=lw)
+                        continue
+                    sq = .7 if expr in ("angry", "think") else (1.15 if expr == "surprised" else 1.0)
+                    X0, Y0 = P(ex - rx, ey - ry * sq); X1, Y1 = P(ex + rx, ey + ry * sq)
+                    d.ellipse([min(X0, X1), Y0, max(X0, X1), Y1], fill=(250, 247, 240, 255))
+                    pr = hr * .105 * k * (.8 if expr == "surprised" else 1); circ(ex + look, ey + ry * .1, pr, ink)
+                    circ(ex + look + pr * .35, ey - pr * .25, pr * .38, (255, 255, 255, 255))                    # shine
+                    d.arc([min(X0, X1), Y0, max(X0, X1), Y1], 195, 345, fill=ink, width=max(2, int(lw * .8)))   # upper lid
+                    if kind == "villager_f":                                                                     # lashes
+                        lx, ly = P(ex + rx * .95, ey - ry * .55); lx2, ly2 = P(ex + rx * 1.3, ey - ry * .95)
+                        d.line([(lx, ly), (lx2, ly2)], fill=ink, width=max(2, int(lw * .8)))
+                # eyebrows: shape carries the emotion
+                bw = max(2, int(hr * .085 * s))
+                for i, (ex, k) in enumerate(eyes):
+                    inner, outer = (ex - hr * .16 * k, ex + hr * .17 * k) if i == 0 else (ex + hr * .14 * k, ex - hr * .16 * k)
+                    by = ey - hr * .27
+                    di, do = {"angry": (.12, -.06), "sad": (-.1, .06), "worried": (-.1, .04), "surprised": (-.12, -.12),
+                              "happy": (-.04, -.04), "laugh": (-.06, -.06), "think": ((-.12, -.12) if i == 0 else (.05, .05))}.get(expr, (0, 0))
+                    d.line([P(inner, by + di * hr), P((inner + outer) / 2, by - hr * .05 + (di + do) / 2 * hr), P(outer, by + do * hr)], fill=brow, width=bw, joint="curve")
+                # nose
+                nx, ny = hc[0] + hr * .3, hc[1] + hr * .38
+                d.arc([*P(nx - hr * .02, ny - hr * .14), *P(nx + hr * .2, ny + hr * .06)] if face > 0 else [*P(nx + hr * .2, ny - hr * .14), *P(nx - hr * .02, ny + hr * .06)],
+                      -60 if face > 0 else 60, 120 if face > 0 else 240, fill=skin_dd, width=max(2, int(lw * .8)))
+                # blush
+                sk = hexc(pal["skin"]); ck = tuple(int(a * .72 + b * .28) for a, b in zip(sk[:3], (235, 120, 115))) + (255,)
+                circ(hc[0] + hr * .58, hc[1] + hr * .44, hr * .13, ck)
+                # mouth
+                mx, my = hc[0] + hr * .3, hc[1] + hr * .64
+                lip = C("#a8443c") if kind == "villager_f" else C("#5a2a20")
+                def box(x0, y0, x1, y1):
+                    X0, Y0 = P(x0, y0); X1, Y1 = P(x1, y1); return [min(X0, X1), min(Y0, Y1), max(X0, X1), max(Y0, Y1)]
+                if expr in ("laugh", "happy") and talk <= .12 and anim in ("laugh", "cheer", "wave"):
+                    w2 = hr * (.27 if expr == "laugh" else .22)
+                    d.pieslice(box(mx - w2, my - hr * .16, mx + w2, my + hr * (.26 if expr == "laugh" else .18)), 0, 180, fill=C("#5a1e1a"))
+                    d.chord(box(mx - w2 * .8, my - hr * .02, mx + w2 * .8, my + hr * .08), 0, 180, fill=(250, 247, 240, 255))       # teeth
+                    d.chord(box(mx - w2 * .5, my + hr * .06, mx + w2 * .5, my + hr * (.24 if expr == "laugh" else .17)), 180, 360, fill=C("#c9605a"))  # tongue
+                elif talk > .12:
+                    op = hr * (.06 + .22 * min(1, talk)); d.ellipse(box(mx - hr * .15, my - op * .5, mx + hr * .15, my + op * .5), fill=C("#5a1e1a"))
+                    if op > hr * .14: d.chord(box(mx - hr * .11, my - op * .5, mx + hr * .11, my - op * .5 + hr * .08), 180, 360, fill=(250, 247, 240, 255))
+                elif expr == "surprised":
+                    d.ellipse(box(mx - hr * .08, my - hr * .08, mx + hr * .08, my + hr * .1), fill=C("#5a1e1a"))
+                elif expr in ("sad", "worried"):
+                    d.arc(box(mx - hr * .17, my, mx + hr * .17, my + hr * .2), 200, 340, fill=lip, width=lw)
+                elif expr == "angry":
+                    d.line([P(mx - hr * .15, my + hr * .05), P(mx + hr * .15, my + hr * .02)], fill=lip, width=lw)
+                elif expr == "think":
+                    d.line([P(mx - hr * .1, my + hr * .04), P(mx + hr * .14, my - hr * .02)], fill=lip, width=lw)
+                else:   # calm / happy: soft smile
+                    d.arc(box(mx - hr * .2, my - hr * .12, mx + hr * .2, my + hr * (.12 if expr == "happy" else .08)), 20, 160, fill=lip, width=lw)
             if pal.get("hat") == "straw":
                 d.polygon([P(hc[0] - hr * 2.3, hc[1] - hr * .45), P(hc[0] + hr * .1, hc[1] - hr * 1.95), P(hc[0] + hr * 2.4, hc[1] - hr * .45)], fill=C("#d9b26a"))
                 d.line([P(hc[0] - hr * 1.6, hc[1] - hr * .75), P(hc[0] + hr * 1.7, hc[1] - hr * .75)], fill=C("#a8823f"), width=int(H * .014 * s))
