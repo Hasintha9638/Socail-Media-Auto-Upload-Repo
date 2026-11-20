@@ -34,6 +34,7 @@ jobs:
         run: |
           names="${{ github.event.inputs.story }}"
           [ -n "$names" ] || names=$(python3 scripts/due.py tiktok | tr '\n' ' ')
+          names=$(echo $names)   # trim: an empty list must stay empty
           echo "names=$names" >> "$GITHUB_OUTPUT"; echo "To send: ${names:-none}"
       - name: Send to TikTok
         if: steps.due.outputs.names != '' && env.TIKTOK_REFRESH_TOKEN != ''
