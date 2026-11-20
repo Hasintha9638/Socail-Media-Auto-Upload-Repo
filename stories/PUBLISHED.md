@@ -16,5 +16,3 @@
 | 2026-11-19 | 2026-11-20-a-same-bad-week-mindsets | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
 | 2026-11-19 | 2026-11-20-b-missed-the-bus | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
 | 2026-11-20 | 2026-11-20-a-same-bad-week-mindsets | facebook: https://www.facebook.com/reel/2022554311762485/ |
-| 2026-11-20 | 2026-11-21-a-grandpas-3-rules | https://youtube.com/shorts/-xZWtwh-qSY | live 2026-11-21T05:45+05:30 |
-| 2026-11-20 | 2026-11-21-b-one-minute-run | https://youtube.com/shorts/U4Iv1zASXc0 | live 2026-11-21T18:45+05:30 |
