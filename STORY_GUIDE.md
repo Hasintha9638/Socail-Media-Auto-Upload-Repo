@@ -21,7 +21,7 @@ These eight formats get the most views on Shorts. Each story JSON must include `
 |---|---|---|---|
 | 1 | **Success tips** | 62–75 s. "3 things/habits/rules…" style, told through one animated character's day (a student, a shopkeeper, a young farmer) — each tip shown as a big numbered `text` element (e.g. "1. Start before you're ready") while the scene acts it out. Practical, specific, no hype or get-rich promises. End card: the one tip to remember | "3 habits that quietly made a poor boy rich." |
 | 2 | **Tiny motivation** | 62–70 s. One character, one struggle, one breakthrough. Punchy lines, no "once upon a time". Ends on a bold one-line quote card | "He failed 99 times. The 100th try took 4 seconds." |
-| 3 | **Zen story** | 62–75 s, calm and slow (`speed` 0.88, `mood` "sad" or "warm", voice bm_george or bf_emma). A master and a student (or a monk and a visitor) with a short exchange and a quiet, surprising insight. Visuals: misty mountains, moonlit or dawn skies, a monk with a staff (`kind: old`, `staff: true`), still water, few elements. You may retell a classic traditional Zen parable **in your own words** (say "a classic Zen story" in the description), or write an original one in that spirit. Never copy a published translation word for word. End card: the insight in one calm line | "A student asked the master: how long until I find peace?" |
+| 3 | **Zen story** | 62–75 s, calm and slow (`speed` 0.88, `mood` "sad" or "warm", voice bm_george). A master and a student (or a monk and a visitor) with a short exchange and a quiet, surprising insight. Visuals: misty mountains, moonlit or dawn skies, a monk with a staff (`kind: old`, `staff: true`), still water, few elements. You may retell a classic traditional Zen parable **in your own words** (say "a classic Zen story" in the description), or write an original one in that spirit. Never copy a published translation word for word. End card: the insight in one calm line | "A student asked the master: how long until I find peace?" |
 | 4 | **Rich vs Poor mindset** | 62–72 s split screen: a `divider` at x=540, a red-boxed "POOR MINDSET" label (`x`: 270, `box`: "#c0392b") and a green-boxed "RICH MINDSET" label (`x`: 810, `box`: "#1e8449"), one character on each side reacting to the same situation (payday, a free hour, a failure, criticism, a new skill, a phone at midnight). 3–4 contrasts, each its own scene, then a one-line takeaway card. It's about **thinking and habits** (spending vs investing in skills, blaming vs learning, consuming vs creating), never shaming people with little money, and no promises of getting rich or advice to buy any investment | "Payday. Poor mindset: 'Time to treat myself.' Rich mindset: 'Time to pay myself first.'" |
 | 5 | **Stoic wisdom** | 62–72 s. One Stoic idea (Marcus Aurelius, Seneca, Epictetus: their ideas are centuries old, so short quotes are fine; credit the name) shown as a tiny modern scene: someone stuck in traffic, insulted, failing a test, then reframing it. Calm, confident voice (bm_george). End card: the idea in one line with the philosopher's name | "Marcus Aurelius ruled Rome. Every morning he told himself one strange thing." |
 | 6 | **Grandpa's life advice** | 62–75 s. An old man (`kind: old`) shares 3 short lessons with a child or grandchild (`kind: child` / `student`), warm and emotional, ending on the most touching one. Warm music (`mood` "warm"). Never mention illness or death graphically: "before he passed" at most | "My grandfather gave me three rules. I ignored the third one. Big mistake." |
@@ -66,7 +66,7 @@ Also check stories/PUBLISHED.md so the theme differs from the last 6 videos. (Mo
 {
   "title": "...", "youtube_title": "...", "description": "...(story teaser, moral, then \"A new one-minute lesson every day on Mindset Minute. Subscribe so you don't miss tomorrow's story.\", then 5-6 hashtags incl. #MindsetMinute)",
   "tags": ["moral story", "..."],
-  "voice": "bm_george",            // also: bm_lewis, am_michael, bf_emma, af_heart (vary by story)
+  "voice": "bm_george",            // also: bm_lewis, am_michael, bf_emma, af_heart (vary by story) — see "Narrator voice" below
   "speed": 0.95, "mood": "warm",   // mood: warm | sad | hopeful
   "highlight": ["words", "shown", "in", "yellow"],
   "scenes": [ { "narration": "...", "elements": [ ... ], "camera": {...}, ... } ]
@@ -117,3 +117,11 @@ Use short, clear names that speech-to-text won't mishear (YouTube auto-captions 
    Check that captions don't collide with the title, people stand on the ground, nothing is cut off, and the scene reads clearly at small size.
 2. Optional full render: `python storykit/storykit.py stories/<file>.json out/test.mp4` (~3 min).
 3. Commit only the JSON: `git add stories/<file>.json && git commit -m "Story: <title>" && git push`.
+
+
+## Narrator voice must match the recorded intro/outro
+
+The renderer adds a real recorded intro and outro in the same gender as the story `voice`
+(voice/male/ for am_*/bm_*, voice/female/ for af_*/bf_*). Only use a female voice (af_heart, bf_emma)
+if voice/female/ contains intro_*.wav files; otherwise always pick a male voice (bm_george, am_michael, bm_lewis)
+so every video gets the owner's real voice. When both folders have clips, mix male and female stories across the week.

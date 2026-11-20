@@ -677,44 +677,42 @@ def tts_scenes(story, workdir):
     add_signature(story, out, sr)
     return out, sr
 
-SIGNATURE = {"intro": ["Here's today's tiny tale.", "One minute, one story, one lesson.", "Tiny Tales Daily. Let's go!"],
-             "outro": ["If this helped you, follow for tomorrow's tale.", "See you tomorrow on Tiny Tales Daily!",
-                       "Share this with someone who needs it today."]}
-
-# "Tiny Tales Daily. Let's go!" (intro 3) and "See you tomorrow on Tiny Tales Daily!" (outro 2) name the old channel name.
-# Re-record them with "Mindset Minute" and add the numbers back here.
-ACTIVE_TAKES = {"intro": [1, 2], "outro": [1, 3]}
-
 def add_signature(story, out, sr):
-    """Hasintha's own recorded intro (start of scene 1) and outro (end of the last scene), rotating per video.
-    Story keys: "intro"/"outro" = 1-3 to pick a take, or 0 to leave it out."""
-    import soundfile as sf, datetime
-    vdir = os.path.join(HERE, "..", "voice")
+    """Recorded intro (start of scene 1) and outro (end of the last scene) in the SAME gender as the story voice:
+    voice/male/ for am_*/bm_* stories, voice/female/ for af_*/bf_*. Rotates through the files per video.
+    Story keys "intro"/"outro": 0 leaves it out, or a file name like "intro_03.wav" to pick one."""
+    import soundfile as sf, datetime, glob
+    gender = "female" if story.get("voice", "bm_george")[1:2] == "f" else "male"
+    vdir = os.path.join(HERE, "..", "voice", gender)
     if not os.path.isdir(vdir) or not out: return
+    try: lines = json.load(open(os.path.join(HERE, "..", "voice", "lines.json")))
+    except Exception: lines = {}
     try: day = datetime.date.fromisoformat(story.get("publish_date", "")).toordinal()
     except ValueError: day = sum(map(ord, story.get("title", "")))
     slot = day * 2 + (1 if story.get("publish_at", "05:45") >= "12:00" else 0)
     allv = np.concatenate([o["audio"] for o in out]); ref = np.sqrt(np.mean(allv[np.abs(allv) > .02] ** 2))   # loudness of the story voice
-    for kind, k in (("intro", 0), ("outro", 1)):
-        takes = ACTIVE_TAKES[kind]; n = story.get(kind, takes[(slot + k) % len(takes)])
-        f = os.path.join(vdir, f"{kind}{n}.wav")
-        if not n or not os.path.exists(f): continue
-        a, r = sf.read(f, dtype="float32")
+    for kind in ("intro", "outro"):
+        takes = sorted(os.path.basename(f) for f in glob.glob(os.path.join(vdir, f"{kind}_*.wav")))
+        pick = story.get(kind)
+        if pick == 0 or not takes: continue
+        name = pick if pick in takes else takes[(slot if kind == "intro" else slot + slot // 2 + 1) % len(takes)]
+        a, r = sf.read(os.path.join(vdir, name), dtype="float32")
         if a.ndim > 1: a = a.mean(1)
         if r != sr: a = np.interp(np.arange(int(len(a) * sr / r)) * r / sr, np.arange(len(a)), a).astype(np.float32)
         a *= min(4.0, ref / (np.sqrt(np.mean(a[np.abs(a) > .02] ** 2)) + 1e-9))
-        d = len(a) / sr; text = SIGNATURE[kind][n - 1]
+        d = len(a) / sr; text = lines.get(f"{gender}/{name}", "")
+        caps = chunk_halves(text) if text else []
         if kind == "intro":
             sc = out[0]; lead = .35; pad = .45
             sc["audio"] = np.concatenate([np.zeros(int(lead * sr), np.float32), a, np.zeros(int(pad * sr), np.float32), sc["audio"]])
             shift = lead + d + pad
             for c in sc["chunks"]: c["start"] += shift; c["end"] += shift
-            sc["chunks"][:0] = [{"text": t, "start": lead + d * i / 2, "end": lead + d * (i + 1) / 2} for i, t in enumerate(chunk_halves(text))]
+            sc["chunks"][:0] = [{"text": t, "start": lead + d * i / len(caps), "end": lead + d * (i + 1) / len(caps)} for i, t in enumerate(caps)]
             sc["dur"] += shift
         else:
             sc = out[-1]; start = len(sc["audio"]) / sr + .2
             sc["audio"] = np.concatenate([sc["audio"], np.zeros(int(.2 * sr), np.float32), a, np.zeros(int(.6 * sr), np.float32)])
-            sc["chunks"] += [{"text": t, "start": start + d * i / 2, "end": start + d * (i + 1) / 2} for i, t in enumerate(chunk_halves(text))]
+            sc["chunks"] += [{"text": t, "start": start + d * i / len(caps), "end": start + d * (i + 1) / len(caps)} for i, t in enumerate(caps)]
             sc["dur"] = max(sc["dur"], len(sc["audio"]) / sr)
 
 def chunk_halves(text):
