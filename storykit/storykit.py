@@ -361,7 +361,8 @@ class Scene:
                     el = (sh[0] + H * .07, sh[1] + H * .16); hd = (sh[0] + H * .02, sh[1] + H * .26)           # hand on belly
                 elif anim == "cheer":
                     jump = abs(math.sin(now * 6 + ph)) * H * .03
-                    el = (sh[0] + (H * .1 if k == 1 else -H * .07), sh[1] - H * .1); hd = (sh[0] + (H * .2 if k == 1 else -H * .1), sh[1] - H * .25 - jump)
+                    if k == 1: el = (sh[0] + H * .17, sh[1] - H * .015); hd = (el[0] + H * .07, el[1] - H * .2 - jump)   # out to the side, then up (clear of the face)
+                    else: el = (sh[0] - H * .09, sh[1] - H * .08); hd = (sh[0] - H * .12, sh[1] - H * .25 - jump)
                 elif anim == "think" and k == 1:
                     el = (sh[0] + H * .12, sh[1] + H * .14); hd = (sh[0] + H * .1, sh[1] - H * .02)
                 elif pal.get("staff") and k == 1:
@@ -377,8 +378,34 @@ class Scene:
                     limb([sh, mid], col, armw * 1.3)                                      # sleeve
                 else:
                     limb([sh, el, hd], col, armw)
-                circ(hd[0], hd[1], H * .04, hand)
+                draw_hand(hd, el, hand, k)
                 return hd
+            def draw_hand(hd, el, col, k):
+                """Small cartoon hand: palm, thumb and four fingers pointing along the forearm (a fist when holding something)."""
+                if e.get("silhouette"): circ(hd[0], hd[1], H * .04, col); return
+                vx, vy = hd[0] - el[0], hd[1] - el[1]; n = math.hypot(vx, vy) or 1; vx, vy = vx / n, vy / n; px, py = -vy, vx
+                line_c = C(pal["skin"], dk=.28) if col == skin else C(pal["skin"], dk=.4)
+                holding = anim == "carry" or (pal.get("staff") and k == 1 and anim not in ("think", "wave", "cheer", "laugh", "sit"))
+                spread = anim in ("wave", "cheer") and k == 1
+                pr = H * .036
+                circ(hd[0], hd[1], pr, col)                                                       # palm
+                tb = (hd[0] + px * pr * .85 - vx * pr * .2, hd[1] + py * pr * .85 - vy * pr * .2)  # thumb
+                limb([tb, (tb[0] + (px * .5 + vx * .6) * pr * .8, tb[1] + (py * .5 + vy * .6) * pr * .8)], col, H * .017)
+                if holding:                                                                       # fist: knuckle bumps
+                    for i in range(4):
+                        o = (i - 1.5) * .42
+                        circ(hd[0] + vx * pr * .7 + px * o * pr, hd[1] + vy * pr * .7 + py * o * pr, pr * .3, col)
+                    return
+                for i in range(4):
+                    o = (i - 1.6) * (.5 if spread else .36); ln = pr * (1.05 if i in (1, 2) else .85) * (1.1 if spread else 1)
+                    bx, by = hd[0] + vx * pr * .55 + px * o * pr, hd[1] + vy * pr * .55 + py * o * pr
+                    dx, dy = vx + px * o * (.35 if spread else .12), vy + py * o * (.35 if spread else .12)
+                    limb([(bx, by), (bx + dx * ln, by + dy * ln)], col, H * .015)
+                for i in range(3):                                                                # gaps between fingers
+                    o = (i - 1.05) * (.5 if spread else .36)
+                    bx, by = hd[0] + vx * pr * .75 + px * o * pr, hd[1] + vy * pr * .75 + py * o * pr
+                    X0, Y0 = P(bx, by); X1, Y1 = P(bx + vx * pr * .45, by + vy * pr * .45)
+                    d.line([(X0, Y0), (X1, Y1)], fill=line_c, width=max(1, int(H * .004 * s)))
             arm(-1, shirt_b, skin_b)
             # ---- body
             tw_s, tw_h = H * .135, H * .11
