@@ -324,16 +324,38 @@ class Scene:
                 r_, g_, b_, _ = hexc(hexs); return (int(r_ + (255 - r_) * k), int(g_ + (255 - g_) * k), int(b_ + (255 - b_) * k), 255)
             # ---- legs (back then front)
             def leg(k, col):
+                hp = (hip[0] + (k * H * .035 if anim != "sit" else 0), hip[1])          # two legs, not one tube
                 if anim == "sit":
-                    knee = (hip[0] + H * .2, hip[1] + H * .01); foot = (knee[0] + H * .02, knee[1] + H * .22)
+                    knee = (hp[0] + H * .2 + k * H * .015, hp[1] + H * .01); foot = (knee[0] + H * .02, knee[1] + H * .22)
                 else:
-                    a = k * sw * .5; knee = (hip[0] + math.sin(a) * H * .22, hip[1] + math.cos(a) * H * .22)
+                    stance = 0 if walking else k * .06
+                    a = k * sw * .5 + stance * .5; knee = (hp[0] + math.sin(a) * H * .22, hp[1] + math.cos(a) * H * .22)
                     a2 = a - (abs(sw) * .35 if k * sw < 0 else 0); foot = (knee[0] + math.sin(a2) * H * .22, -2 + 0 * bob)
-                if kind == "child" and not e.get("silhouette"):   # shorts
-                    limb([knee, foot], skin_b if k < 0 else skin, legw * .82); limb([hip, knee], col, legw * 1.12)
+                plain_ = not e.get("silhouette")
+                if kind == "child" and plain_:   # shorts
+                    limb([knee, foot], skin_b if k < 0 else skin, legw * .82); limb([hp, knee], col, legw * 1.12)
                 else:
-                    limb([hip, knee, foot], col, legw)
-                fx, fy = P(foot[0] + H * .03, foot[1]); d.ellipse([fx - H * .065 * s, fy - H * .035 * s, fx + H * .065 * s, fy + H * .012 * s], fill=shoe)
+                    limb([hp, knee, foot], col, legw)
+                    if plain_ and not pal.get("sarong"):
+                        cuff = (foot[0] + (knee[0] - foot[0]) * .14, foot[1] + (knee[1] - foot[1]) * .14)
+                        limb([foot, cuff], C(pal["pants"], dk=.32 if k > 0 else .45), legw * 1.04)                     # trouser cuff
+                        if k > 0:                                                                                    # front crease
+                            X0, Y0 = P(hp[0] + H * .012, hp[1] + H * .06); X1, Y1 = P(knee[0] + H * .012, knee[1]); X2, Y2 = P(cuff[0] + H * .01, cuff[1])
+                            d.line([(X0, Y0), (X1, Y1), (X2, Y2)], fill=L(pal["pants"], .14), width=max(1, int(H * .006 * s)))
+                # shoe: upper + sole (+ white sole / laces on sneakers)
+                sneaker = kind in ("student", "child", "villager") and plain_
+                upper = C("#f2f0ea") if sneaker and kind == "student" else (C("#3b4a6b") if sneaker else shoe)
+                if k < 0 and plain_: upper = (int(upper[0] * .82), int(upper[1] * .82), int(upper[2] * .82), 255)
+                if not plain_: upper = shoe
+                fx0, fx1 = foot[0] - H * .045, foot[0] + H * .085
+                X0, Y0 = P(fx0, -H * .055); X1, Y1 = P(fx1, H * .002)
+                d.rounded_rectangle([min(X0, X1), Y0, max(X0, X1), Y1], radius=int(H * .028 * s), fill=upper)
+                X0, Y0 = P(fx0 - H * .004, -H * .012); X1, Y1 = P(fx1 + H * .006, H * .006)
+                d.rounded_rectangle([min(X0, X1), Y0, max(X0, X1), Y1], radius=int(H * .008 * s), fill=C("#f7f5ef") if sneaker else C("#1a1512"))
+                if sneaker:
+                    for i in range(2):
+                        lx = foot[0] + H * (.02 + i * .022); X0, Y0 = P(lx, -H * .045); X1, Y1 = P(lx + H * .012, -H * .03)
+                        d.line([(X0, Y0), (X1, Y1)], fill=C("#8c8a85") if kind == "student" else C("#dfe3ea"), width=max(1, int(H * .006 * s)))
             if anim == "sit" and not e.get("no_seat"):   # something to sit on, so nobody floats
                 rk = C(e.get("seat", "#7d7468")) if not e.get("silhouette") else C(pal["shirt"])
                 X0, Y0 = P(hip[0] - H * .2, hip[1] + H * .02); X1, Y1 = P(hip[0] + H * .14, 6)
@@ -476,6 +498,10 @@ class Scene:
                         cl = L(pal["shirt"], .35) if hexc(pal["shirt"])[0] < 225 else C(pal["shirt"], dk=.12)
                         d.polygon([P(sho[0] - H * .035, sho[1] - H * .012), P(sho[0] + H * .015, sho[1] + H * .045), P(sho[0] - H * .045, sho[1] + H * .04)], fill=cl)   # collar
                         d.polygon([P(sho[0] + H * .085, sho[1] - H * .012), P(sho[0] + H * .045, sho[1] + H * .045), P(sho[0] + H * .1, sho[1] + H * .04)], fill=cl)
+                        if kind in ("villager", "student", "farmer"):                                                     # chest pocket
+                            X0, Y0 = P(sho[0] - H * .075, sho[1] + H * .075); X1, Y1 = P(sho[0] - H * .015, sho[1] + H * .135)
+                            d.rectangle([min(X0, X1), Y0, max(X0, X1), Y1], outline=C(pal["shirt"], dk=.22), width=max(1, int(H * .006 * s)))
+                            d.line([P(sho[0] - H * .075, sho[1] + H * .085), P(sho[0] - H * .015, sho[1] + H * .085)], fill=C(pal["shirt"], dk=.22), width=max(1, int(H * .006 * s)))
                         for i in range(3): circ(sho[0] + H * .03 + (hip[0] - sho[0]) * (i + 1) / 4, sho[1] + H * .1 + i * (hip[1] - sho[1] - H * .08) / 3, H * .009, C(pal["shirt"], dk=.3))   # buttons
                     if not pal.get("sarong"):
                         d.line([P(hip[0] - tw_h * .95, hip[1] + H * .045), P(hip[0] + tw_h * .95, hip[1] + H * .045)], fill=C("#2f241d"), width=int(H * .02 * s))   # belt
