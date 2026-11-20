@@ -145,6 +145,13 @@ so every video gets the owner's real voice. When both folders have clips, mix ma
   Change it during a scene with `[[0, "worried"], [0.6, "happy"]]` (times are fractions of the scene).
   `"serene"` = peaceful closed eyes and a soft smile (the default for monks; perfect for Zen masters).
   Without `face`, the pose decides: laugh → laugh, cheer/wave → happy, think → think, others → calm.
+- **Character size:** draw the main characters BIG so faces, clothes and hands read on a phone: `"s": 1.5`–`1.8`
+  for the one or two characters the scene is about (2.0+ for a close-up), 1.0–1.2 only for people in the background.
+  Keep them inside the frame: x between 180 and 900 at s 1.5+, and leave room above their heads for the captions.
+- **Clothes:** men wear collared shirts with buttons and belts (short sleeves for villager/farmer, so arms and hands show),
+  farmers and grandpas wear striped sarongs, children wear t-shirts and shorts, the student has a backpack with a strap,
+  `villager_f` wears a dress with puff sleeves, a waist sash and a flared skirt (`"sash": "#hex"` to change the sash colour).
+  Give each person a distinct `shirt` colour so they're easy to tell apart.
 - **Monks** wear a saffron robe over one shoulder with prayer beads (`"beads": false` to hide them) and sandals;
   a sitting monk sits on a rock with the robe over his knees. In Zen stories let the master stay `"serene"`
   and give the student the emotions (`"worried"`, `"surprised"`, then `"calm"`).

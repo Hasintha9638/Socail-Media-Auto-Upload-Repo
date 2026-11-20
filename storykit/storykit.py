@@ -329,7 +329,10 @@ class Scene:
                 else:
                     a = k * sw * .5; knee = (hip[0] + math.sin(a) * H * .22, hip[1] + math.cos(a) * H * .22)
                     a2 = a - (abs(sw) * .35 if k * sw < 0 else 0); foot = (knee[0] + math.sin(a2) * H * .22, -2 + 0 * bob)
-                limb([hip, knee, foot], col, legw)
+                if kind == "child" and not e.get("silhouette"):   # shorts
+                    limb([knee, foot], skin_b if k < 0 else skin, legw * .82); limb([hip, knee], col, legw * 1.12)
+                else:
+                    limb([hip, knee, foot], col, legw)
                 fx, fy = P(foot[0] + H * .03, foot[1]); d.ellipse([fx - H * .065 * s, fy - H * .035 * s, fx + H * .065 * s, fy + H * .012 * s], fill=shoe)
             if anim == "sit" and not e.get("no_seat"):   # something to sit on, so nobody floats
                 rk = C(e.get("seat", "#7d7468")) if not e.get("silhouette") else C(pal["shirt"])
@@ -342,6 +345,8 @@ class Scene:
             elif not (pal.get("robe") and anim == "sit" and not e.get("silhouette")):
                 for k in (-1, 1):
                     a = k * sw * .3; fx_ = hip[0] + math.sin(a) * H * .44
+                    if pal.get("dress") and not e.get("silhouette"):
+                        limb([(hip[0] + k * H * .035, -H * .2), (fx_ + H * .01, -H * .03)], skin_b if k < 0 else skin, H * .05)
                     X, Y = P(fx_ + H * .03, -2); d.ellipse([X - H * .06 * s, Y - H * .035 * s, X + H * .06 * s, Y + H * .012 * s], fill=shoe)
             # ---- back arm
             def arm(k, col, hand):
@@ -365,7 +370,14 @@ class Scene:
                     a = -k * sw * .45 + .08 + (0 if walking else math.sin(now * 1.5 + ph + k) * .05)   # relaxed sway when standing
                     el = (sh[0] + math.sin(a) * H * .16, sh[1] + math.cos(a) * H * .16)
                     hd = (el[0] + math.sin(a + .15) * H * .15, el[1] + math.cos(a + .15) * H * .15)
-                limb([sh, el, hd], col, armw); circ(hd[0], hd[1], H * .04, hand)
+                if kind in ("villager", "farmer", "child", "villager_f") and not e.get("silhouette") and col not in (skin, skin_b):
+                    mid = (sh[0] + (el[0] - sh[0]) * .6, sh[1] + (el[1] - sh[1]) * .6)
+                    limb([sh, el, hd], hand, armw * .9)                                   # bare arm
+                    if kind == "villager_f": circ(sh[0], sh[1] + H * .01, armw * .95, col)  # puff sleeve
+                    limb([sh, mid], col, armw * 1.3)                                      # sleeve
+                else:
+                    limb([sh, el, hd], col, armw)
+                circ(hd[0], hd[1], H * .04, hand)
                 return hd
             arm(-1, shirt_b, skin_b)
             # ---- body
@@ -401,6 +413,23 @@ class Scene:
                     for i in range(11):
                         u = i / 10; bx_ = sho[0] - tw * .3 + u * tw * .75; by_ = sho[1] + H * .012 + math.sin(u * math.pi) * H * .075
                         circ(bx_, by_, H * .01, C("#4a2c1d"))
+            elif pal.get("dress") and not e.get("silhouette"):
+                dl = L(pal["shirt"], .32); dd_ = C(pal["shirt"], dk=.22); sash = C(e.get("sash", "#f2c14e"))
+                sway = math.sin(now * 1.4 + ph) * H * .006 + sw * H * .015
+                waist = hip[1] - H * .03; hemy = -H * .17; flare = H * .19
+                d.polygon([P(hip[0] - H * .1, waist), P(hip[0] + H * .1, waist), P(hip[0] + flare + sway, hemy), P(hip[0] - flare + sway, hemy)], fill=shirt)   # skirt
+                for i in range(7):                                                                                                                       # scalloped hem
+                    u = i / 6; cx_ = hip[0] - flare + sway + u * flare * 2; circ(cx_, hemy, H * .03, shirt)
+                d.line([P(hip[0] - flare * .97 + sway, hemy - H * .02), P(hip[0] + flare * .97 + sway, hemy - H * .02)], fill=dl, width=int(H * .016 * s))    # hem trim
+                for fx0, fx1 in ((-.04, -.11), (.04, .1)):                                                                                                # folds
+                    d.line([P(hip[0] + H * fx0, waist + H * .03), P(hip[0] + H * fx1 + sway, hemy - H * .04)], fill=dd_, width=max(2, int(H * .009 * s)))
+                tw = tw_s * .85
+                d.polygon([P(sho[0] - tw, sho[1]), P(sho[0] + tw, sho[1]), P(hip[0] + H * .09, waist + H * .005), P(hip[0] - H * .09, waist + H * .005)], fill=shirt)  # bodice
+                circ(sho[0] - tw * .8, sho[1] + H * .02, H * .04, shirt); circ(sho[0] + tw * .8, sho[1] + H * .02, H * .04, shirt)
+                X0, Y0 = P(sho[0] - H * .035, sho[1] - H * .03); X1, Y1 = P(sho[0] + H * .07, sho[1] + H * .045)
+                d.chord([min(X0, X1), Y0, max(X0, X1), Y1], 0, 180, fill=skin)                                                                        # neckline
+                d.polygon([P(hip[0] - H * .095, waist - H * .012), P(hip[0] + H * .095, waist - H * .012), P(hip[0] + H * .1, waist + H * .02), P(hip[0] - H * .1, waist + H * .02)], fill=sash)   # sash
+                circ(hip[0] - H * .1, waist + H * .004, H * .022, sash)
             elif pal.get("robe") or pal.get("dress"):
                 hem = H * (.2 if pal.get("robe") else .17)
                 d.polygon([P(sho[0] - tw_s, sho[1]), P(sho[0] + tw_s, sho[1]), P(hip[0] + hem, -H * .07), P(hip[0] - hem, -H * .07)], fill=shirt)
@@ -408,13 +437,35 @@ class Scene:
             else:
                 x0, y0 = P(sho[0] - tw_s, sho[1]); x1, y1 = P(hip[0] + tw_h, hip[1] + H * .05)
                 d.rounded_rectangle([min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1)], radius=int(H * .06 * s), fill=shirt)
+                if not e.get("silhouette"):
+                    xb0, _ = P(sho[0] - tw_s, sho[1]); xb1, _ = P(sho[0] - tw_s * .45, sho[1])                           # back-side shade
+                    d.rounded_rectangle([min(xb0, xb1), min(y0, y1) + H * .02 * s, max(xb0, xb1), max(y0, y1) - H * .01 * s], radius=int(H * .04 * s), fill=shirt_b)
+                    if kind == "child":
+                        d.chord([*P(sho[0] - H * .045, sho[1] - H * .025), *P(sho[0] + H * .075, sho[1] + H * .03)] if face > 0 else
+                                [*P(sho[0] + H * .075, sho[1] - H * .025), *P(sho[0] - H * .045, sho[1] + H * .03)], 0, 180, fill=skin)       # round neck
+                        circ(sho[0] + H * .06, sho[1] + H * .12, H * .03, L(pal["shirt"], .45))                                              # t-shirt print
+                    else:
+                        d.polygon([P(sho[0] - H * .02, sho[1] - H * .004), P(sho[0] + H * .07, sho[1] - H * .004), P(sho[0] + H * .03, sho[1] + H * .07)], fill=skin)  # open neck
+                        cl = L(pal["shirt"], .35) if hexc(pal["shirt"])[0] < 225 else C(pal["shirt"], dk=.12)
+                        d.polygon([P(sho[0] - H * .035, sho[1] - H * .012), P(sho[0] + H * .015, sho[1] + H * .045), P(sho[0] - H * .045, sho[1] + H * .04)], fill=cl)   # collar
+                        d.polygon([P(sho[0] + H * .085, sho[1] - H * .012), P(sho[0] + H * .045, sho[1] + H * .045), P(sho[0] + H * .1, sho[1] + H * .04)], fill=cl)
+                        for i in range(3): circ(sho[0] + H * .03 + (hip[0] - sho[0]) * (i + 1) / 4, sho[1] + H * .1 + i * (hip[1] - sho[1] - H * .08) / 3, H * .009, C(pal["shirt"], dk=.3))   # buttons
+                    if not pal.get("sarong"):
+                        d.line([P(hip[0] - tw_h * .95, hip[1] + H * .045), P(hip[0] + tw_h * .95, hip[1] + H * .045)], fill=C("#2f241d"), width=int(H * .02 * s))   # belt
+                        circ(hip[0] + tw_h * .5, hip[1] + H * .045, H * .014, C("#c9a24a"))
                 if pal.get("sarong"):
                     d.polygon([P(hip[0] - tw_h * 1.05, hip[1] + H * .02), P(hip[0] + tw_h * 1.05, hip[1] + H * .02),
                                P(hip[0] + tw_h * 1.25, -H * .14), P(hip[0] - tw_h * 1.25, -H * .14)], fill=pants)
                     d.line([P(hip[0] - tw_h, hip[1] + H * .03), P(hip[0] + tw_h, hip[1] + H * .03)], fill=C(pal["pants"], dk=.3), width=int(H * .02 * s))
+                    if not e.get("silhouette"):   # checked sarong stripes
+                        for yy in (.2, .27):
+                            d.line([P(hip[0] - tw_h * (1.05 + yy * .4), -H * yy), P(hip[0] + tw_h * (1.05 + yy * .4), -H * yy)], fill=L(pal["pants"], .25), width=max(2, int(H * .012 * s)))
+                if pal.get("bag") and not pal.get("shade"):   # bag colour that stands out from the shirt
+                    r_, g_, b_, _ = hexc(pal["shirt"]); pal["shade"] = "#2f4f7a" if r_ > b_ + 40 else "#c2463b"
                 if pal.get("bag"):
                     d.rounded_rectangle([*P(sho[0] - tw_s * 1.5, sho[1] + H * .03), *P(sho[0] - tw_s * .7, hip[1])] if face > 0 else
                                         [*P(sho[0] - tw_s * .7, sho[1] + H * .03), *P(sho[0] - tw_s * 1.5, hip[1])], radius=int(H * .03 * s), fill=C(pal.get("shade") or "#c2463b"))
+                    d.line([P(sho[0] - tw_s * .8, sho[1] + H * .005), P(sho[0] + tw_s * .7, hip[1] - H * .02)], fill=C(pal.get("shade") or "#c2463b", dk=.25), width=int(H * .022 * s))   # strap
             # neck + head
             hr = H * (.115 if kind == "child" else .1)
             hc = (sho[0] + H * .015 + (H * .02 if anim == "laugh" else 0) + nod * .4, sho[1] - hr * 1.05 - (math.sin(now * 9) * 2 * sc if anim == "laugh" else 0) + nod)
