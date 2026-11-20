@@ -15,3 +15,4 @@
 | 2026-11-19 | 2026-11-20-b-missed-the-bus | https://youtube.com/shorts/x84NpWoAb4o | live 2026-11-20T18:45+05:30 |
 | 2026-11-19 | 2026-11-20-a-same-bad-week-mindsets | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
 | 2026-11-19 | 2026-11-20-b-missed-the-bus | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
+| 2026-11-20 | 2026-11-20-a-same-bad-week-mindsets | facebook: https://www.facebook.com/reel/2022554311762485/ |
