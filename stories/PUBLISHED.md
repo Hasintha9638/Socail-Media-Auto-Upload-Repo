@@ -20,3 +20,4 @@
 | 2026-11-20 | 2026-11-21-b-one-minute-habit | https://youtube.com/shorts/ePRDu4WsSqE | live 2026-11-21T18:45+05:30 |
 | 2026-11-20 | 2026-11-21-a-grandpas-rules | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
 | 2026-11-20 | 2026-11-21-b-one-minute-habit | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
+| 2026-11-20 | 2026-11-20-b-missed-the-bus | facebook: https://www.facebook.com/reel/2267918670439604/ |
