@@ -125,3 +125,18 @@ The renderer adds a real recorded intro and outro in the same gender as the stor
 (voice/male/ for am_*/bm_*, voice/female/ for af_*/bf_*). Only use a female voice (af_heart, bf_emma)
 if voice/female/ contains intro_*.wav files; otherwise always pick a male voice (bm_george, am_michael, bm_lewis)
 so every video gets the owner's real voice. When both folders have clips, mix male and female stories across the week.
+
+
+## Animation extras (automatic unless you turn them off)
+
+- **Camera:** every scene without a `camera` gets a slow push-in or pull-out with a slight pan, so no shot is static.
+  Set your own `camera` for a specific move, or `"auto_camera": false` on a scene to keep it still.
+  Keep important things (faces, on-screen text) away from the outer 4% of the frame, as the zoom can trim the edges.
+- **Dissolves:** scenes blend into each other over 0.4 s. Use `"cut": true` on a scene for a hard cut (a sudden surprise).
+- **Floating light specks** drift in every scene without rain/fireflies. `"dust": false` on a scene turns them off.
+- **Talking characters (lip-sync):** add `"talk": true` to the person who is saying the narration in that scene,
+  e.g. the "I" character in first-person stories, or the master when the narration is his words.
+  For only part of a scene use ranges of the scene's length: `"talk": [[0.5, 1.0]]`.
+  Their mouth opens and closes with the voice and the head nods slightly. Never give `talk` to two people in the same moment,
+  and don't use it while the narrator is describing the scene from outside (third person).
+- Characters standing still now breathe, sway their arms and tilt their head a little by themselves.

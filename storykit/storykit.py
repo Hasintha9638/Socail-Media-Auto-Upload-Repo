@@ -55,8 +55,9 @@ CYCLE = ["day", "golden", "dusk", "night", "dawn"]
 
 # ---------------------------------------------------------------- element painters
 class Scene:
-    def __init__(self, spec, dur, rng):
-        self.spec, self.dur, self.rng = spec, dur, rng
+    def __init__(self, spec, dur, rng, idx=0, talk=None):
+        self.spec, self.dur, self.rng, self.idx = spec, dur, rng, idx
+        self.talk = talk            # per-frame voice loudness 0..1 (drives the speaking character's mouth)
         self.els = spec["elements"]
         self.ground = spec.get("ground_y", 1450)
         self.static = None
@@ -297,6 +298,12 @@ class Scene:
         sw = math.sin(now * 7 + ph) if walking else 0.0
         bob = abs(sw) * 5 * sc if walking else (abs(math.sin(now * 9 + ph)) * 9 * sc if anim == "laugh" else math.sin(now * 2 + ph) * 1.5 * sc)
         bend = kf(e.get("bend", 0), t)
+        speaker = e.get("talk", False)   # true = this character says the narration; [[t0, t1], ...] = only in those parts of the scene (0..1)
+        if isinstance(speaker, list): speaker = any(r[0] <= t < r[1] for r in speaker)
+        talk = 0.0
+        if speaker and self.talk is not None and anim not in ("laugh", "cheer"):
+            talk = float(self.talk[min(len(self.talk) - 1, int(now * FPS))])
+        nod = math.sin(now * 5.3 + ph) * talk * 3 * sc + (math.sin(now * .9 + ph) * 1.2 * sc if not walking else 0)
         Sw, Sh = int(H * 1.5), int(H * 1.35); ox, oy = Sw / 2, Sh - 6
         def C(hexs, a=255, dk=0.0):
             r, g, b, _ = hexc(hexs); return (int(r * (1 - dk)), int(g * (1 - dk)), int(b * (1 - dk)), a)
@@ -322,6 +329,12 @@ class Scene:
                     a2 = a - (abs(sw) * .35 if k * sw < 0 else 0); foot = (knee[0] + math.sin(a2) * H * .22, -2 + 0 * bob)
                 limb([hip, knee, foot], col, legw)
                 fx, fy = P(foot[0] + H * .03, foot[1]); d.ellipse([fx - H * .065 * s, fy - H * .035 * s, fx + H * .065 * s, fy + H * .012 * s], fill=shoe)
+            if anim == "sit" and not e.get("no_seat"):   # something to sit on, so nobody floats
+                rk = C(e.get("seat", "#7d7468")) if not e.get("silhouette") else C(pal["shirt"])
+                X0, Y0 = P(hip[0] - H * .2, hip[1] + H * .02); X1, Y1 = P(hip[0] + H * .14, 6)
+                d.rounded_rectangle([min(X0, X1), Y0, max(X0, X1), Y1], radius=int(H * .07 * s), fill=rk)
+                X0, Y0 = P(hip[0] - H * .17, hip[1] + H * .04); X1, Y1 = P(hip[0] + H * .02, hip[1] + H * .08)
+                d.rounded_rectangle([min(X0, X1), Y0, max(X0, X1), Y1], radius=int(H * .02 * s), fill=C(e.get("seat", "#7d7468"), dk=-.15) if not e.get("silhouette") else rk)
             if not pal.get("robe") and not pal.get("dress"):
                 leg(-1, pants_b); leg(1, pants)
             else:
@@ -347,7 +360,8 @@ class Scene:
                 elif pal.get("staff") and k == 1:
                     el = (sh[0] + H * .1, sh[1] + H * .14); hd = (sh[0] + H * .2, sh[1] + H * .2)
                 else:
-                    a = -k * sw * .45 + .08; el = (sh[0] + math.sin(a) * H * .16, sh[1] + math.cos(a) * H * .16)
+                    a = -k * sw * .45 + .08 + (0 if walking else math.sin(now * 1.5 + ph + k) * .05)   # relaxed sway when standing
+                    el = (sh[0] + math.sin(a) * H * .16, sh[1] + math.cos(a) * H * .16)
                     hd = (el[0] + math.sin(a + .15) * H * .15, el[1] + math.cos(a + .15) * H * .15)
                 limb([sh, el, hd], col, armw); circ(hd[0], hd[1], H * .04, hand)
                 return hd
@@ -370,7 +384,7 @@ class Scene:
                                         [*P(sho[0] - tw_s * .7, sho[1] + H * .03), *P(sho[0] - tw_s * 1.5, hip[1])], radius=int(H * .03 * s), fill=C(pal.get("shade") or "#c2463b"))
             # neck + head
             hr = H * (.115 if kind == "child" else .1)
-            hc = (sho[0] + H * .015 + (H * .02 if anim == "laugh" else 0), sho[1] - hr * 1.05 - (math.sin(now * 9) * 2 * sc if anim == "laugh" else 0))
+            hc = (sho[0] + H * .015 + (H * .02 if anim == "laugh" else 0) + nod * .4, sho[1] - hr * 1.05 - (math.sin(now * 9) * 2 * sc if anim == "laugh" else 0) + nod)
             limb([(sho[0], sho[1]), (hc[0], hc[1] + hr * .6)], skin, H * .05)
             circ(hc[0], hc[1], hr, skin)
             hair = pal.get("hair")
@@ -395,6 +409,9 @@ class Scene:
             if anim in ("laugh", "cheer", "wave"):
                 X, Y = P(mx - hr * .25, my - hr * .15); X2, Y2 = P(mx + hr * .25, my + hr * .2)
                 d.pieslice([min(X, X2), Y, max(X, X2), Y2], 0, 180, fill=C("#5a1e1a"))
+            elif talk > .12:   # speaking: mouth opens with the voice
+                op = hr * (.06 + .2 * min(1, talk)); X, Y = P(mx - hr * .17, my - op * .5); X2, Y2 = P(mx + hr * .17, my + op * .5)
+                d.ellipse([min(X, X2), Y, max(X, X2), Y2], fill=C("#5a1e1a"))
             else:
                 X, Y = P(mx - hr * .2, my - hr * .12); X2, Y2 = P(mx + hr * .2, my + hr * .1)
                 d.arc([min(X, X2), Y, max(X, X2), Y2], 20, 160, fill=C("#5a2a20"), width=max(2, int(H * .012 * s)))
@@ -408,7 +425,11 @@ class Scene:
             if anim == "carry":
                 circ(hd[0] + H * .03, hd[1] - H * .05, H * .085, C(e.get("stone", "#8f897c"))); circ(hd[0] + H * .01, hd[1] - H * .08, H * .025, C("#b9b3a6"))
             if pal.get("staff"):
-                d.line([P(hd[0] + H * .01, hd[1] - H * .16), P(hd[0] + H * .03, -2)], fill=C("#6b4a2b"), width=int(H * .025 * s))
+                if anim in ("think", "wave", "cheer", "laugh", "sit", "carry"):   # hand is busy: the stick leans beside him
+                    sx = sho[0] + H * .3
+                    d.line([P(sx - H * .03, sho[1] + H * .02), P(sx + H * .02, -2)], fill=C("#6b4a2b"), width=int(H * .025 * s))
+                else:
+                    d.line([P(hd[0] + H * .01, hd[1] - H * .16), P(hd[0] + H * .03, -2)], fill=C("#6b4a2b"), width=int(H * .025 * s))
         im = hi(f, (Sw, Sh))
         return im, (int(x - ox), int(y - oy))
 
@@ -566,6 +587,8 @@ class Scene:
                 else: getattr(self, ty)(e, t, now, d)
                 res = (lay, (0, 0))
             if res and res[0] is not None: paste_clip(img, res[0], res[1])
+        if self.spec.get("dust", not any(e["type"] in ("rain", "fireflies", "splash") for e in self.els)):
+            self.dust(img, now)
         # global grading
         arr = np.asarray(img.convert("RGB")).astype(np.float32)
         dk = self.darkness(t) + kf(self.spec.get("dark", 0), t)
@@ -576,12 +599,29 @@ class Scene:
         fade = kf(self.spec.get("fade", 1), t)
         arr = vignette(arr) * fade
         out = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
-        cam = self.spec.get("camera", {})
+        cam = self.spec.get("camera")
+        if cam is None and self.spec.get("auto_camera", True):   # gentle push-in / pull-out so no shot is ever static
+            u = t * t * (3 - 2 * t); side = 1 if self.idx % 2 == 0 else -1; zin = self.idx % 3 != 2
+            cam = {"zoom": 1.0 + .07 * (u if zin else 1 - u), "cx": W / 2 + side * 40 * (u - .5), "cy": H * .55}
+        cam = cam or {}
         z = kf(cam.get("zoom", 1.0), t); cx = kf(cam.get("cx", W / 2), t); cy = kf(cam.get("cy", H / 2), t)
         if abs(z - 1) > 1e-3:
             cw, ch = W / z, H / z; x0 = min(max(cx - cw / 2, 0), W - cw); y0 = min(max(cy - ch / 2, 0), H - ch)
-            out = out.resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch))
+            out = out.resize((W, H), Image.BILINEAR, box=(x0, y0, x0 + cw, y0 + ch))
         return out
+
+def _dust(self, img, now):
+    if not hasattr(self, "_specks"):
+        r = random.Random(self.idx * 7 + 3)
+        self._specks = [(r.random() * W, r.random() * self.ground * .95, r.uniform(2, 5), r.uniform(.15, .45), r.random() * 6.28, r.uniform(40, 95)) for _ in range(26)]
+        self._dlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    lay = self._dlay.copy(); d = ImageDraw.Draw(lay)
+    for x, y, rr, sp, ph, a in self._specks:
+        xx = (x + now * 18 * sp + math.sin(now * sp * 2 + ph) * 22) % W; yy = (y - now * 26 * sp) % (self.ground * .95)
+        al = int(a * (.55 + .45 * math.sin(now * 1.7 + ph)))
+        d.ellipse([xx - rr, yy - rr, xx + rr, yy + rr], fill=(255, 244, 214, al))
+    img.alpha_composite(lay)
+Scene.dust = _dust
 
 def paste_clip(base, im, pos):
     x, y = pos; bx0, by0 = max(0, x), max(0, y); bx1, by1 = min(base.width, x + im.width), min(base.height, y + im.height)
@@ -762,20 +802,27 @@ def render(story_path, out_path):
         voice[-1]["dur"] += min_total - total
         print(f"Story ran {total:.1f}s; holding the last card {min_total - total:.1f}s longer to reach {min_total:.0f}s")
     hl = set(w.lower() for w in story.get("highlight", []))
-    caps = Captions(); files = []
+    caps = Captions(); files = []; prev_raw = None; last_raw = None; XF = int(.4 * FPS)
     wm = make_watermark(story.get("watermark", "Mindset Minute"))
     for i, (sc, vo) in enumerate(zip(story["scenes"], voice)):
         dur = vo["dur"]; nfr = int(round(dur * FPS)); vo["nfr"] = nfr
-        scene = Scene(sc, dur, random.Random(i))
+        a = vo["audio"]; spf = sr / FPS
+        env = np.array([np.sqrt(np.mean(a[int(k * spf):int((k + 1) * spf)] ** 2)) if int(k * spf) < len(a) else 0 for k in range(nfr)])
+        env = np.clip(env / (np.percentile(env[env > 0], 90) if np.any(env > 0) else 1), 0, 1)
+        scene = Scene(sc, dur, random.Random(i), idx=i, talk=env)
         tmp = os.path.join(work, f"s{i:02d}.tmp.mp4"); fin = os.path.join(work, f"s{i:02d}.mp4")
         p = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
                               "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p", "-r", str(FPS), tmp], stdin=subprocess.PIPE)
         for f in range(nfr):
-            now = f / FPS; fr = scene.frame(now).convert("RGBA")
+            now = f / FPS; raw = scene.frame(now)
+            if prev_raw is not None and f < XF and not sc.get("cut"):   # soft dissolve from the previous scene
+                raw = Image.blend(prev_raw, raw, (f + 1) / (XF + 1))
+            if f == nfr - 1: last_raw = raw
+            fr = raw.convert("RGBA")
             if sc.get("captions", True): caps.draw(fr, vo["chunks"], now, sc.get("caption_y", 700), hl)
             if wm is not None and sc.get("watermark", True): fr.alpha_composite(wm, dest=(W - wm.width - 36, 330))
             p.stdin.write(fr.convert("RGB").tobytes())
-        p.stdin.close()
+        p.stdin.close(); prev_raw = last_raw
         if p.wait() != 0: raise SystemExit(f"ffmpeg failed on scene {i}")
         os.replace(tmp, fin); files.append(fin); print(f"scene {i} done ({dur:.1f}s)", flush=True)
     # audio mix
@@ -810,7 +857,7 @@ def stills(story_path, outdir, times):
     """Preview: render single frames. times = list of (scene_index, t_seconds)."""
     story = json.load(open(story_path)); os.makedirs(outdir, exist_ok=True)
     for si, ts in times:
-        si = int(si); sc = story["scenes"][si]; scene = Scene(sc, sc.get("preview_dur", 8), random.Random(si))
+        si = int(si); sc = story["scenes"][si]; scene = Scene(sc, sc.get("preview_dur", 8), random.Random(si), idx=si)
         fr = scene.frame(ts).convert("RGBA")
         wm = make_watermark(story.get("watermark", "Mindset Minute"))
         if wm is not None and sc.get("watermark", True): fr.alpha_composite(wm, dest=(W - wm.width - 36, 330))
