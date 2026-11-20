@@ -276,7 +276,7 @@ class Scene:
         "villager":   dict(skin="#9c6a45", shirt="#d0573f", pants="#2e3b55", sarong=False, hair="#1d1612"),
         "villager_f": dict(skin="#b8835a", shirt="#2f8f83", pants="#2f8f83", dress=True,   hair="#1a1210", bun=True),
         "child":      dict(skin="#c08a5e", shirt="#f2b134", pants="#3b5ba5", sarong=False, hair="#1d1612"),
-        "monk":       dict(skin="#b07a4f", shirt="#e07b24", pants="#e07b24", robe=True,    hair=None),
+        "monk":       dict(skin="#b07a4f", shirt="#e8862a", pants="#e8862a", robe=True,    hair=None),
         "student":    dict(skin="#a8724a", shirt="#ffffff", pants="#25324d", sarong=False, hair="#1a1210", bag=True),
     }
 
@@ -319,7 +319,9 @@ class Scene:
             legw, armw = H * .085, H * .068
             skin, shirt, pants = C(pal["skin"]), C(pal["shirt"]), C(pal["pants"])
             skin_b, shirt_b, pants_b = C(pal["skin"], dk=.18), C(pal["shirt"], dk=.18), C(pal["pants"], dk=.18)
-            shoe = C("#2b2420")
+            shoe = C("#7a5534") if pal.get("robe") else C("#2b2420")   # monks wear sandals
+            def L(hexs, k):   # lighter shade (opaque, so nothing punches a hole in the layer)
+                r_, g_, b_, _ = hexc(hexs); return (int(r_ + (255 - r_) * k), int(g_ + (255 - g_) * k), int(b_ + (255 - b_) * k), 255)
             # ---- legs (back then front)
             def leg(k, col):
                 if anim == "sit":
@@ -337,7 +339,7 @@ class Scene:
                 d.rounded_rectangle([min(X0, X1), Y0, max(X0, X1), Y1], radius=int(H * .02 * s), fill=C(e.get("seat", "#7d7468"), dk=-.15) if not e.get("silhouette") else rk)
             if not pal.get("robe") and not pal.get("dress"):
                 leg(-1, pants_b); leg(1, pants)
-            else:
+            elif not (pal.get("robe") and anim == "sit" and not e.get("silhouette")):
                 for k in (-1, 1):
                     a = k * sw * .3; fx_ = hip[0] + math.sin(a) * H * .44
                     X, Y = P(fx_ + H * .03, -2); d.ellipse([X - H * .06 * s, Y - H * .035 * s, X + H * .06 * s, Y + H * .012 * s], fill=shoe)
@@ -368,7 +370,38 @@ class Scene:
             arm(-1, shirt_b, skin_b)
             # ---- body
             tw_s, tw_h = H * .135, H * .11
-            if pal.get("robe") or pal.get("dress"):
+            if pal.get("robe") and not e.get("silhouette"):
+                # Theravada-style robe: saffron over one shoulder, darker under-robe at the hem, soft folds, prayer beads
+                robe_d = C(pal["shirt"], dk=.2); robe_l = L(pal["shirt"], .2); under = C("#8a3a1c")
+                sway = math.sin(now * 1.3 + ph) * H * .006 + sw * H * .012
+                sitting = anim == "sit"
+                if sitting:   # lap + hanging legs wrapped in the robe
+                    hem = H * .15; bot = hip[1] + H * .08
+                    knee_x = hip[0] + H * .24
+                    d.polygon([P(hip[0] - H * .12, hip[1] - H * .03), P(knee_x + H * .05, hip[1] - H * .01), P(knee_x + H * .07, hip[1] + H * .1), P(hip[0] - H * .14, hip[1] + H * .1)], fill=robe_d)
+                    d.polygon([P(knee_x - H * .05, hip[1] + H * .05), P(knee_x + H * .07, hip[1] + H * .05), P(knee_x + H * .09, -H * .09), P(knee_x - H * .07, -H * .09)], fill=shirt)
+                    d.polygon([P(knee_x - H * .075, -H * .1), P(knee_x + H * .095, -H * .1), P(knee_x + H * .1, -H * .045), P(knee_x - H * .08, -H * .045)], fill=under)
+                    for k_ in (-1, 1):
+                        X, Y = P(knee_x + k_ * H * .03, -2); d.ellipse([X - H * .045 * s, Y - H * .03 * s, X + H * .045 * s, Y + H * .01 * s], fill=shoe)
+                else:
+                    hem = H * .19; bot = -H * .1
+                    d.polygon([P(hip[0] - hem * 1.03 + sway, -H * .13), P(hip[0] + hem * 1.03 + sway, -H * .13),
+                               P(hip[0] + hem * 1.05 + sway, -H * .05), P(hip[0] - hem * 1.05 + sway, -H * .05)], fill=under)
+                tw = tw_s * .92
+                d.polygon([P(sho[0] - tw, sho[1] + H * .03), P(sho[0] - tw * .55, sho[1] - H * .012), P(sho[0] + tw * .6, sho[1] - H * .012), P(sho[0] + tw, sho[1] + H * .03),
+                           P(hip[0] + hem * .98 + sway, bot), P(hip[0] + sway * .5, bot + H * .012), P(hip[0] - hem + sway, bot)], fill=shirt)
+                circ(sho[0] - tw * .62, sho[1] + H * .035, H * .05, shirt)                                                                    # rounded back shoulder
+                d.polygon([P(sho[0] + tw * .05, sho[1] - H * .008), P(sho[0] + tw * .7, sho[1] - H * .01), P(sho[0] + tw * 1.05, sho[1] + H * .04), P(sho[0] + tw * .98, sho[1] + H * .1)], fill=skin)   # bare shoulder
+                d.line([P(sho[0] + tw * .05, sho[1]), P(sho[0] + tw * .98, sho[1] + H * .1)], fill=robe_l, width=max(2, int(H * .012 * s)))          # robe edge
+                d.line([P(sho[0] - tw * .75, sho[1] + H * .03), P(hip[0] + tw * .2, hip[1] + H * .01), P(hip[0] + hem * .7 + sway, bot - H * .03)],
+                       fill=robe_l, width=int(H * .018 * s), joint="curve")                                                                      # drape highlight
+                for fx0, fx1 in ((-.35, -.6), (.1, .28), (-.1, -.2)):                                                                           # folds
+                    d.line([P(hip[0] + hem * fx0, hip[1] + H * .06), P(hip[0] + hem * fx1 + sway, bot - H * .015)], fill=robe_d, width=max(2, int(H * .008 * s)))
+                if e.get("beads", True):
+                    for i in range(11):
+                        u = i / 10; bx_ = sho[0] - tw * .3 + u * tw * .75; by_ = sho[1] + H * .012 + math.sin(u * math.pi) * H * .075
+                        circ(bx_, by_, H * .01, C("#4a2c1d"))
+            elif pal.get("robe") or pal.get("dress"):
                 hem = H * (.2 if pal.get("robe") else .17)
                 d.polygon([P(sho[0] - tw_s, sho[1]), P(sho[0] + tw_s, sho[1]), P(hip[0] + hem, -H * .07), P(hip[0] - hem, -H * .07)], fill=shirt)
                 if pal.get("robe"): d.line([P(sho[0] - tw_s * .6, sho[1]), P(hip[0] + tw_s, hip[1] + H * .1)], fill=C(pal["shirt"], dk=.25), width=int(H * .03 * s))
@@ -387,6 +420,8 @@ class Scene:
             hc = (sho[0] + H * .015 + (H * .02 if anim == "laugh" else 0) + nod * .4, sho[1] - hr * 1.05 - (math.sin(now * 9) * 2 * sc if anim == "laugh" else 0) + nod)
             limb([(sho[0], sho[1]), (hc[0], hc[1] + hr * .6)], skin, H * .05)
             circ(hc[0], hc[1], hr, skin)
+            if kind == "monk" and not e.get("silhouette"):   # shaved head: soft shine
+                circ(hc[0] + hr * .12, hc[1] - hr * .5, hr * .3, L(pal["skin"], .12)); circ(hc[0] + hr * .2, hc[1] - hr * .58, hr * .13, L(pal["skin"], .3))
             if not e.get("silhouette"):   # ear (drawn before the hair so hair can cover its top)
                 circ(hc[0] - hr * .55, hc[1] + hr * .2, hr * .19, skin); circ(hc[0] - hr * .53, hc[1] + hr * .22, hr * .085, C(pal["skin"], dk=.16))
             hair = pal.get("hair")
@@ -405,7 +440,7 @@ class Scene:
             if not e.get("silhouette"):
                 fx_ = e.get("face")
                 if isinstance(fx_, list): fx_ = ([v for tt, v in fx_ if tt <= t] or [fx_[0][1]])[-1]
-                expr = fx_ or {"laugh": "laugh", "cheer": "happy", "wave": "happy", "think": "think"}.get(anim, "calm")
+                expr = fx_ or {"laugh": "laugh", "cheer": "happy", "wave": "happy", "think": "think"}.get(anim, "serene" if kind == "monk" else "calm")
                 ink = C("#1b1410"); lw = max(2, int(hr * .07 * s))
                 skin_d = C(pal["skin"], dk=.16); skin_dd = C(pal["skin"], dk=.3)
                 brow = C(pal["hair"], dk=.15) if pal.get("hair") and kind != "old" else (C(pal["hair"]) if kind == "old" else skin_dd)
@@ -415,6 +450,9 @@ class Scene:
                 look = .045 * hr + (math.sin(now * .7 + ph) * .02 * hr)
                 for ex, k in eyes:
                     rx, ry = hr * .15 * k, hr * .19
+                    if expr == "serene":                    # peaceful, gently closed eyes
+                        X0, Y0 = P(ex - rx, ey - ry * .9); X1, Y1 = P(ex + rx, ey + ry * .5)
+                        d.arc([min(X0, X1), Y0, max(X0, X1), Y1], 20, 160, fill=ink, width=lw); continue
                     if expr == "laugh" or blink:          # closed: happy arcs when laughing, flat line when blinking
                         X0, Y0 = P(ex - rx, ey - ry * .5); X1, Y1 = P(ex + rx, ey + ry * .7)
                         if expr == "laugh": d.arc([min(X0, X1), Y0, max(X0, X1), Y1], 200, 340, fill=ink, width=lw)
@@ -435,7 +473,7 @@ class Scene:
                     inner, outer = (ex - hr * .16 * k, ex + hr * .17 * k) if i == 0 else (ex + hr * .14 * k, ex - hr * .16 * k)
                     by = ey - hr * .27
                     di, do = {"angry": (.12, -.06), "sad": (-.1, .06), "worried": (-.1, .04), "surprised": (-.12, -.12),
-                              "happy": (-.04, -.04), "laugh": (-.06, -.06), "think": ((-.12, -.12) if i == 0 else (.05, .05))}.get(expr, (0, 0))
+                              "happy": (-.04, -.04), "serene": (-.02, .03), "laugh": (-.06, -.06), "think": ((-.12, -.12) if i == 0 else (.05, .05))}.get(expr, (0, 0))
                     d.line([P(inner, by + di * hr), P((inner + outer) / 2, by - hr * .05 + (di + do) / 2 * hr), P(outer, by + do * hr)], fill=brow, width=bw, joint="curve")
                 # nose
                 nx, ny = hc[0] + hr * .3, hc[1] + hr * .38
@@ -471,7 +509,7 @@ class Scene:
                 d.polygon([P(hc[0] - hr * 2.3, hc[1] - hr * .45), P(hc[0] + hr * .1, hc[1] - hr * 1.95), P(hc[0] + hr * 2.4, hc[1] - hr * .45)], fill=C("#d9b26a"))
                 d.line([P(hc[0] - hr * 1.6, hc[1] - hr * .75), P(hc[0] + hr * 1.7, hc[1] - hr * .75)], fill=C("#a8823f"), width=int(H * .014 * s))
             # ---- front arm + props
-            hd = arm(1, shirt, skin)
+            hd = arm(1, skin if (pal.get("robe") and not e.get("silhouette")) else shirt, skin)   # monk's front arm is bare
             if anim == "carry":
                 circ(hd[0] + H * .03, hd[1] - H * .05, H * .085, C(e.get("stone", "#8f897c"))); circ(hd[0] + H * .01, hd[1] - H * .08, H * .025, C("#b9b3a6"))
             if pal.get("staff"):

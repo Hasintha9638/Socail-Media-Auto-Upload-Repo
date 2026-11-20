@@ -143,6 +143,10 @@ so every video gets the owner's real voice. When both folders have clips, mix ma
 - **Facial expressions:** every person has eyes, eyebrows, a nose and a mouth that show emotion. Set `"face"` on a person:
   `"calm"` (default), `"happy"`, `"laugh"`, `"sad"`, `"worried"`, `"angry"`, `"surprised"`, `"think"`.
   Change it during a scene with `[[0, "worried"], [0.6, "happy"]]` (times are fractions of the scene).
+  `"serene"` = peaceful closed eyes and a soft smile (the default for monks; perfect for Zen masters).
   Without `face`, the pose decides: laugh → laugh, cheer/wave → happy, think → think, others → calm.
+- **Monks** wear a saffron robe over one shoulder with prayer beads (`"beads": false` to hide them) and sandals;
+  a sitting monk sits on a rock with the robe over his knees. In Zen stories let the master stay `"serene"`
+  and give the student the emotions (`"worried"`, `"surprised"`, then `"calm"`).
   Use emotion to tell the story: the poor-mindset character `"worried"`/`"sad"`, the rich-mindset one `"calm"`/`"happy"`,
   the angry moment `"angry"`, the lesson landing `"surprised"` then `"happy"`.
