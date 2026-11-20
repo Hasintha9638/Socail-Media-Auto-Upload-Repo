@@ -148,6 +148,8 @@ so every video gets the owner's real voice. When both folders have clips, mix ma
 - **Character size:** draw the main characters BIG so faces, clothes and hands read on a phone: `"s": 1.5`–`1.8`
   for the one or two characters the scene is about (2.0+ for a close-up), 1.0–1.2 only for people in the background.
   Keep them inside the frame: x between 180 and 900 at s 1.5+, and leave room above their heads for the captions.
+  Big characters reach up to about y 900, so small on-screen labels ("RULE 1" sub-lines, "INCOMING CALL", signs) go at
+  **y 440–470** (between the top title and the captions), never at y 900–1100 where they would cover a face.
 - **Clothes:** men wear collared shirts with buttons and belts (short sleeves for villager/farmer, so arms and hands show),
   farmers and grandpas wear striped sarongs, children wear t-shirts and shorts, the student has a backpack with a strap,
   `villager_f` wears a dress with puff sleeves, a waist sash and a flared skirt (`"sash": "#hex"` to change the sash colour).
