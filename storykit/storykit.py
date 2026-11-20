@@ -333,7 +333,11 @@ class Scene:
                     a = k * sw * .5 + stance * .5; knee = (hp[0] + math.sin(a) * H * .22, hp[1] + math.cos(a) * H * .22)
                     a2 = a - (abs(sw) * .35 if k * sw < 0 else 0); foot = (knee[0] + math.sin(a2) * H * .22, -2 + 0 * bob)
                 plain_ = not e.get("silhouette")
-                if kind == "child" and plain_:   # shorts
+                if pal.get("sarong") and plain_:   # bare legs under the sarong
+                    sk_ = skin_b if k < 0 else skin
+                    if anim == "sit": limb([hp, knee], col, legw * 1.15); limb([knee, foot], sk_, legw * .85)
+                    else: limb([hp, knee, foot], sk_, legw * .85)
+                elif kind == "child" and plain_:   # shorts
                     limb([knee, foot], skin_b if k < 0 else skin, legw * .82); limb([hp, knee], col, legw * 1.12)
                 else:
                     limb([hp, knee, foot], col, legw)
@@ -375,7 +379,11 @@ class Scene:
             # ---- back arm
             def arm(k, col, hand):
                 sh = (sho[0] - k * H * .03, sho[1] + H * .035)
-                if anim == "carry":
+                holds_staff = pal.get("staff") and k == staff_hand
+                if holds_staff:
+                    if walking: el = (sh[0] + H * .1 + sw * H * .02, sh[1] + H * .14); hd = (sh[0] + H * .2 + sw * H * .03, sh[1] + H * .2)
+                    else: el = (sh[0] + H * .1, sh[1] + H * .14); hd = (sh[0] + H * .2, sh[1] + H * .2)
+                elif anim == "carry":
                     el = (sh[0] + H * .1, sh[1] + H * .13); hd = (sh[0] + H * .2, sh[1] + H * .08)
                 elif anim == "wave" and k == 1:
                     a = math.sin(now * 8 + ph) * .35; el = (sh[0] + H * .18, sh[1] - H * .02); hd = (el[0] + H * .05 + math.sin(a) * H * .09, el[1] - H * .15)
@@ -387,10 +395,8 @@ class Scene:
                     jump = abs(math.sin(now * 6 + ph)) * H * .03
                     if k == 1: el = (sh[0] + H * .17, sh[1] - H * .015); hd = (el[0] + H * .07, el[1] - H * .2 - jump)   # out to the side, then up (clear of the face)
                     else: el = (sh[0] - H * .09, sh[1] - H * .08); hd = (sh[0] - H * .12, sh[1] - H * .25 - jump)
-                elif anim == "think" and k == 1:
-                    el = (sh[0] + H * .12, sh[1] + H * .14); hd = (sh[0] + H * .1, sh[1] - H * .02)
-                elif pal.get("staff") and k == 1:
-                    el = (sh[0] + H * .1, sh[1] + H * .14); hd = (sh[0] + H * .2, sh[1] + H * .2)
+                elif anim == "think" and k == 1:   # knuckles resting under the chin, clear of the mouth
+                    el = (sh[0] + H * .13, sh[1] + H * .15); hd = (sho[0] + H * .065, sho[1] + H * .02)
                 else:
                     a = -k * sw * .45 + .08 + (0 if walking else math.sin(now * 1.5 + ph + k) * .05)   # relaxed sway when standing
                     el = (sh[0] + math.sin(a) * H * .16, sh[1] + math.cos(a) * H * .16)
@@ -402,6 +408,9 @@ class Scene:
                     limb([sh, mid], col, armw * 1.3)                                      # sleeve
                 else:
                     limb([sh, el, hd], col, armw)
+                if holds_staff:   # stick runs through the fist, from above the hand down to the ground
+                    top = (hd[0] - H * .012, hd[1] - H * .17); bot = (hd[0] + H * .03, -2)
+                    d.line([P(*top), P(*hd), P(*bot)], fill=C("#6b4a2b"), width=int(H * .025 * s), joint="curve")
                 draw_hand(hd, el, hand, k)
                 return hd
             def draw_hand(hd, el, col, k):
@@ -409,7 +418,7 @@ class Scene:
                 if e.get("silhouette"): circ(hd[0], hd[1], H * .04, col); return
                 vx, vy = hd[0] - el[0], hd[1] - el[1]; n = math.hypot(vx, vy) or 1; vx, vy = vx / n, vy / n; px, py = -vy, vx
                 line_c = C(pal["skin"], dk=.28) if col == skin else C(pal["skin"], dk=.4)
-                holding = anim == "carry" or (pal.get("staff") and k == 1 and anim not in ("think", "wave", "cheer", "laugh", "sit"))
+                holding = anim == "carry" or (pal.get("staff") and k == staff_hand) or (anim == "think" and k == 1)
                 spread = anim in ("wave", "cheer") and k == 1
                 pr = H * .036
                 circ(hd[0], hd[1], pr, col)                                                       # palm
@@ -430,6 +439,7 @@ class Scene:
                     bx, by = hd[0] + vx * pr * .75 + px * o * pr, hd[1] + vy * pr * .75 + py * o * pr
                     X0, Y0 = P(bx, by); X1, Y1 = P(bx + vx * pr * .45, by + vy * pr * .45)
                     d.line([(X0, Y0), (X1, Y1)], fill=line_c, width=max(1, int(H * .004 * s)))
+            staff_hand = 0 if anim in ("sit", "carry") else (-1 if anim in ("think", "wave", "cheer", "laugh") else 1)
             arm(-1, shirt_b, skin_b)
             # ---- body
             tw_s, tw_h = H * .135, H * .11
@@ -618,12 +628,9 @@ class Scene:
             hd = arm(1, skin if (pal.get("robe") and not e.get("silhouette")) else shirt, skin)   # monk's front arm is bare
             if anim == "carry":
                 circ(hd[0] + H * .03, hd[1] - H * .05, H * .085, C(e.get("stone", "#8f897c"))); circ(hd[0] + H * .01, hd[1] - H * .08, H * .025, C("#b9b3a6"))
-            if pal.get("staff"):
-                if anim in ("think", "wave", "cheer", "laugh", "sit", "carry"):   # hand is busy: the stick leans beside him
-                    sx = sho[0] + H * .3
-                    d.line([P(sx - H * .03, sho[1] + H * .02), P(sx + H * .02, -2)], fill=C("#6b4a2b"), width=int(H * .025 * s))
-                else:
-                    d.line([P(hd[0] + H * .01, hd[1] - H * .16), P(hd[0] + H * .03, -2)], fill=C("#6b4a2b"), width=int(H * .025 * s))
+            if pal.get("staff") and staff_hand == 0:   # sitting / carrying: the stick leans against the seat beside him
+                sx = hip[0] + H * .34
+                d.line([P(sx - H * .04, hip[1] - H * .12), P(sx + H * .01, -2)], fill=C("#6b4a2b"), width=int(H * .025 * s))
         im = hi(f, (Sw, Sh))
         return im, (int(x - ox), int(y - oy))
 
