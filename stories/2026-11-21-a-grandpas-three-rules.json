@@ -1,0 +1,1084 @@
+{
+  "format": "Grandpa's life advice",
+  "publish_at": "05:45",
+  "publish_date": "2026-11-21",
+  "title": "Grandpa's Three Rules",
+  "youtube_title": "My Grandpa's 3 Rules… I Laughed at the Third #shorts #lifeadvice",
+  "description": "Life advice from a grandpa: three simple rules he taught his grandson on a quiet lake one summer, and why the third one matters most.\n\nThe moral: call the people you love before you need a reason.\n\nA new one-minute lesson every day on Mindset Minute. Subscribe so you don't miss tomorrow's story.\n\n#lifeadvice #lifelessons #grandpa #wisdom #motivation #MindsetMinute #shorts",
+  "tags": [
+    "grandpa life advice",
+    "life advice",
+    "life lessons",
+    "grandpa wisdom",
+    "wisdom",
+    "motivation",
+    "family",
+    "call your family",
+    "anger management tips",
+    "do the hard thing first",
+    "animated story",
+    "short story",
+    "self improvement",
+    "emotional story"
+  ],
+  "voice": "bm_george",
+  "speed": 1.0,
+  "mood": "warm",
+  "highlight": [
+    "rules",
+    "rule",
+    "angry",
+    "sunrise",
+    "hard",
+    "call",
+    "love",
+    "Grandpa"
+  ],
+  "scenes": [
+    {
+      "narration": "My grandpa gave me three rules one summer. I laughed at the third. I'm not laughing now.",
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.08
+          ],
+          [
+            1,
+            1.0
+          ]
+        ],
+        "cx": 600,
+        "cy": 1050
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "sun",
+          "x": 180,
+          "y": 1120,
+          "r": 90
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.45,
+          "y": [
+            880,
+            1060
+          ],
+          "speed": 0.3,
+          "seed": 5
+        },
+        {
+          "type": "hills",
+          "color": "#5d7a8c",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 12
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              620,
+              1452,
+              0.8
+            ],
+            [
+              990,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f6b3a",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#5f7d45",
+          "grass_color": "#6f8f50",
+          "furrows": false,
+          "riverbed": [
+            470,
+            120
+          ]
+        },
+        {
+          "type": "water",
+          "level": 1470,
+          "x1": 470,
+          "color": "#4f7fa0",
+          "top": "#d9e8f0",
+          "rough": 0.4
+        },
+        {
+          "type": "person",
+          "kind": "old",
+          "x": [
+            [
+              0,
+              1000
+            ],
+            [
+              0.6,
+              700
+            ],
+            [
+              1,
+              700
+            ]
+          ],
+          "facing": -1,
+          "staff": true,
+          "anim": "walk",
+          "shirt": "#8a6d4b",
+          "pants": "#4a3b2c"
+        },
+        {
+          "type": "person",
+          "kind": "child",
+          "x": [
+            [
+              0,
+              1080
+            ],
+            [
+              0.6,
+              860
+            ],
+            [
+              1,
+              860
+            ]
+          ],
+          "facing": -1,
+          "anim": "walk",
+          "shirt": "#2f80c0",
+          "pants": "#2d3a4a"
+        },
+        {
+          "type": "text",
+          "text": "GRANDPA'S 3 RULES",
+          "y": 250,
+          "size": 72,
+          "width": 940,
+          "color": "#ffe7b0",
+          "stroke": 5,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.08,
+              1
+            ],
+            [
+              0.85,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Every morning we walked to the water before sunrise. I wanted the biggest fish. He just watched the mist.",
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "sun",
+          "x": 180,
+          "y": 1120,
+          "r": 90
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.45,
+          "y": [
+            880,
+            1060
+          ],
+          "speed": 0.3,
+          "seed": 5
+        },
+        {
+          "type": "hills",
+          "color": "#5d7a8c",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 12
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              620,
+              1452,
+              0.8
+            ],
+            [
+              990,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f6b3a",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#5f7d45",
+          "grass_color": "#6f8f50",
+          "furrows": false,
+          "riverbed": [
+            470,
+            120
+          ]
+        },
+        {
+          "type": "water",
+          "level": 1470,
+          "x1": 470,
+          "color": "#4f7fa0",
+          "top": "#d9e8f0",
+          "rough": 0.4
+        },
+        {
+          "type": "person",
+          "kind": "old",
+          "x": 620,
+          "facing": -1,
+          "staff": true,
+          "anim": "sit",
+          "shirt": "#8a6d4b",
+          "pants": "#4a3b2c"
+        },
+        {
+          "type": "person",
+          "kind": "child",
+          "x": 820,
+          "facing": -1,
+          "anim": "cheer",
+          "shirt": "#2f80c0",
+          "pants": "#2d3a4a"
+        },
+        {
+          "type": "text",
+          "text": "EVERY MORNING, 5 AM",
+          "y": 250,
+          "size": 64,
+          "width": 940,
+          "color": "#ffe7b0",
+          "stroke": 5
+        }
+      ]
+    },
+    {
+      "narration": "Rule one. Never decide anything when you're angry. Wait one sunrise. Most problems shrink overnight.",
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.0
+          ],
+          [
+            1,
+            1.06
+          ]
+        ],
+        "cx": 700,
+        "cy": 1100
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "sun",
+          "x": 180,
+          "y": 1120,
+          "r": 90
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.45,
+          "y": [
+            880,
+            1060
+          ],
+          "speed": 0.3,
+          "seed": 5
+        },
+        {
+          "type": "hills",
+          "color": "#5d7a8c",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 12
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              620,
+              1452,
+              0.8
+            ],
+            [
+              990,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f6b3a",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#5f7d45",
+          "grass_color": "#6f8f50",
+          "furrows": false,
+          "riverbed": [
+            470,
+            120
+          ]
+        },
+        {
+          "type": "water",
+          "level": 1470,
+          "x1": 470,
+          "color": "#4f7fa0",
+          "top": "#d9e8f0",
+          "rough": 0.4
+        },
+        {
+          "type": "person",
+          "kind": "old",
+          "x": 640,
+          "facing": -1,
+          "staff": true,
+          "anim": "think",
+          "shirt": "#8a6d4b",
+          "pants": "#4a3b2c"
+        },
+        {
+          "type": "person",
+          "kind": "child",
+          "x": 840,
+          "facing": -1,
+          "anim": "sit",
+          "shirt": "#2f80c0",
+          "pants": "#2d3a4a"
+        },
+        {
+          "type": "text",
+          "text": "RULE 1",
+          "y": 250,
+          "size": 90,
+          "width": 940,
+          "color": "#ffe7b0",
+          "stroke": 5
+        },
+        {
+          "type": "text",
+          "text": "Never decide when you're angry.",
+          "y": 1000,
+          "size": 50,
+          "width": 860,
+          "color": "#ffe7b0",
+          "stroke": 4,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.35,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "That week I got furious with my best friend. I waited. We're still best friends today.",
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.45,
+          "y": [
+            880,
+            1060
+          ],
+          "speed": 0.3,
+          "seed": 5
+        },
+        {
+          "type": "hills",
+          "color": "#5d7a8c",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 12
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              620,
+              1452,
+              0.8
+            ],
+            [
+              990,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f6b3a",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#5f7d45",
+          "grass_color": "#6f8f50",
+          "furrows": false,
+          "riverbed": [
+            470,
+            120
+          ]
+        },
+        {
+          "type": "water",
+          "level": 1470,
+          "x1": 470,
+          "color": "#4f7fa0",
+          "top": "#d9e8f0",
+          "rough": 0.4
+        },
+        {
+          "type": "person",
+          "kind": "child",
+          "x": [
+            [
+              0,
+              650
+            ],
+            [
+              0.5,
+              760
+            ],
+            [
+              1,
+              760
+            ]
+          ],
+          "facing": 1,
+          "anim": "walk",
+          "shirt": "#2f80c0",
+          "pants": "#2d3a4a",
+          "bend": [
+            [
+              0,
+              0.3
+            ],
+            [
+              0.5,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "person",
+          "kind": "child",
+          "x": 880,
+          "facing": -1,
+          "anim": "wave",
+          "shirt": "#c0392b",
+          "pants": "#2d3a4a"
+        },
+        {
+          "type": "text",
+          "text": "WAIT ONE SUNRISE",
+          "y": 250,
+          "size": 64,
+          "width": 940,
+          "color": "#ffe7b0",
+          "stroke": 5
+        }
+      ]
+    },
+    {
+      "narration": "Rule two. Do the hard thing first. He made me scrub the boat before every fishing trip.",
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.0
+          ],
+          [
+            1,
+            1.06
+          ]
+        ],
+        "cx": 700,
+        "cy": 1100
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.45,
+          "y": [
+            880,
+            1060
+          ],
+          "speed": 0.3,
+          "seed": 5
+        },
+        {
+          "type": "hills",
+          "color": "#5d7a8c",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 12
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              620,
+              1452,
+              0.8
+            ],
+            [
+              990,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f6b3a",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#5f7d45",
+          "grass_color": "#6f8f50",
+          "furrows": false,
+          "riverbed": [
+            470,
+            120
+          ]
+        },
+        {
+          "type": "water",
+          "level": 1470,
+          "x1": 470,
+          "color": "#4f7fa0",
+          "top": "#d9e8f0",
+          "rough": 0.4
+        },
+        {
+          "type": "person",
+          "kind": "old",
+          "x": 880,
+          "facing": -1,
+          "staff": true,
+          "anim": "laugh",
+          "shirt": "#8a6d4b",
+          "pants": "#4a3b2c"
+        },
+        {
+          "type": "person",
+          "kind": "child",
+          "x": 660,
+          "facing": -1,
+          "anim": "carry",
+          "shirt": "#2f80c0",
+          "pants": "#2d3a4a",
+          "bend": 0.4
+        },
+        {
+          "type": "text",
+          "text": "RULE 2",
+          "y": 250,
+          "size": 90,
+          "width": 940,
+          "color": "#ffe7b0",
+          "stroke": 5
+        },
+        {
+          "type": "text",
+          "text": "Do the hard thing first.",
+          "y": 1000,
+          "size": 50,
+          "width": 860,
+          "color": "#ffe7b0",
+          "stroke": 4,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.35,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Rule three. Call the people you love, even with nothing to say. I rolled my eyes. Who does that?",
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.0
+          ],
+          [
+            1,
+            1.08
+          ]
+        ],
+        "cx": 700,
+        "cy": 1100
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.45,
+          "y": [
+            880,
+            1060
+          ],
+          "speed": 0.3,
+          "seed": 5
+        },
+        {
+          "type": "hills",
+          "color": "#5d7a8c",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 12
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              620,
+              1452,
+              0.8
+            ],
+            [
+              990,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f6b3a",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#5f7d45",
+          "grass_color": "#6f8f50",
+          "furrows": false,
+          "riverbed": [
+            470,
+            120
+          ]
+        },
+        {
+          "type": "water",
+          "level": 1470,
+          "x1": 470,
+          "color": "#4f7fa0",
+          "top": "#d9e8f0",
+          "rough": 0.4
+        },
+        {
+          "type": "person",
+          "kind": "old",
+          "x": 660,
+          "facing": -1,
+          "staff": true,
+          "anim": "idle",
+          "shirt": "#8a6d4b",
+          "pants": "#4a3b2c"
+        },
+        {
+          "type": "person",
+          "kind": "child",
+          "x": 860,
+          "facing": -1,
+          "anim": "laugh",
+          "shirt": "#2f80c0",
+          "pants": "#2d3a4a"
+        },
+        {
+          "type": "text",
+          "text": "RULE 3",
+          "y": 250,
+          "size": 90,
+          "width": 940,
+          "color": "#ffe7b0",
+          "stroke": 5
+        },
+        {
+          "type": "text",
+          "text": "Call the people you love.",
+          "y": 1000,
+          "size": 50,
+          "width": 860,
+          "color": "#ffe7b0",
+          "stroke": 4,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.35,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Years later, I moved to the city and got busy. One night, Grandpa called. Nothing to say, he laughed. Just missed you.",
+      "dark": 0.2,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "night"
+        },
+        {
+          "type": "stars",
+          "alpha": 0.5
+        },
+        {
+          "type": "moon",
+          "x": 200,
+          "y": 380,
+          "r": 50
+        },
+        {
+          "type": "hills",
+          "color": "#24304a",
+          "base_y": 1230,
+          "amp": 60,
+          "seed": 12
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              1.1
+            ],
+            [
+              420,
+              1452,
+              1.3
+            ],
+            [
+              700,
+              1452,
+              1.2
+            ],
+            [
+              960,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#566078",
+          "lit": true
+        },
+        {
+          "type": "ground",
+          "color": "#2a2f3a",
+          "grass_color": "#323846",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 560,
+          "facing": 1,
+          "anim": "think",
+          "shirt": "#2f80c0",
+          "pants": "#2d3a4a"
+        },
+        {
+          "type": "text",
+          "text": "YEARS LATER",
+          "y": 250,
+          "size": 72,
+          "width": 940,
+          "color": "#ffe7b0",
+          "stroke": 5
+        },
+        {
+          "type": "text",
+          "text": "INCOMING CALL: GRANDPA",
+          "y": 960,
+          "size": 44,
+          "width": 860,
+          "color": "#ffffff",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.2,
+              0
+            ],
+            [
+              0.28,
+              1
+            ]
+          ],
+          "box": "#1e8449"
+        }
+      ]
+    },
+    {
+      "narration": "That was our last call. Now I call my mom every Sunday. Who will you call today?",
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.45,
+          "y": [
+            880,
+            1060
+          ],
+          "speed": 0.3,
+          "seed": 5
+        },
+        {
+          "type": "hills",
+          "color": "#5d7a8c",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 12
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              620,
+              1452,
+              0.8
+            ],
+            [
+              990,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#3f6b3a",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#5f7d45",
+          "grass_color": "#6f8f50",
+          "furrows": false,
+          "riverbed": [
+            470,
+            120
+          ]
+        },
+        {
+          "type": "water",
+          "level": 1470,
+          "x1": 470,
+          "color": "#4f7fa0",
+          "top": "#d9e8f0",
+          "rough": 0.4
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 700,
+          "facing": -1,
+          "anim": "sit",
+          "shirt": "#2f80c0",
+          "pants": "#2d3a4a"
+        },
+        {
+          "type": "text",
+          "text": "WHO WILL YOU CALL TODAY?",
+          "y": 250,
+          "size": 60,
+          "width": 940,
+          "color": "#ffe7b0",
+          "stroke": 5
+        }
+      ]
+    },
+    {
+      "narration": "Call the people you love before you need a reason.",
+      "captions": false,
+      "lead": 0.6,
+      "tail": 2.2,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.06
+          ],
+          [
+            1,
+            1.0
+          ]
+        ],
+        "cx": 540,
+        "cy": 1000
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "card"
+        },
+        {
+          "type": "stars"
+        },
+        {
+          "type": "moon",
+          "x": 180,
+          "y": 330,
+          "r": 62
+        },
+        {
+          "type": "hills",
+          "color": "#1d1b38",
+          "base_y": 1210,
+          "amp": 120,
+          "seed": 7
+        },
+        {
+          "type": "ground",
+          "color": "#11121c",
+          "grass_color": "#171a26",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "old",
+          "x": 380,
+          "facing": 1,
+          "staff": true,
+          "silhouette": true,
+          "color": "#07070d"
+        },
+        {
+          "type": "person",
+          "kind": "child",
+          "x": 600,
+          "facing": -1,
+          "silhouette": true,
+          "color": "#07070d",
+          "anim": "wave"
+        },
+        {
+          "type": "fireflies",
+          "count": 20,
+          "y": [
+            1150,
+            1450
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Call the people you love before you need a reason.",
+          "serif": true,
+          "size": 72,
+          "width": 860,
+          "y": 640,
+          "color": "#fff3d6",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.12,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Mindset Minute  •  New lesson every day",
+          "size": 38,
+          "y": 900,
+          "color": "#ffd27a",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.55,
+              0
+            ],
+            [
+              0.7,
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
