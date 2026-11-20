@@ -34,6 +34,7 @@ jobs:
         run: |
           names="${{ github.event.inputs.story }}"
           [ -n "$names" ] || names=$(python3 scripts/due.py facebook --window-min 90 | tr '\n' ' ')
+          names=$(echo $names)   # trim: an empty list must stay empty
           echo "names=$names" >> "$GITHUB_OUTPUT"; echo "Due: ${names:-none}"
       - name: Post Reels
         if: steps.due.outputs.names != '' && env.FB_PAGE_TOKEN != ''
@@ -51,7 +52,8 @@ jobs:
             curl -s -H "Title: ✅ Facebook Reel posted" -H "Tags: blue_book" -H "Click: $link" -d "$name" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null || true
             echo "| $(date +%F) | $name | facebook: $link |" >> stories/PUBLISHED.md
           done
-          git add stories/PUBLISHED.md && git commit -m "Log Facebook posts [skip ci]" && (git pull --rebase -q || (git checkout --theirs stories/PUBLISHED.md 2>/dev/null; git add stories/PUBLISHED.md; GIT_EDITOR=true git rebase --continue)) && git push
+          git add stories/PUBLISHED.md && git diff --cached --quiet && exit 0
+          git commit -m "Log Facebook posts [skip ci]" && (git pull --rebase -q || (git checkout --theirs stories/PUBLISHED.md 2>/dev/null; git add stories/PUBLISHED.md; GIT_EDITOR=true git rebase --continue)) && git push
       - name: Phone notification (failed)
         if: failure()
         run: |
