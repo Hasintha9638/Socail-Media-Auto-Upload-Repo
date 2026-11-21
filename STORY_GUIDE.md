@@ -49,6 +49,33 @@ Also check stories/PUBLISHED.md so the theme differs from the last 6 videos. (Mo
 - **Hooks decide reach:** the first line must create a question in 2 seconds (see "Retention rules" below). End with a comment question and a quotable moral.
 - Topical but evergreen: you may echo what's trending (exams season, New Year goals, monsoon, cricket season in Sri Lanka) but never copy anyone's video, song, or character.
 
+## SEO checklist (every story, both videos)
+People find Shorts through search and suggestions, so every upload must contain the exact phrases people type.
+1. **Title = keyword + curiosity**, under 70 characters, the search phrase in the first 40 characters:
+   "Rich vs Poor Mindset: One Sentence Changed Everything", "Stoic Lesson: He Missed the Bus and Smiled",
+   "Zen Story: The Monk Who Never Got Angry", "Discipline Day 1 vs Day 365: One Minute a Day", "Grandpa's Life Advice: 3 Rules I Ignored".
+   Then ` #shorts` plus ONE format hashtag (e.g. ` #shorts #stoicism`). No ALL-CAPS titles, no clickbait the video doesn't pay off.
+2. **Description line 1** (the part shown in search): repeat the main keyword naturally in a full sentence,
+   e.g. "A short rich vs poor mindset story about what successful people do after a bad week."
+   Line 2: the moral. Line 3: the comment question. Then the subscribe line, then the hashtags.
+3. **Hashtags in the description: 5–8 only**, the format's set from the list above (the first 3 show above the title, so put the strongest first; never more than 15 or YouTube ignores them all).
+4. **tags field: 12–15 tags**, in this order:
+   - 3–4 exact search phrases for the format from the keyword bank below,
+   - 4–5 long-tail phrases about THIS story's theme ("how to stop procrastinating", "patience story", "discipline motivation for students"),
+   - 3 broad ones ("motivation", "life lessons", "short story"), plus "mindset minute".
+5. **Keyword bank** (exact phrases people search; use, don't stuff):
+   - success tips: success habits, habits of successful people, self improvement tips, productivity tips, morning routine
+   - tiny motivation: motivational story, motivation for success, never give up story, inspirational short story
+   - zen story: zen story, zen stories with a lesson, buddhist story, mindfulness story, monk story, inner peace
+   - rich vs poor mindset: rich vs poor mindset, rich mindset, poor mindset, millionaire mindset, wealth mindset
+   - stoic wisdom: stoicism, stoic lessons, marcus aurelius lesson, stoic mindset, how to control emotions
+   - grandpa's life advice: life advice, life lessons, grandpa wisdom, advice from elders, life lessons for young people
+   - discipline day 1 vs 365: discipline motivation, day 1 vs day 365, consistency, self discipline, small habits big results
+   - smart money lessons: money lessons, personal finance tips, how to save money, financial literacy, money mindset
+6. If web search is available, search once for what is trending this week in the format's topic (e.g. "trending motivation topics this week")
+   and use a matching evergreen angle and phrase when it fits the story (New Year goals, exam season, Monday motivation…). Never copy anyone's video.
+7. Same rules for the Facebook and TikTok captions: they reuse the title and the first hashtags automatically.
+
 ## Retention rules for Shorts (most important — follow every time)
 YouTube judges a Short by how many people swipe away in the first second, how many watch to the end and how many comment.
 1. **Hook first, no greeting.** Scene 1 narration STARTS with the hook: one sentence, at most 12 words, with stakes or a surprise

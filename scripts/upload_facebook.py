@@ -36,7 +36,7 @@ def main():
     elif not page.isdigit():
         me = req("GET", f"{GRAPH}/me?fields=id,name&access_token={token}")
         page = me["id"]; print(f"Using Page from token: {me.get('name')} ({page})")
-    tags = " ".join(w for w in story.get("description", "").split() if w.startswith("#"))[:300]
+    tags = " ".join([w for w in story.get("description", "").split() if w.startswith("#") and w.lower() != "#shorts"][:7] + ["#reels"])[:300]
     caption = f"{story['youtube_title'].split('#')[0].strip()}\n\n{story['scenes'][-1]['narration']}\n\nA new one-minute lesson every day ⏱️ Follow Mindset Minute.\n{tags}"
 
     start = req("POST", f"{GRAPH}/{page}/video_reels", {"upload_phase": "start", "access_token": token})

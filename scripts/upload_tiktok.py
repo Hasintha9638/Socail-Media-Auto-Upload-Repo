@@ -53,8 +53,13 @@ def main():
     privacy = os.environ.get("TIKTOK_PRIVACY") or ("PUBLIC_TO_EVERYONE" if "PUBLIC_TO_EVERYONE" in options else (options or ["SELF_ONLY"])[0])
     print(f"Posting as @{info.get('creator_username')} with privacy {privacy} (allowed: {options})")
 
-    tags = " ".join("#" + t.replace(" ", "") for t in ["MindsetMinute", "mindset", "storytime", "animation", "fyp"])
-    caption = f"{story['title']} — {story['scenes'][-1]['narration']} {tags}"[:2200]
+    # TikTok search reads the caption: title, the keyword sentence, the comment question, then the story's own topic hashtags
+    desc = story.get("description", "")
+    own = [w for w in desc.split() if w.startswith("#") and w.lower() not in ("#shorts", "#mindsetminute")][:5]
+    tags = " ".join(own + ["#MindsetMinute", "#storytime", "#fyp"])
+    first = next((l.strip() for l in desc.splitlines() if l.strip() and not l.strip().startswith("#")), "")
+    title = story.get("youtube_title", story["title"]).split("#")[0].strip()
+    caption = f"{title}\n{first}\n{story['scenes'][-1]['narration']}\n{tags}"[:2200]
     size = os.path.getsize(video)
     def init_post(priv):
         return call("POST", f"{API}/v2/post/publish/video/init/", {
