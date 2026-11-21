@@ -1,0 +1,1010 @@
+{
+  "format": "Success tips",
+  "publish_date": "2026-11-22",
+  "publish_at": "18:45",
+  "title": "The Empty Tea Stall",
+  "youtube_title": "Success Habits: Her Empty Stall Got the Longest Line #shorts #success",
+  "description": "Three success habits of a small business owner: how a young woman turned an empty tea stall into the longest line on the street.\n\nThe moral: small habits, done every day, turn an empty stall into a long line.\n\nWhich habit would you start first? Comment one, two or three.\n\nA new one-minute lesson every day on Mindset Minute. Subscribe so you don't miss tomorrow's story.\n\n#successtips #success #habits #selfimprovement #motivation #MindsetMinute #shorts\n\nWhich habit would you start first? Comment one, two or three.",
+  "tags": [
+    "success habits",
+    "habits of successful people",
+    "self improvement tips",
+    "success tips",
+    "small business tips",
+    "customer service story",
+    "show up when others don't",
+    "small habits big results",
+    "consistency motivation",
+    "motivation",
+    "life lessons",
+    "short story",
+    "mindset minute"
+  ],
+  "voice": "am_michael",
+  "speed": 0.96,
+  "mood": "hopeful",
+  "highlight": [
+    "habit",
+    "one",
+    "two",
+    "three",
+    "name",
+    "line",
+    "open",
+    "empty"
+  ],
+  "scenes": [
+    {
+      "narration": "Asha's tea stall sat empty for six months. Then she tried three habits.",
+      "lead": 0.15,
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "sun",
+          "x": 840,
+          "y": 450,
+          "r": 80,
+          "color": "#ffe2a8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.5,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 21,
+          "color": "#ffffff"
+        },
+        {
+          "type": "hills",
+          "color": "#9fb7a0",
+          "base_y": 1220,
+          "amp": 80,
+          "seed": 8
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              960,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#e0a96d",
+          "lit": false
+        },
+        {
+          "type": "palms",
+          "items": [
+            [
+              250,
+              1452,
+              0.9
+            ]
+          ],
+          "color": "#3d6b47",
+          "seed": 5
+        },
+        {
+          "type": "ground",
+          "color": "#a08a66",
+          "grass_color": "#b09a74",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 620,
+          "fill": 0.2
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#d35400",
+          "sash": "#f1c40f",
+          "s": 1.6,
+          "face": "sad",
+          "bend": 0.3
+        },
+        {
+          "type": "text",
+          "text": "EMPTY STALL. 3 HABITS.",
+          "y": 250,
+          "size": 76,
+          "color": "#ffd27a",
+          "stroke": 7,
+          "alpha": [
+            [
+              0,
+              1
+            ],
+            [
+              0.75,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Every evening, the stall next door had a long line. Asha had cold cups, buzzing flies and a lot of free time.",
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dusk"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.5,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 21,
+          "color": "#ffffff"
+        },
+        {
+          "type": "hills",
+          "color": "#9fb7a0",
+          "base_y": 1220,
+          "amp": 80,
+          "seed": 8
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              960,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#e0a96d",
+          "lit": false
+        },
+        {
+          "type": "palms",
+          "items": [
+            [
+              250,
+              1452,
+              0.9
+            ]
+          ],
+          "color": "#3d6b47",
+          "seed": 5
+        },
+        {
+          "type": "ground",
+          "color": "#a08a66",
+          "grass_color": "#b09a74",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 260,
+          "facing": 1,
+          "shirt": "#d35400",
+          "sash": "#f1c40f",
+          "s": 1.6,
+          "anim": "think",
+          "face": "worried"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": [
+            [
+              0,
+              1000
+            ],
+            [
+              1,
+              760
+            ]
+          ],
+          "facing": -1,
+          "shirt": "#2980b9",
+          "pants": "#2c3e50",
+          "s": 1.2,
+          "anim": "walk"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": [
+            [
+              0,
+              1060
+            ],
+            [
+              1,
+              860
+            ]
+          ],
+          "facing": -1,
+          "shirt": "#16a085",
+          "pants": "#2c3e50",
+          "s": 1.2,
+          "anim": "walk"
+        },
+        {
+          "type": "text",
+          "text": "NEXT DOOR: LONG LINE",
+          "y": 300,
+          "size": 70,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "box": "#c0392b",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Habit one. Learn every customer's name. Not just hello sir. Good morning, Tom. Extra ginger? People come back to be remembered.",
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "sun",
+          "x": 840,
+          "y": 450,
+          "r": 80,
+          "color": "#ffe2a8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.5,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 21,
+          "color": "#ffffff"
+        },
+        {
+          "type": "hills",
+          "color": "#9fb7a0",
+          "base_y": 1220,
+          "amp": 80,
+          "seed": 8
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              960,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#e0a96d",
+          "lit": false
+        },
+        {
+          "type": "palms",
+          "items": [
+            [
+              250,
+              1452,
+              0.9
+            ]
+          ],
+          "color": "#3d6b47",
+          "seed": 5
+        },
+        {
+          "type": "ground",
+          "color": "#a08a66",
+          "grass_color": "#b09a74",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 620,
+          "fill": 0.6
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#d35400",
+          "sash": "#f1c40f",
+          "s": 1.6,
+          "anim": "wave",
+          "face": "happy"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 760,
+          "facing": -1,
+          "shirt": "#2980b9",
+          "pants": "#2c3e50",
+          "s": 1.55,
+          "anim": "laugh",
+          "face": "happy"
+        },
+        {
+          "type": "text",
+          "text": "1. LEARN EVERY NAME",
+          "y": 300,
+          "size": 70,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "box": "#1e8449",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Habit two. Fix one small thing every day. A clean sign on Monday. A brighter lamp on Tuesday. A second chair on Wednesday.",
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "sun",
+          "x": 840,
+          "y": 450,
+          "r": 80,
+          "color": "#ffe2a8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.5,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 21,
+          "color": "#ffffff"
+        },
+        {
+          "type": "hills",
+          "color": "#9fb7a0",
+          "base_y": 1220,
+          "amp": 80,
+          "seed": 8
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              960,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#e0a96d",
+          "lit": false
+        },
+        {
+          "type": "palms",
+          "items": [
+            [
+              250,
+              1452,
+              0.9
+            ]
+          ],
+          "color": "#3d6b47",
+          "seed": 5
+        },
+        {
+          "type": "ground",
+          "color": "#a08a66",
+          "grass_color": "#b09a74",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 620,
+          "fill": 0.6
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": [
+            [
+              0,
+              280
+            ],
+            [
+              1,
+              380
+            ]
+          ],
+          "facing": 1,
+          "shirt": "#d35400",
+          "sash": "#f1c40f",
+          "s": 1.6,
+          "anim": "carry",
+          "holding": true,
+          "face": "think"
+        },
+        {
+          "type": "text",
+          "text": "2. FIX ONE THING DAILY",
+          "y": 300,
+          "size": 70,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "box": "#1e8449",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Habit three. Stay open when others close. When the monsoon came, every stall shut early. Asha stayed open, soaked but smiling.",
+      "caption_y": 700,
+      "dark": 0.25,
+      "sfx_rain": 0.7,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "storm"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.5,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 21,
+          "color": "#9aa4b8"
+        },
+        {
+          "type": "hills",
+          "color": "#4a5878",
+          "base_y": 1220,
+          "amp": 80,
+          "seed": 8
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              960,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#6d5a72",
+          "lit": true
+        },
+        {
+          "type": "palms",
+          "items": [
+            [
+              250,
+              1452,
+              0.9
+            ]
+          ],
+          "color": "#24382c",
+          "seed": 5
+        },
+        {
+          "type": "ground",
+          "color": "#3a3f48",
+          "grass_color": "#454b55",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 620,
+          "fill": 0.6
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#d35400",
+          "sash": "#f1c40f",
+          "s": 1.6,
+          "face": "calm"
+        },
+        {
+          "type": "rain",
+          "intensity": 0.8,
+          "times": [
+            2.5
+          ]
+        },
+        {
+          "type": "text",
+          "text": "3. OPEN WHEN OTHERS CLOSE",
+          "y": 300,
+          "size": 54,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "box": "#1e8449",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Soaked workers walked past dark, locked stalls. Then they saw one warm light, and someone who knew their names.",
+      "caption_y": 700,
+      "sfx_rain": 0.5,
+      "dark": 0.2,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "night"
+        },
+        {
+          "type": "stars",
+          "alpha": 0.5
+        },
+        {
+          "type": "moon",
+          "x": 830,
+          "y": 440,
+          "r": 55
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.5,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 21,
+          "color": "#9aa4b8"
+        },
+        {
+          "type": "hills",
+          "color": "#4a5878",
+          "base_y": 1220,
+          "amp": 80,
+          "seed": 8
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              960,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#6d5a72",
+          "lit": true
+        },
+        {
+          "type": "palms",
+          "items": [
+            [
+              250,
+              1452,
+              0.9
+            ]
+          ],
+          "color": "#24382c",
+          "seed": 5
+        },
+        {
+          "type": "ground",
+          "color": "#3a3f48",
+          "grass_color": "#454b55",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 620,
+          "fill": 0.7,
+          "pour": 1
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 500,
+          "facing": 1,
+          "shirt": "#d35400",
+          "sash": "#f1c40f",
+          "s": 1.6,
+          "anim": "carry",
+          "stone": "#5b4636",
+          "face": "happy"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": [
+            [
+              0,
+              1000
+            ],
+            [
+              0.7,
+              800
+            ],
+            [
+              1,
+              800
+            ]
+          ],
+          "facing": -1,
+          "shirt": "#2980b9",
+          "pants": "#2c3e50",
+          "s": 1.55,
+          "anim": "walk",
+          "face": [
+            [
+              0,
+              "sad"
+            ],
+            [
+              0.7,
+              "surprised"
+            ]
+          ]
+        },
+        {
+          "type": "rain",
+          "intensity": 0.4
+        }
+      ]
+    },
+    {
+      "narration": "By the end of the rains, the long line was outside Asha's stall. And the owner next door came to ask her for advice.",
+      "caption_y": 700,
+      "cut": true,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "sun",
+          "x": 840,
+          "y": 450,
+          "r": 80,
+          "color": "#ffe2a8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.5,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 21,
+          "color": "#ffffff"
+        },
+        {
+          "type": "hills",
+          "color": "#9fb7a0",
+          "base_y": 1220,
+          "amp": 80,
+          "seed": 8
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              110,
+              1452,
+              1.0
+            ],
+            [
+              960,
+              1452,
+              1.05
+            ]
+          ],
+          "color": "#e0a96d",
+          "lit": false
+        },
+        {
+          "type": "palms",
+          "items": [
+            [
+              250,
+              1452,
+              0.9
+            ]
+          ],
+          "color": "#3d6b47",
+          "seed": 5
+        },
+        {
+          "type": "ground",
+          "color": "#a08a66",
+          "grass_color": "#b09a74",
+          "furrows": false
+        },
+        {
+          "type": "tea",
+          "x": 620,
+          "fill": 0.9
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#d35400",
+          "sash": "#f1c40f",
+          "s": 1.6,
+          "anim": "cheer",
+          "face": "laugh"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 700,
+          "facing": -1,
+          "shirt": "#2980b9",
+          "pants": "#2c3e50",
+          "s": 1.55,
+          "anim": "laugh",
+          "face": "happy"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 830,
+          "facing": -1,
+          "shirt": "#16a085",
+          "pants": "#2c3e50",
+          "s": 1.3,
+          "anim": "wave",
+          "face": "happy"
+        },
+        {
+          "type": "text",
+          "text": "SOLD OUT BY 9 PM",
+          "y": 300,
+          "size": 76,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "box": "#1e8449",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Which habit would you start first? Comment one, two or three. Three small habits can turn an empty stall into a long line.",
+      "captions": false,
+      "lead": 0.4,
+      "tail": 1.6,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.06
+          ],
+          [
+            1,
+            1.0
+          ]
+        ],
+        "cx": 540,
+        "cy": 1000
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "card"
+        },
+        {
+          "type": "stars"
+        },
+        {
+          "type": "moon",
+          "x": 180,
+          "y": 330,
+          "r": 62
+        },
+        {
+          "type": "hills",
+          "color": "#1d1b38",
+          "base_y": 1220,
+          "amp": 80,
+          "seed": 8
+        },
+        {
+          "type": "ground",
+          "color": "#11121c",
+          "grass_color": "#171a26",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "villager_f",
+          "x": 420,
+          "facing": 1,
+          "shirt": "#d35400",
+          "sash": "#f1c40f",
+          "s": 1.3,
+          "silhouette": true,
+          "color": "#07070d",
+          "anim": "wave"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 650,
+          "facing": -1,
+          "shirt": "#2980b9",
+          "pants": "#2c3e50",
+          "s": 1.3,
+          "silhouette": true,
+          "color": "#07070d"
+        },
+        {
+          "type": "fireflies",
+          "count": 20,
+          "y": [
+            1150,
+            1450
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Three small habits can turn an empty stall into a long line.",
+          "serif": true,
+          "size": 70,
+          "width": 860,
+          "y": 640,
+          "color": "#fff3d6",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.12,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Mindset Minute  •  New lesson every day",
+          "size": 38,
+          "y": 900,
+          "color": "#ffd27a",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.55,
+              0
+            ],
+            [
+              0.7,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "COMMENT BELOW",
+          "size": 52,
+          "y": 1180,
+          "color": "#ffd27a",
+          "box": "#c2463b",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.3,
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

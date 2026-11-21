@@ -1,0 +1,1053 @@
+{
+  "format": "Smart money lessons",
+  "publish_date": "2026-11-22",
+  "publish_at": "05:45",
+  "title": "The 24-Hour Rule",
+  "youtube_title": "Money Lesson: Dad's 24-Hour Rule Saved Me $1,240 #shorts #moneylessons",
+  "description": "A smart money lesson from my dad: the 24-hour rule for anything over twenty dollars, and how it stopped impulse buying for good.\n\nThe moral: wait one day before you buy, because want is loud today and quiet tomorrow.\n\nWould you wait one day? Comment WAIT or BUY.\n\nA new one-minute lesson every day on Mindset Minute. Subscribe so you don't miss tomorrow's story.\n\n#moneylessons #personalfinance #moneytips #financialliteracy #mindset #MindsetMinute #shorts\n\nWould you wait one day? Comment WAIT or BUY.",
+  "tags": [
+    "money lessons",
+    "how to save money",
+    "personal finance tips",
+    "money mindset",
+    "24 hour rule",
+    "stop impulse buying",
+    "wants vs needs",
+    "saving money for teens",
+    "money advice from dad",
+    "motivation",
+    "life lessons",
+    "short story",
+    "mindset minute"
+  ],
+  "voice": "bm_lewis",
+  "speed": 0.95,
+  "mood": "warm",
+  "highlight": [
+    "rule",
+    "wait",
+    "one",
+    "day",
+    "ninety",
+    "jar",
+    "need",
+    "mood",
+    "cash"
+  ],
+  "scenes": [
+    {
+      "narration": "My dad had one strange rule for anything over twenty dollars.",
+      "lead": 0.15,
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "sun",
+          "x": 850,
+          "y": 440,
+          "r": 85,
+          "color": "#fff1b8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.6,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 12
+        },
+        {
+          "type": "hills",
+          "color": "#86a6c4",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              0.9
+            ],
+            [
+              880,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#d9b48f",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              330,
+              1452,
+              0.8
+            ]
+          ],
+          "color": "#3f6a45",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#8a7f62",
+          "grass_color": "#9a8f70",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#2e86de",
+          "pants": "#34495e",
+          "s": 1.6,
+          "face": "think",
+          "talk": true
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 700,
+          "facing": -1,
+          "shirt": "#8e5a3c",
+          "pants": "#3b3b4f",
+          "s": 1.65,
+          "anim": "think",
+          "face": "calm"
+        },
+        {
+          "type": "text",
+          "text": "THE 24-HOUR RULE",
+          "y": 250,
+          "size": 92,
+          "color": "#ffd27a",
+          "stroke": 7,
+          "alpha": [
+            [
+              0,
+              1
+            ],
+            [
+              0.75,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "I was fifteen. I saw white sneakers for ninety dollars. I didn't want them. I needed them. Right now.",
+      "caption_y": 700,
+      "cut": true,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "sun",
+          "x": 850,
+          "y": 440,
+          "r": 85,
+          "color": "#fff1b8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.6,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 12
+        },
+        {
+          "type": "hills",
+          "color": "#86a6c4",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              0.9
+            ],
+            [
+              880,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#d9b48f",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              330,
+              1452,
+              0.8
+            ]
+          ],
+          "color": "#3f6a45",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#8a7f62",
+          "grass_color": "#9a8f70",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": [
+            [
+              0,
+              240
+            ],
+            [
+              0.5,
+              420
+            ],
+            [
+              1,
+              430
+            ]
+          ],
+          "facing": 1,
+          "shirt": "#2e86de",
+          "pants": "#34495e",
+          "s": 1.6,
+          "anim": "walk",
+          "face": [
+            [
+              0,
+              "surprised"
+            ],
+            [
+              0.5,
+              "happy"
+            ]
+          ],
+          "talk": true
+        },
+        {
+          "type": "text",
+          "text": "SNEAKERS: $90",
+          "y": 300,
+          "size": 80,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ],
+          "box": "#c2463b"
+        }
+      ]
+    },
+    {
+      "narration": "Dad didn't say no. He said, write the price on a note, stick it on the fridge, and wait one day.",
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "sun",
+          "x": 850,
+          "y": 440,
+          "r": 85,
+          "color": "#fff1b8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.6,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 12
+        },
+        {
+          "type": "hills",
+          "color": "#86a6c4",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              0.9
+            ],
+            [
+              880,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#d9b48f",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              330,
+              1452,
+              0.8
+            ]
+          ],
+          "color": "#3f6a45",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#8a7f62",
+          "grass_color": "#9a8f70",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#2e86de",
+          "pants": "#34495e",
+          "s": 1.6,
+          "face": "worried"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 700,
+          "facing": -1,
+          "shirt": "#8e5a3c",
+          "pants": "#3b3b4f",
+          "s": 1.65,
+          "anim": "wave",
+          "face": "happy",
+          "talk": [
+            [
+              0.25,
+              1.0
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "RULE: WAIT 24 HOURS",
+          "y": 300,
+          "size": 72,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ],
+          "box": "#2c3e50"
+        }
+      ]
+    },
+    {
+      "narration": "That night I stared at the ceiling, thinking about those shoes. I was so annoyed with him.",
+      "caption_y": 700,
+      "dark": 0.3,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "night"
+        },
+        {
+          "type": "stars",
+          "alpha": 0.7
+        },
+        {
+          "type": "moon",
+          "x": 820,
+          "y": 420,
+          "r": 60
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.25,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 12
+        },
+        {
+          "type": "hills",
+          "color": "#3a4a6a",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              0.9
+            ],
+            [
+              880,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#5a5068",
+          "lit": true
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              330,
+              1452,
+              0.8
+            ]
+          ],
+          "color": "#22313a",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#2e3440",
+          "grass_color": "#38404c",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#2e86de",
+          "pants": "#34495e",
+          "s": 1.6,
+          "anim": "sit",
+          "face": "angry",
+          "talk": true
+        }
+      ]
+    },
+    {
+      "narration": "The next morning I looked at the note. And the feeling was just gone. It wasn't a need. It was a mood.",
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "dawn"
+        },
+        {
+          "type": "sun",
+          "x": 850,
+          "y": 440,
+          "r": 85,
+          "color": "#fff1b8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.6,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 12
+        },
+        {
+          "type": "hills",
+          "color": "#86a6c4",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              0.9
+            ],
+            [
+              880,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#d9b48f",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              330,
+              1452,
+              0.8
+            ]
+          ],
+          "color": "#3f6a45",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#8a7f62",
+          "grass_color": "#9a8f70",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#2e86de",
+          "pants": "#34495e",
+          "s": 1.6,
+          "anim": "think",
+          "face": [
+            [
+              0,
+              "think"
+            ],
+            [
+              0.55,
+              "surprised"
+            ]
+          ],
+          "talk": true
+        },
+        {
+          "type": "text",
+          "text": "$90... STILL WANT IT?",
+          "y": 300,
+          "size": 70,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ],
+          "box": "#2c3e50"
+        }
+      ]
+    },
+    {
+      "narration": "Dad smiled. Now put the ninety dollars in the jar. Want is loud today. Tomorrow, it gets quiet.",
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day"
+        },
+        {
+          "type": "sun",
+          "x": 850,
+          "y": 440,
+          "r": 85,
+          "color": "#fff1b8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.6,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 12
+        },
+        {
+          "type": "hills",
+          "color": "#86a6c4",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              0.9
+            ],
+            [
+              880,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#d9b48f",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              330,
+              1452,
+              0.8
+            ]
+          ],
+          "color": "#3f6a45",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#8a7f62",
+          "grass_color": "#9a8f70",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#2e86de",
+          "pants": "#34495e",
+          "s": 1.6,
+          "anim": "carry",
+          "holding": true,
+          "face": "happy"
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 700,
+          "facing": -1,
+          "shirt": "#8e5a3c",
+          "pants": "#3b3b4f",
+          "s": 1.65,
+          "anim": "laugh",
+          "face": "happy",
+          "talk": [
+            [
+              0.15,
+              1.0
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "JAR: $90",
+          "y": 300,
+          "size": 84,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ],
+          "box": "#1e8449"
+        }
+      ]
+    },
+    {
+      "narration": "For two years, notes went up on that fridge. Most came down unbought. And the jar kept growing.",
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "day",
+          "cycle": 3
+        },
+        {
+          "type": "sun",
+          "x": 540,
+          "y": 500,
+          "r": 70,
+          "cycle_arc": true
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.6,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 12
+        },
+        {
+          "type": "hills",
+          "color": "#86a6c4",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              0.9
+            ],
+            [
+              880,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#d9b48f",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              330,
+              1452,
+              0.8
+            ]
+          ],
+          "color": "#3f6a45",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#8a7f62",
+          "grass_color": "#9a8f70",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#2e86de",
+          "pants": "#34495e",
+          "s": 1.6,
+          "anim": "idle",
+          "face": "happy"
+        },
+        {
+          "type": "text",
+          "text": "",
+          "counter": {
+            "value": [
+              [
+                0,
+                90
+              ],
+              [
+                0.9,
+                1240
+              ]
+            ],
+            "fmt": "JAR: ${}"
+          },
+          "y": 300,
+          "size": 90,
+          "color": "#ffe7b0",
+          "stroke": 6
+        }
+      ]
+    },
+    {
+      "narration": "At seventeen, I bought my first laptop with cash. I waited one day for that too. I still wanted it.",
+      "caption_y": 700,
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "golden"
+        },
+        {
+          "type": "sun",
+          "x": 850,
+          "y": 440,
+          "r": 85,
+          "color": "#fff1b8"
+        },
+        {
+          "type": "clouds",
+          "count": 3,
+          "alpha": 0.6,
+          "y": [
+            400,
+            500
+          ],
+          "seed": 12
+        },
+        {
+          "type": "hills",
+          "color": "#86a6c4",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 14
+        },
+        {
+          "type": "houses",
+          "items": [
+            [
+              150,
+              1452,
+              0.9
+            ],
+            [
+              880,
+              1452,
+              1.0
+            ]
+          ],
+          "color": "#d9b48f",
+          "lit": false
+        },
+        {
+          "type": "trees",
+          "items": [
+            [
+              330,
+              1452,
+              0.8
+            ]
+          ],
+          "color": "#3f6a45",
+          "seed": 4
+        },
+        {
+          "type": "ground",
+          "color": "#8a7f62",
+          "grass_color": "#9a8f70",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 360,
+          "facing": 1,
+          "shirt": "#2e86de",
+          "pants": "#34495e",
+          "s": 1.6,
+          "anim": "cheer",
+          "face": "happy",
+          "talk": true
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 700,
+          "facing": -1,
+          "shirt": "#8e5a3c",
+          "pants": "#3b3b4f",
+          "s": 1.65,
+          "anim": "wave",
+          "face": "happy"
+        },
+        {
+          "type": "text",
+          "text": "PAID IN CASH",
+          "y": 300,
+          "size": 84,
+          "color": "#ffd27a",
+          "stroke": 6,
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.1,
+              1
+            ]
+          ],
+          "box": "#1e8449"
+        }
+      ]
+    },
+    {
+      "narration": "Would you wait one day? Comment WAIT or BUY. One rule saves more money than any raise: wait one day before you buy.",
+      "captions": false,
+      "lead": 0.4,
+      "tail": 1.6,
+      "camera": {
+        "zoom": [
+          [
+            0,
+            1.06
+          ],
+          [
+            1,
+            1.0
+          ]
+        ],
+        "cx": 540,
+        "cy": 1000
+      },
+      "elements": [
+        {
+          "type": "sky",
+          "preset": "card"
+        },
+        {
+          "type": "stars"
+        },
+        {
+          "type": "moon",
+          "x": 180,
+          "y": 330,
+          "r": 62
+        },
+        {
+          "type": "hills",
+          "color": "#1d1b38",
+          "base_y": 1230,
+          "amp": 90,
+          "seed": 14
+        },
+        {
+          "type": "ground",
+          "color": "#11121c",
+          "grass_color": "#171a26",
+          "furrows": false
+        },
+        {
+          "type": "person",
+          "kind": "villager",
+          "x": 640,
+          "facing": -1,
+          "shirt": "#8e5a3c",
+          "pants": "#3b3b4f",
+          "s": 1.3,
+          "silhouette": true,
+          "color": "#07070d",
+          "face": "happy"
+        },
+        {
+          "type": "person",
+          "kind": "student",
+          "x": 420,
+          "facing": 1,
+          "shirt": "#2e86de",
+          "pants": "#34495e",
+          "s": 1.3,
+          "silhouette": true,
+          "color": "#07070d",
+          "anim": "wave"
+        },
+        {
+          "type": "fireflies",
+          "count": 20,
+          "y": [
+            1150,
+            1450
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Wait one day before you buy. Want gets quiet.",
+          "serif": true,
+          "size": 72,
+          "width": 860,
+          "y": 640,
+          "color": "#fff3d6",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.12,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Mindset Minute  •  New lesson every day",
+          "size": 38,
+          "y": 900,
+          "color": "#ffd27a",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.55,
+              0
+            ],
+            [
+              0.7,
+              1
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "COMMENT BELOW",
+          "size": 52,
+          "y": 1180,
+          "color": "#ffd27a",
+          "box": "#c2463b",
+          "alpha": [
+            [
+              0,
+              0
+            ],
+            [
+              0.3,
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
