@@ -46,8 +46,25 @@ Also check stories/PUBLISHED.md so the theme differs from the last 6 videos. (Mo
   - smart money lessons: #moneylessons #personalfinance #moneytips #financialliteracy #mindset #MindsetMinute #shorts
   - zen story: #zenstory #zen #mindfulness #wisdom #innerpeace #MindsetMinute #shorts (title example: "Empty Your Cup First | Zen Story #shorts #zen")
 - **tags field:** 10–15 tags. Mix broad (motivation, short story) with specific (the story's theme, e.g. "patience story", "lazy goat story").
-- **Hooks decide reach:** the first line must create a question in 2 seconds. Keep videos under 50 s, because rewatches count, and end on a line that makes people comment, like, or share (a question or a quotable line).
+- **Hooks decide reach:** the first line must create a question in 2 seconds (see "Retention rules" below). End with a comment question and a quotable moral.
 - Topical but evergreen: you may echo what's trending (exams season, New Year goals, monsoon, cricket season in Sri Lanka) but never copy anyone's video, song, or character.
+
+## Retention rules for Shorts (most important — follow every time)
+YouTube judges a Short by how many people swipe away in the first second, how many watch to the end and how many comment.
+1. **Hook first, no greeting.** Scene 1 narration STARTS with the hook: one sentence, at most 12 words, with stakes or a surprise
+   ("Rich people never say this one sentence.", "He waited ten years. It cost him everything.", "My grandpa gave me three rules. The third one hurt.").
+   Scene 1 uses `"lead": 0.15` so the voice starts at once, and a big gold hook `text` (at most 6 words, size 84–96, y=250)
+   is fully visible from the very first frame: `"alpha": [[0, 1], [0.75, 1], [1, 0]]` (never fade it in).
+   The renderer adds NO recorded intro to Shorts; it only adds the owner's recorded outro at the very end.
+2. **Comment question.** The last scene (moral card) narration is: a short, easy question about THIS story, then the moral.
+   The question must be answerable in one word or number: "Which rule do you need most? Comment one, two or three.",
+   "Would you wait or start today? Comment WAIT or START.", "Have you met a poor-mindset friend? Yes or no?"
+   Show it on screen too: a gold `text` "COMMENT BELOW" with `box` "#c2463b" at y=1180 on the moral card. Put the same question as the last line of the description.
+3. **Loop ending.** The moral repeats the key words of the hook, so the end flows back into the start when the Short replays
+   (hook "Do the hard thing first." → moral "…and that's why you do the hard thing first.").
+4. **Curiosity titles.** Hide the answer, promise a payoff, under 70 characters: "Grandpa Told Me 3 Rules. The Last One Hurt",
+   "Poor People Say This. Rich People Never Do", "He Ran One Minute a Day. Day 365 Shocked Everyone". Never a plain label like "Grandpa's 3 Rules".
+5. **Every scene changes something** in the first 1–2 seconds (a new place, character, emotion or big text), so there's no slow moment to swipe on.
 
 ## What makes a hit (follow every time)
 1. **Hook in the first line (under 3 s).** Open with a strange action or stakes, never "Once upon a time".
@@ -103,9 +120,9 @@ Captions sit around y=640, so keep the sky area y=520–780 free of busy element
 | text | `text`, `y`, `x` (centre, default 540), `box` (hex: coloured pill behind the text), `size`, `color`, `stroke`, `serif`, `alpha`, `counter: {value, fmt: "YEAR {}"}` |
 
 ### Recurring patterns
-- **Scene 1:** the hook action, plus a gold title `text` at y=250 that fades out.
+- **Scene 1:** the hook action, plus the big gold hook `text` at y=250, visible from frame 1, fading out near the end of the scene.
 - **Time passing:** `sky.cycle: 3` + sun/moon `cycle_arc` + a `counter` text.
-- **Last scene (moral card):** `sky: card`, stars, moon, dark silhouettes, `captions: false`, serif `text` with the moral at y=640, and the gold line "Mindset Minute  •  New lesson every day" at y=900. Use `lead: 0.6`, `tail: 2.2`.
+- **Last scene (moral card):** `sky: card`, stars, moon, dark silhouettes, `captions: false`, narration = comment question + moral, serif `text` with the moral at y=640, the gold line "Mindset Minute  •  New lesson every day" at y=900, and the "COMMENT BELOW" pill at y=1180. Use `lead: 0.4`, `tail: 1.6` (the recorded outro plays after it).
 - Use the same background layers in every scene of a story so the place feels continuous. Change only the colours for time of day and weather.
 - Match colour palettes to the mood: warm dawn and golden for hope, cold blue night and storm for danger.
 

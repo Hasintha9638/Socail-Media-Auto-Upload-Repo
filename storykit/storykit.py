@@ -935,6 +935,7 @@ def add_signature(story, out, sr):
     for kind in ("intro", "outro"):
         takes = sorted(os.path.basename(f) for f in glob.glob(os.path.join(vdir, f"{kind}_*.wav")))
         pick = story.get(kind)
+        if kind == "intro" and pick is None: continue   # Shorts start with the hook, not a greeting (set "intro" to a file name to force one)
         if pick == 0 or not takes: continue
         name = pick if pick in takes else takes[(slot if kind == "intro" else slot + slot // 2 + 1) % len(takes)]
         a, r = sf.read(os.path.join(vdir, name), dtype="float32")

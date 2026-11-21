@@ -57,9 +57,18 @@ def run(cmd):
     subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
 
 
-def still_clip(png, seconds, out):
-    run(["ffmpeg", "-y", "-loop", "1", "-framerate", str(FPS), "-i", png, "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo",
-         "-t", str(seconds), "-vf", f"format=yuv420p,fade=t=in:st=0:d=0.4,fade=t=out:st={seconds - 0.4}:d=0.4", *ENC, "-shortest", out])
+def still_clip(png, seconds, out, voice=None):
+    audio = ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"] if not voice else ["-i", voice]
+    af = [] if not voice else ["-af", f"adelay=500|500,apad,aresample=48000,loudnorm=I=-16:TP=-1.5"]
+    run(["ffmpeg", "-y", "-loop", "1", "-framerate", str(FPS), "-i", png, *audio,
+         "-t", str(seconds), "-vf", f"format=yuv420p,fade=t=in:st=0:d=0.4,fade=t=out:st={seconds - 0.4}:d=0.4", *af, *ENC, "-shortest", out])
+
+
+def owner_intro():
+    """One of the owner's recorded intros (long videos keep the greeting; Shorts don't)."""
+    import glob, random
+    takes = sorted(glob.glob(os.path.join(HERE, "..", "voice", "male", "intro_*.wav")))
+    return random.Random(datetime.date.today().toordinal()).choice(takes) if takes else None
 
 
 def wide_clip(src, out):
@@ -91,7 +100,7 @@ def main():
         title = f"{len(names)} Short Stories With Big Life Lessons | Mindset Minute"
     os.makedirs("comp", exist_ok=True); parts, chapters, t = [], [], 0.0
     card("comp/intro.png", "MINDSET MINUTE", title.split(" | ")[0], "One-minute lessons • New every day")
-    still_clip("comp/intro.png", 4, "comp/000_intro.mp4"); parts.append("comp/000_intro.mp4"); chapters.append((0, "Intro")); t += duration(parts[-1])
+    still_clip("comp/intro.png", 4.5, "comp/000_intro.mp4", owner_intro()); parts.append("comp/000_intro.mp4"); chapters.append((0, "Intro")); t += duration(parts[-1])
     for i, (n, s) in enumerate(zip(names, stories), 1):
         name = s.get("title") or s["youtube_title"].split("#")[0].split("|")[0].strip()
         card(f"comp/c{i:02d}.png", f"STORY {i} OF {len(names)}", name, s.get("format", ""))
