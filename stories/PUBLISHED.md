@@ -21,3 +21,4 @@
 | 2026-11-20 | 2026-11-21-a-grandpas-rules | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
 | 2026-11-20 | 2026-11-21-b-one-minute-habit | tiktok: sent to your TikTok inbox: open TikTok and tap Post |
 | 2026-11-20 | 2026-11-20-b-missed-the-bus | facebook: https://www.facebook.com/reel/2267918670439604/ |
+| 2026-11-21 | 2026-11-21-a-grandpas-rules | facebook: https://www.facebook.com/reel/1023672737417669/ |
